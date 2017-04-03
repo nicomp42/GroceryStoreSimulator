@@ -17,7 +17,7 @@ namespace GroceryStoreSimulator {
     class Config {
         private static int transactionDelay = 5; // Default is 5 millisecond delay between customer transactions that are added to the database
         public static List<EmplName> emplList;
-        public static string version = "1.0.3";
+        public static string version = "1.0.4";
         public static string doubleQuote = "\"";
         private static SqlConnection mMyConnection;
         private static string mServer, mLogin, mPassword, mDatabase;
