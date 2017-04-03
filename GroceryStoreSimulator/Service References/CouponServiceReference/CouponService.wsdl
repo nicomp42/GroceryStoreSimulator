@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCoupon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coupon" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCouponResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateCouponResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouponInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="couponID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouponInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCouponInfoResult" type="tns:Coupon" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Coupon">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="coupon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="couponSource" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="throughDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="couponDetails" type="tns:ArrayOfCouponDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCouponDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CouponDetail" nillable="true" type="tns:CouponDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CouponDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="product" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amountOff" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="percentageDiscount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="discountType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCouponSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateCoupon" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCouponSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateCouponResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCouponInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCouponInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CouponServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoupon">
+      <wsdl:input message="tns:ValidateCouponSoapIn" />
+      <wsdl:output message="tns:ValidateCouponSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponInfo">
+      <wsdl:input message="tns:GetCouponInfoSoapIn" />
+      <wsdl:output message="tns:GetCouponInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CouponServiceSoap" type="tns:CouponServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoupon">
+      <soap:operation soapAction="http://tempuri.org/ValidateCoupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponInfo">
+      <soap:operation soapAction="http://tempuri.org/GetCouponInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CouponServiceSoap12" type="tns:CouponServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoupon">
+      <soap12:operation soapAction="http://tempuri.org/ValidateCoupon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetCouponInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CouponService">
+    <wsdl:port name="CouponServiceSoap" binding="tns:CouponServiceSoap">
+      <soap:address location="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CouponServiceSoap12" binding="tns:CouponServiceSoap12">
+      <soap12:address location="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

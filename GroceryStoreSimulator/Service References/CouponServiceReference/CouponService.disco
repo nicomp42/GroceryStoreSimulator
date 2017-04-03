@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx?wsdl" docRef="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx" xmlns:q1="http://tempuri.org/" binding="q1:CouponServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://il-server-001.uccc.uc.edu/CouponWebService/CouponService.asmx" xmlns:q2="http://tempuri.org/" binding="q2:CouponServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
