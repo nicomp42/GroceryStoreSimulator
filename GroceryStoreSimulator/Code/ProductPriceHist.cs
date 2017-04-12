@@ -46,6 +46,7 @@ namespace GroceryStoreSimulator {
         public static void CopyFromFromProductTableIntoProductPriceHist(DateTime startDate)
         {
             DateTime myStartDate;
+            // Use the earliest possible start date if the calling method did not provide a start date
             if (startDate == null) { myStartDate = Config.earliestPossibleDate; } else { myStartDate = startDate; }
             List<SqlParameter> parameters = new List<SqlParameter>() {
                 new SqlParameter() {ParameterName = "@StartDate", SqlDbType = SqlDbType.DateTime, Value = startDate.ToString()}
