@@ -457,13 +457,15 @@ namespace GroceryStoreSimulator {
             }
         }
 
-        private void label14_Click(object sender, EventArgs e) {
-
-        }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
             frmAbout frm = new frmAbout();
             frm.Show();
+        }
+
+        private void placeOrderToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmPlaceAnOrder placeAnOrder = new frmPlaceAnOrder();
+            placeAnOrder.Show();
+
         }
     }
 }

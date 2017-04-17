@@ -72,6 +72,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Datasets\StoresAcceptingOnlineOrders.cs">
+      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\StoresAcceptingOnlineOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\StoresNotClosedForever.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DefaultValues.cs" />
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
@@ -152,6 +165,28 @@
     </None>
     <None Include="DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\StoresAcceptingOnlineOrders.xsc">
+      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\StoresAcceptingOnlineOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StoresAcceptingOnlineOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\StoresAcceptingOnlineOrders.xss">
+      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\StoresNotClosedForever.xsc">
+      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\StoresNotClosedForever.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StoresNotClosedForever.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\StoresNotClosedForever.xss">
+      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
     </None>
     <None Include="Data\randomCities.csv" />
     <None Include="Data\randomNames.csv" />

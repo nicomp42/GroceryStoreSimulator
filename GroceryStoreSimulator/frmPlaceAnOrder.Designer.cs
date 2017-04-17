@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.lbProductID = new System.Windows.Forms.ListBox();
             this.btnRemoveFromOrder = new System.Windows.Forms.Button();
             this.lbOrder_ProductID = new System.Windows.Forms.ListBox();
@@ -33,6 +34,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
+            this.storesNotClosedForever = new GroceryStoreSimulator.Datasets.StoresNotClosedForever();
+            this.vStoresNotClosedForeverBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vStoresNotClosedForeverTableAdapter = new GroceryStoreSimulator.Datasets.StoresNotClosedForeverTableAdapters.vStoresNotClosedForeverTableAdapter();
+            this.storesAcceptingOnlineOrders = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrders();
+            this.storesAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vStoresAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vStoresAcceptingOnlineOrdersTableAdapter = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrdersTableAdapters.vStoresAcceptingOnlineOrdersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lbProductID
@@ -80,11 +93,14 @@
             // 
             // cbStoreID
             // 
+            this.cbStoreID.DataSource = this.vStoresAcceptingOnlineOrdersBindingSource;
+            this.cbStoreID.DisplayMember = "StoreInfo";
             this.cbStoreID.FormattingEnabled = true;
             this.cbStoreID.Location = new System.Drawing.Point(116, 7);
             this.cbStoreID.Name = "cbStoreID";
-            this.cbStoreID.Size = new System.Drawing.Size(195, 21);
+            this.cbStoreID.Size = new System.Drawing.Size(303, 21);
             this.cbStoreID.TabIndex = 18;
+            this.cbStoreID.ValueMember = "StoreID";
             // 
             // label27
             // 
@@ -120,6 +136,39 @@
             this.btnPlaceOrder.Text = "Place Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
             // 
+            // storesNotClosedForever
+            // 
+            this.storesNotClosedForever.DataSetName = "StoresNotClosedForever";
+            this.storesNotClosedForever.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vStoresNotClosedForeverBindingSource
+            // 
+            this.vStoresNotClosedForeverBindingSource.DataMember = "vStoresNotClosedForever";
+            this.vStoresNotClosedForeverBindingSource.DataSource = this.storesNotClosedForever;
+            // 
+            // vStoresNotClosedForeverTableAdapter
+            // 
+            this.vStoresNotClosedForeverTableAdapter.ClearBeforeFill = true;
+            // 
+            // storesAcceptingOnlineOrders
+            // 
+            this.storesAcceptingOnlineOrders.DataSetName = "StoresAcceptingOnlineOrders";
+            this.storesAcceptingOnlineOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // storesAcceptingOnlineOrdersBindingSource
+            // 
+            this.storesAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrders;
+            this.storesAcceptingOnlineOrdersBindingSource.Position = 0;
+            // 
+            // vStoresAcceptingOnlineOrdersBindingSource
+            // 
+            this.vStoresAcceptingOnlineOrdersBindingSource.DataMember = "vStoresAcceptingOnlineOrders";
+            this.vStoresAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrdersBindingSource;
+            // 
+            // vStoresAcceptingOnlineOrdersTableAdapter
+            // 
+            this.vStoresAcceptingOnlineOrdersTableAdapter.ClearBeforeFill = true;
+            // 
             // frmPlaceAnOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +186,12 @@
             this.Controls.Add(this.textBox2);
             this.Name = "frmPlaceAnOrder";
             this.Text = "Place an Order";
+            this.Load += new System.EventHandler(this.frmPlaceAnOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +209,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnPlaceOrder;
+        private Datasets.StoresNotClosedForever storesNotClosedForever;
+        private System.Windows.Forms.BindingSource vStoresNotClosedForeverBindingSource;
+        private Datasets.StoresNotClosedForeverTableAdapters.vStoresNotClosedForeverTableAdapter vStoresNotClosedForeverTableAdapter;
+        private System.Windows.Forms.BindingSource storesAcceptingOnlineOrdersBindingSource;
+        private Datasets.StoresAcceptingOnlineOrders storesAcceptingOnlineOrders;
+        private System.Windows.Forms.BindingSource vStoresAcceptingOnlineOrdersBindingSource;
+        private Datasets.StoresAcceptingOnlineOrdersTableAdapters.vStoresAcceptingOnlineOrdersTableAdapter vStoresAcceptingOnlineOrdersTableAdapter;
     }
 }

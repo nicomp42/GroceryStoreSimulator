@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StoresAcceptingOnlineOrders" targetNamespace="http://tempuri.org/StoresAcceptingOnlineOrders.xsd" xmlns:mstns="http://tempuri.org/StoresAcceptingOnlineOrders.xsd" xmlns="http://tempuri.org/StoresAcceptingOnlineOrders.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="GroceryStoreSimulatorConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GroceryStoreSimulatorConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GroceryStoreSimulator.Properties.Settings.GlobalReference.Default.GroceryStoreSimulatorConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vStoresAcceptingOnlineOrdersTableAdapter" GeneratorDataComponentClassName="vStoresAcceptingOnlineOrdersTableAdapter" Name="vStoresAcceptingOnlineOrders" UserDataComponentName="vStoresAcceptingOnlineOrdersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GroceryStoreSimulatorConnectionString (Settings)" DbObjectName="GroceryStoreSimulator.dbo.vStoresAcceptingOnlineOrders" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        vStoresAcceptingOnlineOrders.StoreID, vStoresAcceptingOnlineOrders.Expr1, RTRIM(LTRIM(tStore.StoreNumber)) + N', ' + RTRIM(LTRIM(tStore.Address1)) 
+                         + N', ' + RTRIM(LTRIM(tStore.City)) AS StoreInfo
+FROM            vStoresAcceptingOnlineOrders INNER JOIN
+                         tStore ON vStoresAcceptingOnlineOrders.StoreID = tStore.StoreID
+ORDER BY RTRIM(LTRIM(tStore.StoreNumber)) + N', ' + RTRIM(LTRIM(tStore.Address1)) + N', ' + RTRIM(LTRIM(tStore.City))</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StoreID" DataSetColumn="StoreID" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="StoreInfo" DataSetColumn="StoreInfo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StoresAcceptingOnlineOrders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="StoresAcceptingOnlineOrders" msprop:Generator_UserDSName="StoresAcceptingOnlineOrders">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vStoresAcceptingOnlineOrders" msprop:Generator_TableClassName="vStoresAcceptingOnlineOrdersDataTable" msprop:Generator_TableVarName="tablevStoresAcceptingOnlineOrders" msprop:Generator_TablePropName="vStoresAcceptingOnlineOrders" msprop:Generator_RowDeletingName="vStoresAcceptingOnlineOrdersRowDeleting" msprop:Generator_RowChangingName="vStoresAcceptingOnlineOrdersRowChanging" msprop:Generator_RowEvHandlerName="vStoresAcceptingOnlineOrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="vStoresAcceptingOnlineOrdersRowDeleted" msprop:Generator_UserTableName="vStoresAcceptingOnlineOrders" msprop:Generator_RowChangedName="vStoresAcceptingOnlineOrdersRowChanged" msprop:Generator_RowEvArgName="vStoresAcceptingOnlineOrdersRowChangeEvent" msprop:Generator_RowClassName="vStoresAcceptingOnlineOrdersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StoreID" msprop:Generator_ColumnVarNameInTable="columnStoreID" msprop:Generator_ColumnPropNameInRow="StoreID" msprop:Generator_ColumnPropNameInTable="StoreIDColumn" msprop:Generator_UserColumnName="StoreID" type="xs:int" />
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="StoreInfo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStoreInfo" msprop:Generator_ColumnPropNameInRow="StoreInfo" msprop:Generator_ColumnPropNameInTable="StoreInfoColumn" msprop:Generator_UserColumnName="StoreInfo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="414" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vStoresAcceptingOnlineOrders" />
+      <xs:field xpath="mstns:StoreID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

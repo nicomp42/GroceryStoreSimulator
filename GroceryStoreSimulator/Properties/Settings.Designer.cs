@@ -33,5 +33,17 @@ namespace GroceryStoreSimulator.Properties {
                 return ((string)(this["SimGroceryConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=il-server-001.uccc.uc.edu\\mssqlserver2012;Initial Catalog=GroceryStor" +
+            "eSimulator;User ID=nicomp;Password=Danger42;Encrypt=False;TrustServerCertificate" +
+            "=True")]
+        public string GroceryStoreSimulatorConnectionString {
+            get {
+                return ((string)(this["GroceryStoreSimulatorConnectionString"]));
+            }
+        }
     }
 }

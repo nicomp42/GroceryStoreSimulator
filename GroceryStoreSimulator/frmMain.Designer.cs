@@ -1384,7 +1384,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // toolsToolStripMenuItem
@@ -1400,6 +1400,7 @@
             this.placeOrderToolStripMenuItem.Name = "placeOrderToolStripMenuItem";
             this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.placeOrderToolStripMenuItem.Text = "Place Order";
+            this.placeOrderToolStripMenuItem.Click += new System.EventHandler(this.placeOrderToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
