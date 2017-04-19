@@ -1,9 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryStoreSimulator", "GroceryStoreSimulator\GroceryStoreSimulator.csproj", "{3A401DED-BDC1-4200-9979-7A26AC799637}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OnlineOrderingWebPage", "GroceryStoreSimulator\OnlineOrderingWebPage\", "{E8E7DA13-4A53-4D06-9787-21A74E384C4B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_41711"
+		Debug.AspNetCompiler.PhysicalPath = "GroceryStoreSimulator\OnlineOrderingWebPage\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_41711\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_41711"
+		Release.AspNetCompiler.PhysicalPath = "GroceryStoreSimulator\OnlineOrderingWebPage\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_41711\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "41711"
+		SlnRelativePath = "GroceryStoreSimulator\OnlineOrderingWebPage\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +71,36 @@ Global
 		{3A401DED-BDC1-4200-9979-7A26AC799637}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{3A401DED-BDC1-4200-9979-7A26AC799637}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
 		{3A401DED-BDC1-4200-9979-7A26AC799637}.SingleImage|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.CD_ROM|Win32.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Debug|Win32.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.DVD-5|Win32.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.Release|Win32.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Win32.ActiveCfg = Debug|Any CPU
+		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Win32.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
