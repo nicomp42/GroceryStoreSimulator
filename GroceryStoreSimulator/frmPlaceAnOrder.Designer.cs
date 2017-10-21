@@ -30,6 +30,9 @@
             this.btnAddToOrder = new System.Windows.Forms.Button();
             this.lblStore = new System.Windows.Forms.Label();
             this.cbStoreID = new System.Windows.Forms.ComboBox();
+            this.vStoresAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storesAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storesAcceptingOnlineOrders = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrders();
             this.label27 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -37,28 +40,32 @@
             this.storesNotClosedForever = new GroceryStoreSimulator.Datasets.StoresNotClosedForever();
             this.vStoresNotClosedForeverBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vStoresNotClosedForeverTableAdapter = new GroceryStoreSimulator.Datasets.StoresNotClosedForeverTableAdapters.vStoresNotClosedForeverTableAdapter();
-            this.storesAcceptingOnlineOrders = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrders();
-            this.storesAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vStoresAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vStoresAcceptingOnlineOrdersTableAdapter = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrdersTableAdapters.vStoresAcceptingOnlineOrdersTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbLoyaltyID = new System.Windows.Forms.ComboBox();
+            this.LoyaltyIDsThatCanPlaceOnlineOrders = new GroceryStoreSimulator.Datasets.LoyaltyIDsThatCanPlaceOnlineOrders();
+            this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter = new GroceryStoreSimulator.Datasets.LoyaltyIDsThatCanPlaceOnlineOrdersTableAdapters.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyIDsThatCanPlaceOnlineOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lbProductID
             // 
             this.lbProductID.FormattingEnabled = true;
-            this.lbProductID.Location = new System.Drawing.Point(12, 60);
+            this.lbProductID.Location = new System.Drawing.Point(11, 146);
             this.lbProductID.Name = "lbProductID";
             this.lbProductID.Size = new System.Drawing.Size(782, 160);
             this.lbProductID.TabIndex = 23;
             // 
             // btnRemoveFromOrder
             // 
-            this.btnRemoveFromOrder.Location = new System.Drawing.Point(802, 231);
+            this.btnRemoveFromOrder.Location = new System.Drawing.Point(801, 317);
             this.btnRemoveFromOrder.Name = "btnRemoveFromOrder";
             this.btnRemoveFromOrder.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveFromOrder.TabIndex = 22;
@@ -68,14 +75,14 @@
             // lbOrder_ProductID
             // 
             this.lbOrder_ProductID.FormattingEnabled = true;
-            this.lbOrder_ProductID.Location = new System.Drawing.Point(13, 231);
+            this.lbOrder_ProductID.Location = new System.Drawing.Point(12, 317);
             this.lbOrder_ProductID.Name = "lbOrder_ProductID";
             this.lbOrder_ProductID.Size = new System.Drawing.Size(782, 173);
             this.lbOrder_ProductID.TabIndex = 21;
             // 
             // btnAddToOrder
             // 
-            this.btnAddToOrder.Location = new System.Drawing.Point(802, 61);
+            this.btnAddToOrder.Location = new System.Drawing.Point(801, 147);
             this.btnAddToOrder.Name = "btnAddToOrder";
             this.btnAddToOrder.Size = new System.Drawing.Size(75, 23);
             this.btnAddToOrder.TabIndex = 20;
@@ -102,10 +109,25 @@
             this.cbStoreID.TabIndex = 18;
             this.cbStoreID.ValueMember = "StoreID";
             // 
+            // vStoresAcceptingOnlineOrdersBindingSource
+            // 
+            this.vStoresAcceptingOnlineOrdersBindingSource.DataMember = "vStoresAcceptingOnlineOrders";
+            this.vStoresAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrdersBindingSource;
+            // 
+            // storesAcceptingOnlineOrdersBindingSource
+            // 
+            this.storesAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrders;
+            this.storesAcceptingOnlineOrdersBindingSource.Position = 0;
+            // 
+            // storesAcceptingOnlineOrders
+            // 
+            this.storesAcceptingOnlineOrders.DataSetName = "StoresAcceptingOnlineOrders";
+            this.storesAcceptingOnlineOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(227, 40);
+            this.label27.Location = new System.Drawing.Point(229, 119);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(320, 13);
             this.label27.TabIndex = 17;
@@ -113,7 +135,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(146, 32);
+            this.button1.Location = new System.Drawing.Point(148, 111);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
@@ -122,14 +144,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(11, 33);
+            this.textBox2.Location = new System.Drawing.Point(14, 112);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(129, 20);
             this.textBox2.TabIndex = 15;
             // 
             // btnPlaceOrder
             // 
-            this.btnPlaceOrder.Location = new System.Drawing.Point(778, 437);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(783, 513);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(89, 31);
             this.btnPlaceOrder.TabIndex = 24;
@@ -150,30 +172,51 @@
             // 
             this.vStoresNotClosedForeverTableAdapter.ClearBeforeFill = true;
             // 
-            // storesAcceptingOnlineOrders
-            // 
-            this.storesAcceptingOnlineOrders.DataSetName = "StoresAcceptingOnlineOrders";
-            this.storesAcceptingOnlineOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // storesAcceptingOnlineOrdersBindingSource
-            // 
-            this.storesAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrders;
-            this.storesAcceptingOnlineOrdersBindingSource.Position = 0;
-            // 
-            // vStoresAcceptingOnlineOrdersBindingSource
-            // 
-            this.vStoresAcceptingOnlineOrdersBindingSource.DataMember = "vStoresAcceptingOnlineOrders";
-            this.vStoresAcceptingOnlineOrdersBindingSource.DataSource = this.storesAcceptingOnlineOrdersBindingSource;
-            // 
             // vStoresAcceptingOnlineOrdersTableAdapter
             // 
             this.vStoresAcceptingOnlineOrdersTableAdapter.ClearBeforeFill = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Loyalty ID";
+            // 
+            // cbLoyaltyID
+            // 
+            this.cbLoyaltyID.DataSource = this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource;
+            this.cbLoyaltyID.DisplayMember = "LoyaltyNumber";
+            this.cbLoyaltyID.FormattingEnabled = true;
+            this.cbLoyaltyID.Location = new System.Drawing.Point(116, 36);
+            this.cbLoyaltyID.Name = "cbLoyaltyID";
+            this.cbLoyaltyID.Size = new System.Drawing.Size(303, 21);
+            this.cbLoyaltyID.TabIndex = 26;
+            this.cbLoyaltyID.ValueMember = "LoyaltyID";
+            // 
+            // LoyaltyIDsThatCanPlaceOnlineOrders
+            // 
+            this.LoyaltyIDsThatCanPlaceOnlineOrders.DataSetName = "LoyaltyIDsThatCanPlaceOnlineOrders";
+            this.LoyaltyIDsThatCanPlaceOnlineOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource
+            // 
+            this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource.DataMember = "vLoyaltyIDsThatCanPlaceOnlineOrders";
+            this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource.DataSource = this.LoyaltyIDsThatCanPlaceOnlineOrders;
+            // 
+            // vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter
+            // 
+            this.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter.ClearBeforeFill = true;
             // 
             // frmPlaceAnOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 480);
+            this.ClientSize = new System.Drawing.Size(884, 556);
+            this.Controls.Add(this.cbLoyaltyID);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.lbProductID);
             this.Controls.Add(this.btnRemoveFromOrder);
@@ -187,11 +230,13 @@
             this.Name = "frmPlaceAnOrder";
             this.Text = "Place an Order";
             this.Load += new System.EventHandler(this.frmPlaceAnOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoyaltyIDsThatCanPlaceOnlineOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +261,10 @@
         private Datasets.StoresAcceptingOnlineOrders storesAcceptingOnlineOrders;
         private System.Windows.Forms.BindingSource vStoresAcceptingOnlineOrdersBindingSource;
         private Datasets.StoresAcceptingOnlineOrdersTableAdapters.vStoresAcceptingOnlineOrdersTableAdapter vStoresAcceptingOnlineOrdersTableAdapter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbLoyaltyID;
+        private Datasets.LoyaltyIDsThatCanPlaceOnlineOrders LoyaltyIDsThatCanPlaceOnlineOrders;
+        private System.Windows.Forms.BindingSource vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource;
+        private Datasets.LoyaltyIDsThatCanPlaceOnlineOrdersTableAdapters.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter;
     }
 }

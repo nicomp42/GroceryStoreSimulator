@@ -72,6 +72,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LoyaltyIDsThatCanPlaceOnlineOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\LoyaltyIDsThatCanPlaceOnlineOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datasets\StoresAcceptingOnlineOrders.cs">
       <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
     </Compile>
@@ -133,6 +143,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlaceAnOrder.resx">
       <DependentUpon>frmPlaceAnOrder.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,6 +176,28 @@
     </None>
     <None Include="DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="LoyaltyIDsThatCanPlaceOnlineOrders.xsc">
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
+    </None>
+    <None Include="LoyaltyIDsThatCanPlaceOnlineOrders.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoyaltyIDsThatCanPlaceOnlineOrders.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LoyaltyIDsThatCanPlaceOnlineOrders.xss">
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\LoyaltyIDsThatCanPlaceOnlineOrders.xsc">
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\LoyaltyIDsThatCanPlaceOnlineOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoyaltyIDsThatCanPlaceOnlineOrders.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\LoyaltyIDsThatCanPlaceOnlineOrders.xss">
+      <DependentUpon>LoyaltyIDsThatCanPlaceOnlineOrders.xsd</DependentUpon>
     </None>
     <None Include="Datasets\StoresAcceptingOnlineOrders.xsc">
       <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
