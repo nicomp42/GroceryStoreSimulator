@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="vLoyaltyIDsThatCanOrderOnline" targetNamespace="http://tempuri.org/vLoyaltyIDsThatCanOrderOnline.xsd" xmlns:mstns="http://tempuri.org/vLoyaltyIDsThatCanOrderOnline.xsd" xmlns="http://tempuri.org/vLoyaltyIDsThatCanOrderOnline.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="GroceryStoreSimulatorConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GroceryStoreSimulatorConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GroceryStoreSimulator.Properties.Settings.GlobalReference.Default.GroceryStoreSimulatorConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter" GeneratorDataComponentClassName="vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter" Name="vLoyaltyIDsThatCanPlaceOnlineOrders" UserDataComponentName="vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GroceryStoreSimulatorConnectionString (Settings)" DbObjectName="GroceryStoreSimulator.dbo.vLoyaltyIDsThatCanPlaceOnlineOrders" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        LoyaltyID, LoyaltyNumber
+FROM            vLoyaltyIDsThatCanPlaceOnlineOrders
+ORDER BY LoyaltyNumber</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LoyaltyID" DataSetColumn="LoyaltyID" />
+              <Mapping SourceColumn="LoyaltyNumber" DataSetColumn="LoyaltyNumber" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="vLoyaltyIDsThatCanOrderOnline" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="vLoyaltyIDsThatCanOrderOnline" msprop:Generator_UserDSName="vLoyaltyIDsThatCanOrderOnline">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vLoyaltyIDsThatCanPlaceOnlineOrders" msprop:Generator_TableClassName="vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable" msprop:Generator_TableVarName="tablevLoyaltyIDsThatCanPlaceOnlineOrders" msprop:Generator_RowChangedName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowChanged" msprop:Generator_TablePropName="vLoyaltyIDsThatCanPlaceOnlineOrders" msprop:Generator_RowDeletingName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowDeleting" msprop:Generator_RowChangingName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowChanging" msprop:Generator_RowEvHandlerName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowDeleted" msprop:Generator_RowClassName="vLoyaltyIDsThatCanPlaceOnlineOrdersRow" msprop:Generator_UserTableName="vLoyaltyIDsThatCanPlaceOnlineOrders" msprop:Generator_RowEvArgName="vLoyaltyIDsThatCanPlaceOnlineOrdersRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoyaltyID" msprop:Generator_ColumnVarNameInTable="columnLoyaltyID" msprop:Generator_ColumnPropNameInRow="LoyaltyID" msprop:Generator_ColumnPropNameInTable="LoyaltyIDColumn" msprop:Generator_UserColumnName="LoyaltyID" type="xs:int" />
+              <xs:element name="LoyaltyNumber" msprop:Generator_ColumnVarNameInTable="columnLoyaltyNumber" msprop:Generator_ColumnPropNameInRow="LoyaltyNumber" msprop:Generator_ColumnPropNameInTable="LoyaltyNumberColumn" msprop:Generator_UserColumnName="LoyaltyNumber">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vLoyaltyIDsThatCanPlaceOnlineOrders" />
+      <xs:field xpath="mstns:LoyaltyID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

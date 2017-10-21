@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace GroceryStoreSimulator {
+namespace GroceryStoreSimulator.Datasets {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace GroceryStoreSimulator {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet3")]
+    [global::System.Xml.Serialization.XmlRootAttribute("vLoyaltyIDsThatCanOrderOnline")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class LoyaltyIDsThatCanPlaceOnlineOrders : global::System.Data.DataSet {
+    public partial class vLoyaltyIDsThatCanOrderOnline : global::System.Data.DataSet {
         
         private vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable tablevLoyaltyIDsThatCanPlaceOnlineOrders;
         
@@ -30,7 +30,7 @@ namespace GroceryStoreSimulator {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public LoyaltyIDsThatCanPlaceOnlineOrders() {
+        public vLoyaltyIDsThatCanOrderOnline() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace GroceryStoreSimulator {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected LoyaltyIDsThatCanPlaceOnlineOrders(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected vLoyaltyIDsThatCanOrderOnline(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace GroceryStoreSimulator {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            LoyaltyIDsThatCanPlaceOnlineOrders cln = ((LoyaltyIDsThatCanPlaceOnlineOrders)(base.Clone()));
+            vLoyaltyIDsThatCanOrderOnline cln = ((vLoyaltyIDsThatCanOrderOnline)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace GroceryStoreSimulator {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet3";
+            this.DataSetName = "vLoyaltyIDsThatCanOrderOnline";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet3.xsd";
+            this.Namespace = "http://tempuri.org/vLoyaltyIDsThatCanOrderOnline.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablevLoyaltyIDsThatCanPlaceOnlineOrders = new vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable();
@@ -225,7 +225,7 @@ namespace GroceryStoreSimulator {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            LoyaltyIDsThatCanPlaceOnlineOrders ds = new LoyaltyIDsThatCanPlaceOnlineOrders();
+            vLoyaltyIDsThatCanOrderOnline ds = new vLoyaltyIDsThatCanOrderOnline();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -283,8 +283,6 @@ namespace GroceryStoreSimulator {
             
             private global::System.Data.DataColumn columnLoyaltyNumber;
             
-            private global::System.Data.DataColumn columnCanPlaceOnlineOrder;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable() {
@@ -336,14 +334,6 @@ namespace GroceryStoreSimulator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CanPlaceOnlineOrderColumn {
-                get {
-                    return this.columnCanPlaceOnlineOrder;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -379,12 +369,11 @@ namespace GroceryStoreSimulator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vLoyaltyIDsThatCanPlaceOnlineOrdersRow AddvLoyaltyIDsThatCanPlaceOnlineOrdersRow(int LoyaltyID, string LoyaltyNumber, bool CanPlaceOnlineOrder) {
+            public vLoyaltyIDsThatCanPlaceOnlineOrdersRow AddvLoyaltyIDsThatCanPlaceOnlineOrdersRow(int LoyaltyID, string LoyaltyNumber) {
                 vLoyaltyIDsThatCanPlaceOnlineOrdersRow rowvLoyaltyIDsThatCanPlaceOnlineOrdersRow = ((vLoyaltyIDsThatCanPlaceOnlineOrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         LoyaltyID,
-                        LoyaltyNumber,
-                        CanPlaceOnlineOrder};
+                        LoyaltyNumber};
                 rowvLoyaltyIDsThatCanPlaceOnlineOrdersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvLoyaltyIDsThatCanPlaceOnlineOrdersRow);
                 return rowvLoyaltyIDsThatCanPlaceOnlineOrdersRow;
@@ -416,7 +405,6 @@ namespace GroceryStoreSimulator {
             internal void InitVars() {
                 this.columnLoyaltyID = base.Columns["LoyaltyID"];
                 this.columnLoyaltyNumber = base.Columns["LoyaltyNumber"];
-                this.columnCanPlaceOnlineOrder = base.Columns["CanPlaceOnlineOrder"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -426,8 +414,6 @@ namespace GroceryStoreSimulator {
                 base.Columns.Add(this.columnLoyaltyID);
                 this.columnLoyaltyNumber = new global::System.Data.DataColumn("LoyaltyNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLoyaltyNumber);
-                this.columnCanPlaceOnlineOrder = new global::System.Data.DataColumn("CanPlaceOnlineOrder", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCanPlaceOnlineOrder);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnLoyaltyID}, true));
                 this.columnLoyaltyID.AllowDBNull = false;
@@ -501,7 +487,7 @@ namespace GroceryStoreSimulator {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                LoyaltyIDsThatCanPlaceOnlineOrders ds = new LoyaltyIDsThatCanPlaceOnlineOrders();
+                vLoyaltyIDsThatCanOrderOnline ds = new vLoyaltyIDsThatCanOrderOnline();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -595,35 +581,6 @@ namespace GroceryStoreSimulator {
                     this[this.tablevLoyaltyIDsThatCanPlaceOnlineOrders.LoyaltyNumberColumn] = value;
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool CanPlaceOnlineOrder {
-                get {
-                    try {
-                        return ((bool)(this[this.tablevLoyaltyIDsThatCanPlaceOnlineOrders.CanPlaceOnlineOrderColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CanPlaceOnlineOrder\' in table \'vLoyaltyIDsThatCanPlaceOnlin" +
-                                "eOrders\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevLoyaltyIDsThatCanPlaceOnlineOrders.CanPlaceOnlineOrderColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCanPlaceOnlineOrderNull() {
-                return this.IsNull(this.tablevLoyaltyIDsThatCanPlaceOnlineOrders.CanPlaceOnlineOrderColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCanPlaceOnlineOrderNull() {
-                this[this.tablevLoyaltyIDsThatCanPlaceOnlineOrders.CanPlaceOnlineOrderColumn] = global::System.Convert.DBNull;
-            }
         }
         
         /// <summary>
@@ -661,7 +618,7 @@ namespace GroceryStoreSimulator {
         }
     }
 }
-namespace GroceryStoreSimulator.DataSet3TableAdapters {
+namespace GroceryStoreSimulator.Datasets.vLoyaltyIDsThatCanOrderOnlineTableAdapters {
     
     
     /// <summary>
@@ -787,7 +744,6 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
             tableMapping.DataSetTable = "vLoyaltyIDsThatCanPlaceOnlineOrders";
             tableMapping.ColumnMappings.Add("LoyaltyID", "LoyaltyID");
             tableMapping.ColumnMappings.Add("LoyaltyNumber", "LoyaltyNumber");
-            tableMapping.ColumnMappings.Add("CanPlaceOnlineOrder", "CanPlaceOnlineOrder");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -795,7 +751,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::GroceryStoreSimulator.Properties.Settings.Default.SimGroceryConnectionString;
+            this._connection.ConnectionString = global::GroceryStoreSimulator.Properties.Settings.Default.GroceryStoreSimulatorConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -804,8 +760,8 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT LoyaltyID, LoyaltyNumber, CanPlaceOnlineOrder FROM dbo.vLoyaltyIDsThatCanP" +
-                "laceOnlineOrders";
+            this._commandCollection[0].CommandText = "SELECT        LoyaltyID, LoyaltyNumber\r\nFROM            vLoyaltyIDsThatCanPlaceOn" +
+                "lineOrders\r\nORDER BY LoyaltyNumber";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -813,7 +769,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(LoyaltyIDsThatCanPlaceOnlineOrders.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable dataTable) {
+        public virtual int Fill(vLoyaltyIDsThatCanOrderOnline.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -826,9 +782,9 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LoyaltyIDsThatCanPlaceOnlineOrders.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable GetData() {
+        public virtual vLoyaltyIDsThatCanOrderOnline.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            LoyaltyIDsThatCanPlaceOnlineOrders.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable dataTable = new LoyaltyIDsThatCanPlaceOnlineOrders.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable();
+            vLoyaltyIDsThatCanOrderOnline.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable dataTable = new vLoyaltyIDsThatCanOrderOnline.vLoyaltyIDsThatCanPlaceOnlineOrdersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -902,7 +858,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(LoyaltyIDsThatCanPlaceOnlineOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(vLoyaltyIDsThatCanOrderOnline dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -912,7 +868,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(LoyaltyIDsThatCanPlaceOnlineOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(vLoyaltyIDsThatCanOrderOnline dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -922,7 +878,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(LoyaltyIDsThatCanPlaceOnlineOrders dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(vLoyaltyIDsThatCanOrderOnline dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -956,7 +912,7 @@ namespace GroceryStoreSimulator.DataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(LoyaltyIDsThatCanPlaceOnlineOrders dataSet) {
+        public virtual int UpdateAll(vLoyaltyIDsThatCanOrderOnline dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
