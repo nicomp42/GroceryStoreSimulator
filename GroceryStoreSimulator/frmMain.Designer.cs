@@ -928,7 +928,7 @@
             this.cbStoreStatusID.Location = new System.Drawing.Point(259, 27);
             this.cbStoreStatusID.Name = "cbStoreStatusID";
             this.cbStoreStatusID.Size = new System.Drawing.Size(126, 21);
-            this.cbStoreStatusID.TabIndex = 18;
+            this.cbStoreStatusID.TabIndex = 9;
             this.cbStoreStatusID.ValueMember = "StoreStatusID";
             // 
             // label12
@@ -948,7 +948,7 @@
             this.cbManagerID.Location = new System.Drawing.Point(259, 2);
             this.cbManagerID.Name = "cbManagerID";
             this.cbManagerID.Size = new System.Drawing.Size(413, 21);
-            this.cbManagerID.TabIndex = 15;
+            this.cbManagerID.TabIndex = 8;
             this.cbManagerID.ValueMember = "EmplID";
             // 
             // txtZip
@@ -956,7 +956,7 @@
             this.txtZip.Location = new System.Drawing.Point(82, 165);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
-            this.txtZip.TabIndex = 14;
+            this.txtZip.TabIndex = 7;
             // 
             // label11
             // 
@@ -972,7 +972,7 @@
             this.txtCity.Location = new System.Drawing.Point(82, 113);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
-            this.txtCity.TabIndex = 12;
+            this.txtCity.TabIndex = 5;
             // 
             // label10
             // 
@@ -988,7 +988,7 @@
             this.txtState.Location = new System.Drawing.Point(82, 139);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(100, 20);
-            this.txtState.TabIndex = 10;
+            this.txtState.TabIndex = 6;
             // 
             // label9
             // 
@@ -1004,14 +1004,14 @@
             this.txtAddress2.Location = new System.Drawing.Point(82, 85);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(100, 20);
-            this.txtAddress2.TabIndex = 8;
+            this.txtAddress2.TabIndex = 4;
             // 
             // txtAddress1
             // 
             this.txtAddress1.Location = new System.Drawing.Point(82, 59);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(100, 20);
-            this.txtAddress1.TabIndex = 7;
+            this.txtAddress1.TabIndex = 3;
             // 
             // label8
             // 
@@ -1036,7 +1036,7 @@
             this.txtStore.Location = new System.Drawing.Point(82, 28);
             this.txtStore.Name = "txtStore";
             this.txtStore.Size = new System.Drawing.Size(100, 20);
-            this.txtStore.TabIndex = 4;
+            this.txtStore.TabIndex = 2;
             // 
             // label6
             // 
@@ -1068,7 +1068,7 @@
             this.btnAddStore.Location = new System.Drawing.Point(792, 189);
             this.btnAddStore.Name = "btnAddStore";
             this.btnAddStore.Size = new System.Drawing.Size(78, 23);
-            this.btnAddStore.TabIndex = 0;
+            this.btnAddStore.TabIndex = 10;
             this.btnAddStore.Text = "Add Store";
             this.btnAddStore.UseVisualStyleBackColor = true;
             this.btnAddStore.Click += new System.EventHandler(this.btnAddStore_Click);
@@ -1119,7 +1119,7 @@
             this.txtCouponsToAdd.Location = new System.Drawing.Point(731, 396);
             this.txtCouponsToAdd.Name = "txtCouponsToAdd";
             this.txtCouponsToAdd.Size = new System.Drawing.Size(56, 20);
-            this.txtCouponsToAdd.TabIndex = 11;
+            this.txtCouponsToAdd.TabIndex = 5;
             // 
             // txtCouponStatus
             // 
@@ -1138,7 +1138,7 @@
             this.txtCouponGetInfoResult.ReadOnly = true;
             this.txtCouponGetInfoResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtCouponGetInfoResult.Size = new System.Drawing.Size(503, 109);
-            this.txtCouponGetInfoResult.TabIndex = 8;
+            this.txtCouponGetInfoResult.TabIndex = 4;
             this.txtCouponGetInfoResult.Visible = false;
             // 
             // txtCouponID
@@ -1146,7 +1146,7 @@
             this.txtCouponID.Location = new System.Drawing.Point(134, 49);
             this.txtCouponID.Name = "txtCouponID";
             this.txtCouponID.Size = new System.Drawing.Size(100, 20);
-            this.txtCouponID.TabIndex = 4;
+            this.txtCouponID.TabIndex = 1;
             this.txtCouponID.Visible = false;
             // 
             // txtCoupon
@@ -1162,7 +1162,7 @@
             this.btnAddCoupons.Location = new System.Drawing.Point(793, 396);
             this.btnAddCoupons.Name = "btnAddCoupons";
             this.btnAddCoupons.Size = new System.Drawing.Size(86, 23);
-            this.btnAddCoupons.TabIndex = 10;
+            this.btnAddCoupons.TabIndex = 6;
             this.btnAddCoupons.Text = "Add Coupons";
             this.btnAddCoupons.UseVisualStyleBackColor = true;
             this.btnAddCoupons.Click += new System.EventHandler(this.btnAddCoupons_Click);
@@ -1182,7 +1182,7 @@
             this.btnGetCouponInfo.Location = new System.Drawing.Point(253, 49);
             this.btnGetCouponInfo.Name = "btnGetCouponInfo";
             this.btnGetCouponInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnGetCouponInfo.TabIndex = 5;
+            this.btnGetCouponInfo.TabIndex = 3;
             this.btnGetCouponInfo.Text = "Check";
             this.btnGetCouponInfo.UseVisualStyleBackColor = true;
             this.btnGetCouponInfo.Visible = false;
@@ -1213,7 +1213,7 @@
             this.btnCheck.Location = new System.Drawing.Point(253, 20);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
-            this.btnCheck.TabIndex = 1;
+            this.btnCheck.TabIndex = 2;
             this.btnCheck.Text = "Check";
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Visible = false;
@@ -1398,7 +1398,7 @@
             // placeOrderToolStripMenuItem
             // 
             this.placeOrderToolStripMenuItem.Name = "placeOrderToolStripMenuItem";
-            this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.placeOrderToolStripMenuItem.Text = "Place Order";
             this.placeOrderToolStripMenuItem.Click += new System.EventHandler(this.placeOrderToolStripMenuItem_Click);
             // 
