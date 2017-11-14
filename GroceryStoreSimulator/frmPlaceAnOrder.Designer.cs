@@ -43,18 +43,23 @@
             this.vStoresAcceptingOnlineOrdersTableAdapter = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrdersTableAdapters.vStoresAcceptingOnlineOrdersTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.cbLoyaltyID = new System.Windows.Forms.ComboBox();
-            this.vLoyaltyIDsThatCanOrderOnline = new GroceryStoreSimulator.Datasets.vLoyaltyIDsThatCanOrderOnline();
-            this.vLoyaltyIDsThatCanOrderOnlineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vLoyaltyIDsThatCanOrderOnlineBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vLoyaltyIDsThatCanOrderOnline = new GroceryStoreSimulator.Datasets.vLoyaltyIDsThatCanOrderOnline();
             this.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter = new GroceryStoreSimulator.Datasets.vLoyaltyIDsThatCanOrderOnlineTableAdapters.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter();
+            this.nudQty = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtOrderComment = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vStoresAcceptingOnlineOrdersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrdersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnline)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnlineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnlineBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
             this.SuspendLayout();
             // 
             // lbProductID
@@ -63,33 +68,34 @@
             this.lbProductID.Location = new System.Drawing.Point(11, 146);
             this.lbProductID.Name = "lbProductID";
             this.lbProductID.Size = new System.Drawing.Size(782, 160);
-            this.lbProductID.TabIndex = 23;
+            this.lbProductID.TabIndex = 7;
             // 
             // btnRemoveFromOrder
             // 
-            this.btnRemoveFromOrder.Location = new System.Drawing.Point(801, 317);
+            this.btnRemoveFromOrder.Location = new System.Drawing.Point(801, 332);
             this.btnRemoveFromOrder.Name = "btnRemoveFromOrder";
-            this.btnRemoveFromOrder.Size = new System.Drawing.Size(75, 23);
-            this.btnRemoveFromOrder.TabIndex = 22;
-            this.btnRemoveFromOrder.Text = "Remove ";
+            this.btnRemoveFromOrder.Size = new System.Drawing.Size(75, 44);
+            this.btnRemoveFromOrder.TabIndex = 10;
+            this.btnRemoveFromOrder.Text = "Remove from Cart";
             this.btnRemoveFromOrder.UseVisualStyleBackColor = true;
             // 
             // lbOrder_ProductID
             // 
             this.lbOrder_ProductID.FormattingEnabled = true;
-            this.lbOrder_ProductID.Location = new System.Drawing.Point(12, 317);
+            this.lbOrder_ProductID.Location = new System.Drawing.Point(12, 332);
             this.lbOrder_ProductID.Name = "lbOrder_ProductID";
             this.lbOrder_ProductID.Size = new System.Drawing.Size(782, 173);
-            this.lbOrder_ProductID.TabIndex = 21;
+            this.lbOrder_ProductID.TabIndex = 9;
             // 
             // btnAddToOrder
             // 
             this.btnAddToOrder.Location = new System.Drawing.Point(801, 147);
             this.btnAddToOrder.Name = "btnAddToOrder";
             this.btnAddToOrder.Size = new System.Drawing.Size(75, 23);
-            this.btnAddToOrder.TabIndex = 20;
-            this.btnAddToOrder.Text = "Add to Order";
+            this.btnAddToOrder.TabIndex = 8;
+            this.btnAddToOrder.Text = "Add to Cart";
             this.btnAddToOrder.UseVisualStyleBackColor = true;
+            this.btnAddToOrder.Click += new System.EventHandler(this.btnAddToOrder_Click);
             // 
             // lblStore
             // 
@@ -108,7 +114,7 @@
             this.cbStoreID.Location = new System.Drawing.Point(116, 7);
             this.cbStoreID.Name = "cbStoreID";
             this.cbStoreID.Size = new System.Drawing.Size(303, 21);
-            this.cbStoreID.TabIndex = 18;
+            this.cbStoreID.TabIndex = 1;
             this.cbStoreID.ValueMember = "StoreID";
             // 
             // vStoresAcceptingOnlineOrdersBindingSource
@@ -140,7 +146,7 @@
             this.button1.Location = new System.Drawing.Point(148, 111);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Look Up";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -149,16 +155,17 @@
             this.textBox2.Location = new System.Drawing.Point(14, 112);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(129, 20);
-            this.textBox2.TabIndex = 15;
+            this.textBox2.TabIndex = 4;
             // 
             // btnPlaceOrder
             // 
-            this.btnPlaceOrder.Location = new System.Drawing.Point(783, 513);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(800, 513);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(89, 31);
-            this.btnPlaceOrder.TabIndex = 24;
+            this.btnPlaceOrder.Size = new System.Drawing.Size(72, 31);
+            this.btnPlaceOrder.TabIndex = 11;
             this.btnPlaceOrder.Text = "Place Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
+            this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
             // 
             // storesNotClosedForever
             // 
@@ -181,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 30);
+            this.label1.Location = new System.Drawing.Point(14, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 25;
@@ -195,33 +202,71 @@
             this.cbLoyaltyID.Location = new System.Drawing.Point(116, 35);
             this.cbLoyaltyID.Name = "cbLoyaltyID";
             this.cbLoyaltyID.Size = new System.Drawing.Size(303, 21);
-            this.cbLoyaltyID.TabIndex = 26;
+            this.cbLoyaltyID.TabIndex = 2;
             this.cbLoyaltyID.ValueMember = "LoyaltyID";
-            // 
-            // vLoyaltyIDsThatCanOrderOnline
-            // 
-            this.vLoyaltyIDsThatCanOrderOnline.DataSetName = "vLoyaltyIDsThatCanOrderOnline";
-            this.vLoyaltyIDsThatCanOrderOnline.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vLoyaltyIDsThatCanOrderOnlineBindingSource
-            // 
-            this.vLoyaltyIDsThatCanOrderOnlineBindingSource.DataSource = this.vLoyaltyIDsThatCanOrderOnline;
-            this.vLoyaltyIDsThatCanOrderOnlineBindingSource.Position = 0;
             // 
             // vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource
             // 
             this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource.DataMember = "vLoyaltyIDsThatCanPlaceOnlineOrders";
             this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource.DataSource = this.vLoyaltyIDsThatCanOrderOnlineBindingSource;
             // 
+            // vLoyaltyIDsThatCanOrderOnlineBindingSource
+            // 
+            this.vLoyaltyIDsThatCanOrderOnlineBindingSource.DataSource = this.vLoyaltyIDsThatCanOrderOnline;
+            this.vLoyaltyIDsThatCanOrderOnlineBindingSource.Position = 0;
+            // 
+            // vLoyaltyIDsThatCanOrderOnline
+            // 
+            this.vLoyaltyIDsThatCanOrderOnline.DataSetName = "vLoyaltyIDsThatCanOrderOnline";
+            this.vLoyaltyIDsThatCanOrderOnline.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter
             // 
             this.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter.ClearBeforeFill = true;
+            // 
+            // nudQty
+            // 
+            this.nudQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudQty.Location = new System.Drawing.Point(747, 115);
+            this.nudQty.Name = "nudQty";
+            this.nudQty.Size = new System.Drawing.Size(44, 26);
+            this.nudQty.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(694, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Quantity";
+            // 
+            // txtOrderComment
+            // 
+            this.txtOrderComment.Location = new System.Drawing.Point(116, 62);
+            this.txtOrderComment.Multiline = true;
+            this.txtOrderComment.Name = "txtOrderComment";
+            this.txtOrderComment.Size = new System.Drawing.Size(732, 43);
+            this.txtOrderComment.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Comment";
             // 
             // frmPlaceAnOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 556);
+            this.ClientSize = new System.Drawing.Size(884, 548);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtOrderComment);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nudQty);
             this.Controls.Add(this.cbLoyaltyID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlaceOrder);
@@ -242,9 +287,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.storesAcceptingOnlineOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesNotClosedForever)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vStoresNotClosedForeverBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnline)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnlineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnlineBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vLoyaltyIDsThatCanOrderOnline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +321,9 @@
         private Datasets.vLoyaltyIDsThatCanOrderOnline vLoyaltyIDsThatCanOrderOnline;
         private System.Windows.Forms.BindingSource vLoyaltyIDsThatCanPlaceOnlineOrdersBindingSource;
         private Datasets.vLoyaltyIDsThatCanOrderOnlineTableAdapters.vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter vLoyaltyIDsThatCanPlaceOnlineOrdersTableAdapter;
+        private System.Windows.Forms.NumericUpDown nudQty;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtOrderComment;
+        private System.Windows.Forms.Label label3;
     }
 }

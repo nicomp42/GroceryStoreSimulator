@@ -51,7 +51,10 @@
     <Compile Include="Code\Empl.cs" />
     <Compile Include="Code\EmplName.cs" />
     <Compile Include="Code\Ingredients.cs" />
+    <Compile Include="Code\Order.cs" />
     <Compile Include="Code\Product.cs" />
+    <Compile Include="Code\ShoppingCart.cs" />
+    <Compile Include="Code\ShoppingCartItem.cs" />
     <Compile Include="Code\SimCoupon.cs" />
     <Compile Include="Code\SimGrocery.cs" />
     <Compile Include="Code\AddTransactions.cs" />
