@@ -231,6 +231,11 @@
             this.nudQty.Name = "nudQty";
             this.nudQty.Size = new System.Drawing.Size(44, 26);
             this.nudQty.TabIndex = 6;
+            this.nudQty.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 

@@ -26,8 +26,10 @@ namespace GroceryStoreSimulator {
 
         private void btnAddToOrder_Click(object sender, EventArgs e) {
             int qty = 0;
-            qty = Convert.ToInt32(nudQty.Value);
-            AddProductToOrder(Convert.ToInt32(lbProductID.SelectedValue), qty);
+            try {
+                qty = Convert.ToInt32(nudQty.Value);
+                AddProductToOrder(Convert.ToInt32(lbProductID.SelectedValue), qty);
+            } catch (Exception ex) { }
         }
         private void AddProductToOrder(int productID, int qty) {
             shoppingCart.shoppingCartItems.Add(new ShoppingCartItem(productID, qty, ""));
