@@ -20,6 +20,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using GroceryStoreSimulator.Code;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace GroceryStoreSimulator {
     public partial class frmMain : Form {
@@ -34,106 +36,105 @@ namespace GroceryStoreSimulator {
             Boolean validInput = true;
             DateTime startDate = DateTime.Now, throughDate = DateTime.Now;
             switch (Config.mode) {
-                case Config.modeEnum.idle:
-                    try {
-                        // Check to see if the user wants to run for a period of elapsed time or run forever
-                        if (cbIgnoreElapsedTime.Checked == true) {
-                            Config.elapsedMinutesToRun = 0;     // zero means ignore this limit
-                        } else {
-                            int hours = 0, minutes = 0;
-                            String[] split = txtElapsedTimeToRun.Text.Trim().Split(':');
-                            hours = Convert.ToInt32(split[0]);
-                            if (split.Length == 2) { minutes = Convert.ToInt32(split[1]); }
-                            Config.elapsedMinutesToRun = hours * 60 + minutes;
-                        }
-                    } catch (Exception ex) {
-                        validInput = false;
-                        MessageBox.Show("Input error: " + ex.Message, "Check Hours:Minutes to run.");
+            case Config.modeEnum.idle:
+            try {
+                // Check to see if the user wants to run for a period of elapsed time or run forever
+                if (cbIgnoreElapsedTime.Checked == true) {
+                    Config.elapsedMinutesToRun = 0;     // zero means ignore this limit
+                } else {
+                    int hours = 0, minutes = 0;
+                    String[] split = txtElapsedTimeToRun.Text.Trim().Split(':');
+                    hours = Convert.ToInt32(split[0]);
+                    if (split.Length == 2) { minutes = Convert.ToInt32(split[1]); }
+                    Config.elapsedMinutesToRun = hours * 60 + minutes;
+                }
+            } catch (Exception ex) {
+                validInput = false;
+                MessageBox.Show("Input error: " + ex.Message, "Check Hours:Minutes to run.");
+            }
+            try {
+                Config.setTransactionDelay(Convert.ToInt32(txtTransactionDelay.Text));
+            } catch (Exception ex) {
+                MessageBox.Show("Input error: " + ex.Message, "Check Transaction Delay.");
+                Utils.Log(ex.Message);
+                validInput = false;
+            }
+            if (validInput && !cbUseCurrentDateStampForTransaction.Checked) {
+                try {
+                    // Don't store these values in the Config object unless both are valid.
+                    startDate = Convert.ToDateTime(txtStartDate.Text);
+                    throughDate = Convert.ToDateTime(txtThroughDate.Text);
+                    if ((throughDate - startDate).TotalDays < 0) {
+                        throw new Exception("Through Date must follow or equal Start Date.");
                     }
+                    if (startDate < Config.earliestPossibleDate) { throw new Exception("Start date cannot be earlier than " + Config.earliestPossibleDate.ToShortDateString()); }
+                } catch (Exception ex) {
+                    validInput = false;
+                    MessageBox.Show("Input error: " + ex.Message, "Check Start Date and Through Date.");
+                }
+            }
+            if (validInput) {
+                Config.useCurrentDateStampForTransaction = cbUseCurrentDateStampForTransaction.Checked;
+                Config.startDate = startDate;
+                Config.throughDate = throughDate;
+                Config.mode = Config.modeEnum.running;
+                Config.server = txtServer.Text;
+                Config.login = txtLogin.Text;
+                Config.password = txtPassword.Text;
+                Config.database = txtDatabase.Text;
+                Config.useCoupons = cbUseCoupons.Checked;
+                Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
+                // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:
+                Config.storeCheckInterval = (Config.enum_availableCheckIntervals)cbStoreCheckInterval.SelectedIndex;
+                Config.emplCheckInterval = (Config.enum_availableCheckIntervals)cbEmplCheckInterval.SelectedIndex;
+                Config.productCheckInterval = (Config.enum_availableCheckIntervals)cbProductCheckInterval.SelectedIndex;
+                Config.couponCheckInterval = (Config.enum_availableCheckIntervals)cbCouponCheckInterval.SelectedIndex;
+                String[] tmp = cbCouponAmountToAdd.SelectedItem.ToString().Split();
+                Config.couponAmountToAdd = Convert.ToInt32(tmp[0]);
+                int numOfTransactionsToAdd;
+                if (cbRunForever.Checked == true) {
+                    numOfTransactionsToAdd = 0; // Zero means run forever
+                } else {
                     try {
-                        Config.setTransactionDelay(Convert.ToInt32(txtTransactionDelay.Text));
+                        numOfTransactionsToAdd = Convert.ToInt32(txtNumOfTransactionsToAdd.Text);
                     } catch (Exception ex) {
-                        MessageBox.Show("Input error: " + ex.Message, "Check Transaction Delay.");
+                        MessageBox.Show("Enter the number of transactions to add or select Run Forever", "Invalid Number");
+                        txtNumOfTransactionsToAdd.Focus();
                         Utils.Log(ex.Message);
-                        validInput = false;
+                        return;
                     }
-                    if (validInput && !cbUseCurrentDateStampForTransaction.Checked) {
-                        try {
-                            // Don't store these values in the Config object unless both are valid.
-                            startDate = Convert.ToDateTime(txtStartDate.Text);
-                            throughDate = Convert.ToDateTime(txtThroughDate.Text);
-                            if ((throughDate - startDate).TotalDays < 0) {
-                                throw new Exception("Through Date must follow or equal Start Date.");
-                            }
-                            if (startDate < Config.earliestPossibleDate) { throw new Exception("Start date cannot be earlier than " + Config.earliestPossibleDate.ToShortDateString()); }
-                        } catch (Exception ex) {
-                            validInput = false;
-                            MessageBox.Show("Input error: " + ex.Message, "Check Start Date and Through Date.");
-                        }
+                }
+                try {
+                    if (Config.executeFailSafeOptions) {
+                        ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
+                        Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
+                        Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
                     }
-                    if (validInput) {
-                        Config.useCurrentDateStampForTransaction = cbUseCurrentDateStampForTransaction.Checked;
-                        Config.startDate = startDate;
-                        Config.throughDate = throughDate;
-                        Config.mode = Config.modeEnum.running;
-                        Config.server = txtServer.Text;
-                        Config.login = txtLogin.Text;
-                        Config.password = txtPassword.Text;
-                        Config.database = txtDatabase.Text;
-                        Config.useCoupons = cbUseCoupons.Checked;
-                        Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
-                        // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:
-                        Config.storeCheckInterval = (Config.enum_availableCheckIntervals)cbStoreCheckInterval.SelectedIndex;
-                        Config.emplCheckInterval = (Config.enum_availableCheckIntervals)cbEmplCheckInterval.SelectedIndex;
-                        Config.productCheckInterval = (Config.enum_availableCheckIntervals)cbProductCheckInterval.SelectedIndex;
-                        Config.couponCheckInterval = (Config.enum_availableCheckIntervals)cbCouponCheckInterval.SelectedIndex;
-                        String[] tmp = cbCouponAmountToAdd.SelectedItem.ToString().Split();
-                        Config.couponAmountToAdd = Convert.ToInt32(tmp[0]);   
-                        int numOfTransactionsToAdd;
-                        if (cbRunForever.Checked == true) {
-                            numOfTransactionsToAdd = 0; // Zero means run forever
-                        } else {
-                            try {
-                                numOfTransactionsToAdd = Convert.ToInt32(txtNumOfTransactionsToAdd.Text);
-                            } catch (Exception ex) {
-                                MessageBox.Show("Enter the number of transactions to add or select Run Forever", "Invalid Number");
-                                txtNumOfTransactionsToAdd.Focus();
-                                Utils.Log(ex.Message);
-                                return;
-                            }
-                        }
-                        try {
-                            if (Config.executeFailSafeOptions) {
-                                ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
-                                Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
-                                Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
-                            }
-                            sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
-                        } catch (Exception ex) {
-                            txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
-                        }
-                        btnStartTransactionSimulator.Text = "Halt";
-                        watch = Stopwatch.StartNew();
-                        lblElapsedTime.Text = "";
-                        ShowTimerControls(true);
-                        timer1.Enabled = true;
-                        txtSeed.Enabled = false;
-                        lblStartTime.Text = (String.Format("{0:hh\\:mm\\:ss tt}", DateTime.Now));
-                    }
-                    break;
+                    sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
+                } catch (Exception ex) {
+                    txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
+                }
+                btnStartTransactionSimulator.Text = "Halt";
+                watch = Stopwatch.StartNew();
+                lblElapsedTime.Text = "";
+                ShowTimerControls(true);
+                timer1.Enabled = true;
+                txtSeed.Enabled = false;
+                lblStartTime.Text = (String.Format("{0:hh\\:mm\\:ss tt}", DateTime.Now));
+            }
+            break;
 
-                case Config.modeEnum.running:
-                    Config.mode = Config.modeEnum.idle;
-                    btnStartTransactionSimulator.Text = "Go";
-                    sg.Halt();
-                    watch = null;
-                    timer1.Enabled = false;
-                    txtSeed.Enabled = true;
-                    break;
+            case Config.modeEnum.running:
+            Config.mode = Config.modeEnum.idle;
+            btnStartTransactionSimulator.Text = "Go";
+            sg.Halt();
+            watch = null;
+            timer1.Enabled = false;
+            txtSeed.Enabled = true;
+            break;
             }
         }
-        private void ShowTimerControls(Boolean visible)
-        {
+        private void ShowTimerControls(Boolean visible) {
             lblElapsedTime.Visible = visible;
             lblElapsedTimeLabel.Visible = visible;
             lblStartTime.Visible = visible;
@@ -204,7 +205,7 @@ namespace GroceryStoreSimulator {
             lblStatus.Location = new Point(lblStatus.Location.X, this.Height - lblStatus.Height * 6 - 5);
             lblElapsedTime.Location = new Point(lblElapsedTime.Location.X, this.Height - lblElapsedTime.Height * 4 - 5);
             btnGo.Location = new Point(this.Width - btnGo.Width - btnGo.Width/2, this.Height - btnGo.Height * 3);
-            */ 
+            */
         }
 
         private void btnCheck_Click(object sender, EventArgs e) {
@@ -220,31 +221,31 @@ namespace GroceryStoreSimulator {
         }
 
         private void btnGetCouponInfo_Click(object sender, EventArgs e) {
-/*
-            try {
-//                GroceryStoreSimulator.CouponServiceReference.CouponServiceSoapClient cs = new GroceryStoreSimulator.CouponServiceReference.CouponServiceSoapClient();
-//                CouponServiceReference.Coupon coupon = cs.GetCouponInfo(Convert.ToInt32(txtCouponID.Text));
-/*
-                tCoupon.fGetCouponDataTable couponDataTable = LoadCoupon(txtCouponID.Text);
-                if (couponDataTable != null) {
-                    try {
-                        txtCouponGetInfoResult.Text = "Found it: Coupon = " + coupon.description;
-                        for (int i = 0; i < couponDataTable.couponDetails.Count(); i++) {
-                            txtCouponGetInfoResult.Text += ", " + " Product = " + couponDataTable.couponDetails[i].product;
+            /*
+                        try {
+            //                GroceryStoreSimulator.CouponServiceReference.CouponServiceSoapClient cs = new GroceryStoreSimulator.CouponServiceReference.CouponServiceSoapClient();
+            //                CouponServiceReference.Coupon coupon = cs.GetCouponInfo(Convert.ToInt32(txtCouponID.Text));
+            /*
+                            tCoupon.fGetCouponDataTable couponDataTable = LoadCoupon(txtCouponID.Text);
+                            if (couponDataTable != null) {
+                                try {
+                                    txtCouponGetInfoResult.Text = "Found it: Coupon = " + coupon.description;
+                                    for (int i = 0; i < couponDataTable.couponDetails.Count(); i++) {
+                                        txtCouponGetInfoResult.Text += ", " + " Product = " + couponDataTable.couponDetails[i].product;
+                                    }
+                                } catch (Exception ex) {
+                                    txtCouponGetInfoResult.Text = "Found it: Coupon = " + couponDataTable.description + ", " + " No products on the coupon!";
+                                    Utils.Log(ex.Message);
+                                }
+                            } else {
+                                txtCouponGetInfoResult.Text = "DID NOT find it";
+                            }
+                            txtCouponGetInfoResult.Visible = true;
+                        } catch (Exception ex) {
+                            Utils.Log(ex.Message);
+                            txtCouponGetInfoResult.Text = "Error: " + ex.Message;
                         }
-                    } catch (Exception ex) {
-                        txtCouponGetInfoResult.Text = "Found it: Coupon = " + couponDataTable.description + ", " + " No products on the coupon!";
-                        Utils.Log(ex.Message);
-                    }
-                } else {
-                    txtCouponGetInfoResult.Text = "DID NOT find it";
-                }
-                txtCouponGetInfoResult.Visible = true;
-            } catch (Exception ex) {
-                Utils.Log(ex.Message);
-                txtCouponGetInfoResult.Text = "Error: " + ex.Message;
-            }
- */
+             */
         }
         /// <summary>
         /// Event handler for Add Store Button
@@ -258,7 +259,7 @@ namespace GroceryStoreSimulator {
                                                     "StoreNumber = " + Utils.QuoteMeForSQL(txtStoreNumber.Text.Trim()),
                                                     "Count")) == 0) {
                     if (addStore()) {
-                        txtStoreStatus.AppendText(Environment.NewLine  + "Store " + txtStoreNumber.Text.Trim() + " added");
+                        txtStoreStatus.AppendText(Environment.NewLine + "Store " + txtStoreNumber.Text.Trim() + " added");
                     } else {
                         txtStoreStatus.AppendText(Environment.NewLine + "Store " + txtStoreNumber.Text.Trim() + " NOT added");
                     }
@@ -293,7 +294,7 @@ namespace GroceryStoreSimulator {
                 cmd.Parameters.Add(new SqlParameter("StoreStatusID", cbStoreStatusID.SelectedValue));
                 cmd.ExecuteNonQuery();
                 int storeID;
-                storeID = Convert.ToInt32(Utils.MyDLookup("StoreID", "tStore", "StoreNumber = " + Utils.QuoteMeForSQL(txtStoreNumber.Text.Trim()),""));
+                storeID = Convert.ToInt32(Utils.MyDLookup("StoreID", "tStore", "StoreNumber = " + Utils.QuoteMeForSQL(txtStoreNumber.Text.Trim()), ""));
                 // Add product price history records for the new store and all the current products
                 cmd.Parameters.Clear();
                 cmd.CommandText = "AddProductsToProductPriceHistForOneStore";
@@ -302,7 +303,7 @@ namespace GroceryStoreSimulator {
 
             } catch (Exception ex) {
                 status = false;
-                txtStoreStatus.AppendText(ex.Message);                
+                txtStoreStatus.AppendText(ex.Message);
             }
             return status;
         }
@@ -347,8 +348,8 @@ namespace GroceryStoreSimulator {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            DialogResult result = MessageBox.Show("This will populate tIngredient and tProductIngredient from tProduct.Ingredients. It will take a long time and it's probably already been done.", 
-                                                  "You probably do not need to do this.", 
+            DialogResult result = MessageBox.Show("This will populate tIngredient and tProductIngredient from tProduct.Ingredients. It will take a long time and it's probably already been done.",
+                                                  "You probably do not need to do this.",
                                                   MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK) {
                 pnlIngredients.Visible = true;
@@ -372,7 +373,7 @@ namespace GroceryStoreSimulator {
                     ProductPriceHist.UpdateAllProductStorePrices(Config.random, txtProductPriceHist, DateTime.Parse(txtStartDate.Text));
                 } catch (Exception ex) {
                     Utils.Log(ex.Message);
-                    MessageBox.Show("Start Date is invalid. Cannot process product price history.","Check start date");
+                    MessageBox.Show("Start Date is invalid. Cannot process product price history.", "Check start date");
                 }
             }
         }
@@ -445,9 +446,8 @@ namespace GroceryStoreSimulator {
             txtThroughDate.Text = DateTime.Now.AddYears(100).ToShortDateString();
         }
 
-        private void btnDeleteAllHistoryData_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("This will delete all history for transactions, product prices, store status, and employee status!", "Are you sure? Truly sure?",MessageBoxButtons.OKCancel) == DialogResult.OK) {
+        private void btnDeleteAllHistoryData_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("This will delete all history for transactions, product prices, store status, and employee status!", "Are you sure? Truly sure?", MessageBoxButtons.OKCancel) == DialogResult.OK) {
                 try {
                     Utils.ExecuteNonQuery("zDeleteAllHistoryData", CommandType.StoredProcedure, null, null);
                     Utils.Log("zDeleteAllHistoryData was executed.");
@@ -467,6 +467,15 @@ namespace GroceryStoreSimulator {
             placeAnOrder.Show();
 
         }
+
+        private void btnTestProductInfoWebService_Click(object sender, EventArgs e) {
+            //            http://restsharp.org/ from nuGet
+            //              NewtonSoft JsonConvert from nuGet
+            RestClient client = new RestClient("http://localhost:20570/ProductInfoService.svc/ProductInfo/");
+            RestRequest request = new RestRequest(txtProductID.Text, Method.GET) { RequestFormat = DataFormat.Json };
+            RestResponse<ProductInfoWebService.ProductInfoREST.Product> response = (RestResponse<ProductInfoWebService.ProductInfoREST.Product>) client.Execute<ProductInfoWebService.ProductInfoREST.Product>(request);
+
+            txtProductInfo.Text = response.Content;
+        }
     }
-}
- 
+ }

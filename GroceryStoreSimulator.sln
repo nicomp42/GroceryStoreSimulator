@@ -29,6 +29,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OnlineOrderingWebPage", "Gr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{633A7BDE-473B-49BC-8E4F-B812E5C2C3A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductInfoREST", "ProductInfoREST\ProductInfoREST.csproj", "{838ABB32-392E-4A94-9B82-B8E6ED15BF76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -103,6 +105,36 @@ Global
 		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
 		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Win32.ActiveCfg = Debug|Any CPU
 		{E8E7DA13-4A53-4D06-9787-21A74E384C4B}.SingleImage|Win32.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Win32.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.CD_ROM|Win32.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Debug|Win32.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Win32.ActiveCfg = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.DVD-5|Win32.Build.0 = Debug|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Win32.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.Release|Win32.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Win32.ActiveCfg = Release|Any CPU
+		{838ABB32-392E-4A94-9B82-B8E6ED15BF76}.SingleImage|Win32.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

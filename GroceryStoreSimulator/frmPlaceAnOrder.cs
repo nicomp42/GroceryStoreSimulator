@@ -1,4 +1,10 @@
-﻿using GroceryStoreSimulator.Code;
+﻿/*****************************************************************
+ * Grocery Store Simulator
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ * University of Cincinnati Clermont College
+ * ***************************************************************/
+using GroceryStoreSimulator.Code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

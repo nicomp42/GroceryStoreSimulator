@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*****************************************************************
+ * Grocery Store Simulator
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ * University of Cincinnati Clermont College
+ * ***************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

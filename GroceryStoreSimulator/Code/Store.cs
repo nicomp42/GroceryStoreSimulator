@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*****************************************************************
+ * Grocery Store Simulator
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ * University of Cincinnati Clermont College
+ * ***************************************************************/using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,11 +13,7 @@ using System.Threading.Tasks;
 
 namespace GroceryStoreSimulator.Code
 {
-    class Store
-    {
-
-
-
+    class Store {
         /// <summary>
         /// Invoke a stored procedure that will add records to tStoreHistory for all stores so all stores are open for business
         /// </summary>

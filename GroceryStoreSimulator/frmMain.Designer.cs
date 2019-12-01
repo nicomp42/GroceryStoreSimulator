@@ -151,6 +151,11 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tpTest = new System.Windows.Forms.TabPage();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.lblProductID = new System.Windows.Forms.Label();
+            this.btnTestProductInfoWebService = new System.Windows.Forms.Button();
+            this.txtProductInfoWebServiceResults = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.vStoreStatusTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fEmployeesWhoCanBeAStoreManagerBindingSource)).BeginInit();
@@ -170,6 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbGroceries)).BeginInit();
             this.tcSimulate.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tpTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -1348,6 +1354,7 @@
             this.tcSimulate.Controls.Add(this.tpProducts);
             this.tcSimulate.Controls.Add(this.tpIngredients);
             this.tcSimulate.Controls.Add(this.tpConfig);
+            this.tcSimulate.Controls.Add(this.tpTest);
             this.tcSimulate.Location = new System.Drawing.Point(12, 27);
             this.tcSimulate.Name = "tcSimulate";
             this.tcSimulate.SelectedIndex = 0;
@@ -1409,6 +1416,54 @@
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // tpTest
+            // 
+            this.tpTest.Controls.Add(this.txtProductInfoWebServiceResults);
+            this.tpTest.Controls.Add(this.btnTestProductInfoWebService);
+            this.tpTest.Controls.Add(this.lblProductID);
+            this.tpTest.Controls.Add(this.txtProductID);
+            this.tpTest.Location = new System.Drawing.Point(4, 22);
+            this.tpTest.Name = "tpTest";
+            this.tpTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTest.Size = new System.Drawing.Size(885, 426);
+            this.tpTest.TabIndex = 7;
+            this.tpTest.Text = "Test";
+            this.tpTest.UseVisualStyleBackColor = true;
+            // 
+            // txtProductID
+            // 
+            this.txtProductID.Location = new System.Drawing.Point(88, 25);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(100, 20);
+            this.txtProductID.TabIndex = 0;
+            // 
+            // lblProductID
+            // 
+            this.lblProductID.AutoSize = true;
+            this.lblProductID.Location = new System.Drawing.Point(26, 28);
+            this.lblProductID.Name = "lblProductID";
+            this.lblProductID.Size = new System.Drawing.Size(55, 13);
+            this.lblProductID.TabIndex = 1;
+            this.lblProductID.Text = "ProductID";
+            // 
+            // btnTestProductInfoWebService
+            // 
+            this.btnTestProductInfoWebService.Location = new System.Drawing.Point(209, 24);
+            this.btnTestProductInfoWebService.Name = "btnTestProductInfoWebService";
+            this.btnTestProductInfoWebService.Size = new System.Drawing.Size(153, 23);
+            this.btnTestProductInfoWebService.TabIndex = 2;
+            this.btnTestProductInfoWebService.Text = "Product Info Web Service";
+            this.btnTestProductInfoWebService.UseVisualStyleBackColor = true;
+            this.btnTestProductInfoWebService.Click += new System.EventHandler(this.btnTestProductInfoWebService_Click);
+            // 
+            // txtProductInfoWebServiceResults
+            // 
+            this.txtProductInfoWebServiceResults.Location = new System.Drawing.Point(374, 27);
+            this.txtProductInfoWebServiceResults.Multiline = true;
+            this.txtProductInfoWebServiceResults.Name = "txtProductInfoWebServiceResults";
+            this.txtProductInfoWebServiceResults.Size = new System.Drawing.Size(288, 76);
+            this.txtProductInfoWebServiceResults.TabIndex = 3;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1451,6 +1506,8 @@
             this.tcSimulate.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tpTest.ResumeLayout(false);
+            this.tpTest.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1585,6 +1642,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem placeOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.TabPage tpTest;
+        private System.Windows.Forms.Label lblProductID;
+        private System.Windows.Forms.TextBox txtProductID;
+        private System.Windows.Forms.TextBox txtProductInfoWebServiceResults;
+        private System.Windows.Forms.Button btnTestProductInfoWebService;
     }
 }
 
