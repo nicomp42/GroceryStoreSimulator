@@ -34,7 +34,7 @@
             this.storesAcceptingOnlineOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storesAcceptingOnlineOrders = new GroceryStoreSimulator.Datasets.StoresAcceptingOnlineOrders();
             this.label27 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProductLookup = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.storesNotClosedForever = new GroceryStoreSimulator.Datasets.StoresNotClosedForever();
@@ -141,14 +141,14 @@
             this.label27.TabIndex = 17;
             this.label27.Text = "Search for a product ID, name, description, manufacturer, or brand";
             // 
-            // button1
+            // btnProductLookup
             // 
-            this.button1.Location = new System.Drawing.Point(148, 111);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Look Up";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnProductLookup.Location = new System.Drawing.Point(148, 111);
+            this.btnProductLookup.Name = "btnProductLookup";
+            this.btnProductLookup.Size = new System.Drawing.Size(75, 23);
+            this.btnProductLookup.TabIndex = 5;
+            this.btnProductLookup.Text = "Look Up";
+            this.btnProductLookup.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -282,7 +282,7 @@
             this.Controls.Add(this.lblStore);
             this.Controls.Add(this.cbStoreID);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnProductLookup);
             this.Controls.Add(this.textBox2);
             this.Name = "frmPlaceAnOrder";
             this.Text = "Place an Order";
@@ -310,7 +310,7 @@
         private System.Windows.Forms.Label lblStore;
         private System.Windows.Forms.ComboBox cbStoreID;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProductLookup;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnPlaceOrder;
         private Datasets.StoresNotClosedForever storesNotClosedForever;
