@@ -34,14 +34,10 @@ namespace GroceryStoreSimulator {
             try {
                 connection.Open();
             } catch(Exception e) {Console.WriteLine(e.ToString());}
-            //List<Store> stores = new List<Store>();
-            //InitStores(connection, stores);
 
             // Kick off thread for the Transaction Adder
-            //foreach (Store store in stores) {
             oThread = new Thread(new ThreadStart(addTransactions.StartThread));
             oThread.Start();    // Start the thread
-
         }
     }
 }

@@ -103,8 +103,7 @@ namespace GroceryStoreSimulator {
                         Utils.Log(ex.Message);
                         return;
                     }
-                }
-                try {
+                } try {
                     if (Config.executeFailSafeOptions) {
                         ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
                         Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy

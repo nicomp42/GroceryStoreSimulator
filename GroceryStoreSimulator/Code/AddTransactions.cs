@@ -124,7 +124,6 @@ namespace GroceryStoreSimulator {
                 case Config.enum_availableCheckIntervals.AfterEvery1000000Transactions: if ((numOfTransactionsAdded % 1000000) == 0) { MyFunc(connection, Config.random, txtResults, description + " after every 1,000,000 transactions", amount); } break;
             }
         }
-
         /// <summary>
         /// Add a transaction to the database. 
         /// </summary>
@@ -134,7 +133,6 @@ namespace GroceryStoreSimulator {
             try { 
                 SqlCommand cmd = new SqlCommand();
                 TransactionParameters tp = new TransactionParameters();
-                //computeDefaultValues();
                 tp.init();
                 computeRandomValuesForTransaction(tp, r);
                 computeRandomValuesForTransactionDetail(tp, r);
@@ -330,12 +328,8 @@ namespace GroceryStoreSimulator {
                 int scale = r.Next(100) + 1;        // 1 to 100
                 tp.qty = 1 + (int)((r.NextDouble() + r.NextDouble()) * (scale * r.NextDouble() * r.NextDouble() * r.NextDouble()));
 
-                //double q1 = (r.NextDouble() * 1000);
-                //int q2 = (int)q1;
-                //double q3 = (double)q2 / 100;
                 tp.pricePerSellableUnitToTheCustomer = Utils.GetMostRecentPricePerSellableUnit(tp.productID, tp.storeID, connection);
                 tp.pricePerSellableUnitAsMarked = tp.pricePerSellableUnitToTheCustomer;
-                //tp.totalPrice = tp.pricePerSellableUnitToTheCustomer * tp.qty;
             } catch (Exception ex) {
                 // Something went wrong. 
                 txtResults.AppendText(Environment.NewLine + "AddTransactions.computeRandomValuesForTransactionDetail: " + ex.Message);
@@ -358,13 +352,6 @@ namespace GroceryStoreSimulator {
                 tp.emplID = 0;
                 tp.storeID = Utils.GetRandomStoreID(r, DefaultValues.storeID_count);
 
-                //tp.storeID = 10;
-                //tp.dateOfTransaction = "1/9/2017";
-                //tp.timeOftransaction = "12:29:1.656";
-                //if (tp.storeID == 29)
-                //{
-                //   int tmp = 42;
-                //}
                 while (true) {
                     int emplID;
                     // Pick a random employee that is available for work at the storeID
@@ -377,9 +364,6 @@ namespace GroceryStoreSimulator {
                         tp.emplID = emplID;
                         break;
                     } else {
-                        //if (tp.storeID == 21) {
-                        //    int foo = -42;
-                        //}
                         Write("### It appears that no employees are available for work. Adding one... ###");
                         emplID = Empl.AddRandomEmplAndMakeThemAvailableForWork(tp.storeID, DateTime.Parse(tp.dateOfTransaction), connection, r);
                         tp.emplID = emplID;
@@ -388,7 +372,6 @@ namespace GroceryStoreSimulator {
                 }
                 if (tp.emplID == 0) {       // Uh oh. No employees available for work at this store...
                     // todo: something here
-                    //int tmp = 0;
                 }
                 tp.loyaltyID = (int)Utils.MyDLookup("loyaltyID",
                                                  "(SELECT ROW_NUMBER() OVER (ORDER BY loyaltyID) AS RowNum, * FROM tloyalty) sub ",
@@ -421,7 +404,6 @@ namespace GroceryStoreSimulator {
             bool status = true;
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.Add(new SqlParameter("storeID", storeID));
-            //cmd.CommandText = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus("@Store)";
             cmd.CommandText = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus(" + storeID + ")";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = connection;
