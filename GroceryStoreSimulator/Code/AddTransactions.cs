@@ -4,7 +4,6 @@
  * nicholdw@ucmail.uc.edu                                                      *
  * University of Cincinnati Clermont College                                   *
  * Random Employee Name Generator: http://www.behindthename.com/random/        *
- *                                                                             *
  * Stores need employees! Employees need names!                                *
  * *****************************************************************************/
 
