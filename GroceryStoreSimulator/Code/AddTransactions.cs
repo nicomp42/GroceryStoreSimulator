@@ -355,7 +355,9 @@ namespace GroceryStoreSimulator {
                     int emplID;
                     // Pick a random employee that is available for work at the storeID
                     try {
-                         emplID = (int)Utils.MyDLookup("EmplID", "SELECT TOP 1 EmplID FROM [fEmplWhoCanWorkOnASpecificDateAtASpecificStore](" + Utils.QuoteMeForSQL(tp.dateOfTransaction) + " ," + tp.storeID + ") ORDER BY NEWID()", "", "");
+                        Object tmp;
+                        tmp = Utils.MyDLookup("EmplID", "SELECT TOP 1 EmplID FROM [fEmplWhoCanWorkOnASpecificDateAtASpecificStore](" + Utils.QuoteMeForSQL(tp.dateOfTransaction) + " ," + tp.storeID + ") ORDER BY NEWID()", "", "");
+                        if (tmp != null) {emplID = (int)tmp;} else { emplID = 0; }
                          // SELECT top 1   * FROM [fEmplWhoCanWorkOnASpecificDateAtASpecificStore]('1/1/2016', 2) order by newID()
                     } catch (Exception ex) {emplID = 0; Utils.Log("AddTransactions.computeRandomValuesForTransaction(): " + ex.Message); }
                     // emplID = (int)Utils.MyDLookup("EmplID", "(SELECT ROW_NUMBER() OVER (ORDER BY emplID) AS RowNum, * FROM tEmpl) sub ", " RowNum = " + (r.Next(DefaultValues.emplID_count) + 1), "");

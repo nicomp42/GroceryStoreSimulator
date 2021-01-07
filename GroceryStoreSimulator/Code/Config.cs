@@ -175,7 +175,8 @@ namespace GroceryStoreSimulator {
         static Config()
         {
             emplList = new List<EmplName>();
-            mServer = "IL-SERVER-001.uccc.uc.edu\\MSSQLSERVER2012";
+//            mServer = "IL-SERVER-001.uccc.uc.edu\\MSSQLSERVER2012";
+            mServer = "SQLSERVER001";
             mLogin = "GroceryStoreSimulatorLogin";
             mPassword = "P@ssword";
             mDatabase = "GroceryStoreSimulator";

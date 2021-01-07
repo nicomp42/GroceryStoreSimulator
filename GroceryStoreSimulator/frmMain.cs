@@ -419,6 +419,10 @@ namespace GroceryStoreSimulator {
 
         private void btnTestDatabaseConnection_Click(object sender, EventArgs e) {
             try {
+                Config.server = txtServer.Text.Trim();
+                Config.password = txtPassword.Text.Trim();
+                Config.login = txtLogin.Text.Trim();
+                Config.database = txtDatabase.Text.Trim();
                 if (Utils.CheckConnection()) {
                     txtConfig.AppendText(Environment.NewLine + "Connection verified to " + txtServer.Text.Trim() + " .");
                 } else {

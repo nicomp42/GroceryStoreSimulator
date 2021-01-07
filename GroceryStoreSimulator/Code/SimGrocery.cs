@@ -19,8 +19,15 @@ namespace GroceryStoreSimulator {
         Thread oThread ;
 
         public void Halt() {
-            oThread.Abort();
-            oThread = null;
+            if (oThread != null)
+            {
+                try {
+                    oThread.Abort();
+                    oThread = null;
+                } catch (Exception ex) {
+                    // Eat the exception
+                }
+            }
         }
         /// <summary>
         /// Start adding transactions to the grocery store
