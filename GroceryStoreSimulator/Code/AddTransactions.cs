@@ -136,7 +136,7 @@ namespace GroceryStoreSimulator {
                 computeRandomValuesForTransaction(tp, r);
                 computeRandomValuesForTransactionDetail(tp, r);
                 // We have a store ID but is the store open for business?
-                if (IsStoreOpenForBusiness(tp.storeID, connection)) {
+                if (IsStoreOpenForBusiness(tp.storeID, tp.dateOfTransaction + " " +  tp.timeOftransaction, connection)) {
                     ProcessTransactionDetailAndCoupon(tp);
                     cmd.CommandText = "spAddTransactionAndDetail";
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -400,18 +400,28 @@ namespace GroceryStoreSimulator {
         /// </summary>
         /// <param name="storeID">StoreID from the database</param>
         /// <returns>True if store is open for business, false otherwise</returns>
-        private bool IsStoreOpenForBusiness(int storeID, SqlConnection connection) {
+        private bool IsStoreOpenForBusiness(int storeID, SqlConnection connection)
+        {
+            return IsStoreOpenForBusiness(storeID, DateTime.Now.ToString(), connection);
+        }            
+        /// <summary>
+        /// Check the current status of a physical store. Is the store open for business?
+        /// </summary>
+        /// <param name="storeID">StoreID from the database</param>
+        /// <returns>True if store is open for business, false otherwise</returns>
+        private bool IsStoreOpenForBusiness(int storeID, String dateTime, SqlConnection connection) {
             SqlDataReader reader = null;
             bool status = true;
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.Add(new SqlParameter("storeID", storeID));
-            cmd.CommandText = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus(" + storeID + ")";
+            String sql = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus(" + storeID + ", '" + dateTime + "')";
+            cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = connection;
             try {
                 reader = cmd.ExecuteReader();
                 if (reader.Read()) {
-                    bool isOpen = Convert.ToBoolean(reader.GetValue(0));
+                    bool isOpen = Convert.ToBoolean(reader.GetValue(0));    // Columns are, zero-based, 0 is the IsStoreOpenForBusiness flag
                     status = isOpen;
                 }
             } catch (Exception ex) {
