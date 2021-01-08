@@ -399,15 +399,18 @@ namespace GroceryStoreSimulator {
         /// Check the current status of a physical store. Is the store open for business?
         /// </summary>
         /// <param name="storeID">StoreID from the database</param>
+        /// <param name="connection">Open database connection</param>
         /// <returns>True if store is open for business, false otherwise</returns>
         private bool IsStoreOpenForBusiness(int storeID, SqlConnection connection)
         {
             return IsStoreOpenForBusiness(storeID, DateTime.Now.ToString(), connection);
         }            
         /// <summary>
-        /// Check the current status of a physical store. Is the store open for business?
+        /// Check the status of a physical store at a specific date/time. Is the store open for business?
         /// </summary>
         /// <param name="storeID">StoreID from the database</param>
+        /// <param name="dateTime">The date/time to check if the store is open</param>
+        /// <param name="connection">Open database connection</param>
         /// <returns>True if store is open for business, false otherwise</returns>
         private bool IsStoreOpenForBusiness(int storeID, String dateTime, SqlConnection connection) {
             SqlDataReader reader = null;
