@@ -22,6 +22,10 @@ using System.Data.SqlClient;
 using GroceryStoreSimulator.Code;
 using RestSharp;
 using Newtonsoft.Json;
+using System.Net;
+using System.IO;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace GroceryStoreSimulator {
     public partial class frmMain : Form {
@@ -36,101 +40,101 @@ namespace GroceryStoreSimulator {
             Boolean validInput = true;
             DateTime startDate = DateTime.Now, throughDate = DateTime.Now;
             switch (Config.mode) {
-            case Config.modeEnum.idle:
-            try {
-                // Check to see if the user wants to run for a period of elapsed time or run forever
-                if (cbIgnoreElapsedTime.Checked == true) {
-                    Config.elapsedMinutesToRun = 0;     // zero means ignore this limit
-                } else {
-                    int hours = 0, minutes = 0;
-                    String[] split = txtElapsedTimeToRun.Text.Trim().Split(':');
-                    hours = Convert.ToInt32(split[0]);
-                    if (split.Length == 2) { minutes = Convert.ToInt32(split[1]); }
-                    Config.elapsedMinutesToRun = hours * 60 + minutes;
-                }
-            } catch (Exception ex) {
-                validInput = false;
-                MessageBox.Show("Input error: " + ex.Message, "Check Hours:Minutes to run.");
-            }
-            try {
-                Config.setTransactionDelay(Convert.ToInt32(txtTransactionDelay.Text));
-            } catch (Exception ex) {
-                MessageBox.Show("Input error: " + ex.Message, "Check Transaction Delay.");
-                Utils.Log(ex.Message);
-                validInput = false;
-            }
-            if (validInput && !cbUseCurrentDateStampForTransaction.Checked) {
-                try {
-                    // Don't store these values in the Config object unless both are valid.
-                    startDate = Convert.ToDateTime(txtStartDate.Text);
-                    throughDate = Convert.ToDateTime(txtThroughDate.Text);
-                    if ((throughDate - startDate).TotalDays < 0) {
-                        throw new Exception("Through Date must follow or equal Start Date.");
-                    }
-                    if (startDate < Config.earliestPossibleDate) { throw new Exception("Start date cannot be earlier than " + Config.earliestPossibleDate.ToShortDateString()); }
-                } catch (Exception ex) {
-                    validInput = false;
-                    MessageBox.Show("Input error: " + ex.Message, "Check Start Date and Through Date.");
-                }
-            }
-            if (validInput) {
-                Config.useCurrentDateStampForTransaction = cbUseCurrentDateStampForTransaction.Checked;
-                Config.startDate = startDate;
-                Config.throughDate = throughDate;
-                Config.mode = Config.modeEnum.running;
-                Config.server = txtServer.Text;
-                Config.login = txtLogin.Text;
-                Config.password = txtPassword.Text;
-                Config.database = txtDatabase.Text;
-                Config.useCoupons = cbUseCoupons.Checked;
-                Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
-                // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:
-                Config.storeCheckInterval = (Config.enum_availableCheckIntervals)cbStoreCheckInterval.SelectedIndex;
-                Config.emplCheckInterval = (Config.enum_availableCheckIntervals)cbEmplCheckInterval.SelectedIndex;
-                Config.productCheckInterval = (Config.enum_availableCheckIntervals)cbProductCheckInterval.SelectedIndex;
-                Config.couponCheckInterval = (Config.enum_availableCheckIntervals)cbCouponCheckInterval.SelectedIndex;
-                String[] tmp = cbCouponAmountToAdd.SelectedItem.ToString().Split();
-                Config.couponAmountToAdd = Convert.ToInt32(tmp[0]);
-                int numOfTransactionsToAdd;
-                if (cbRunForever.Checked == true) {
-                    numOfTransactionsToAdd = 0; // Zero means run forever
-                } else {
+                case Config.modeEnum.idle:
                     try {
-                        numOfTransactionsToAdd = Convert.ToInt32(txtNumOfTransactionsToAdd.Text);
+                        // Check to see if the user wants to run for a period of elapsed time or run forever
+                        if (cbIgnoreElapsedTime.Checked == true) {
+                            Config.elapsedMinutesToRun = 0;     // zero means ignore this limit
+                        } else {
+                            int hours = 0, minutes = 0;
+                            String[] split = txtElapsedTimeToRun.Text.Trim().Split(':');
+                            hours = Convert.ToInt32(split[0]);
+                            if (split.Length == 2) { minutes = Convert.ToInt32(split[1]); }
+                            Config.elapsedMinutesToRun = hours * 60 + minutes;
+                        }
                     } catch (Exception ex) {
-                        MessageBox.Show("Enter the number of transactions to add or select Run Forever", "Invalid Number");
-                        txtNumOfTransactionsToAdd.Focus();
+                        validInput = false;
+                        MessageBox.Show("Input error: " + ex.Message, "Check Hours:Minutes to run.");
+                    }
+                    try {
+                        Config.setTransactionDelay(Convert.ToInt32(txtTransactionDelay.Text));
+                    } catch (Exception ex) {
+                        MessageBox.Show("Input error: " + ex.Message, "Check Transaction Delay.");
                         Utils.Log(ex.Message);
-                        return;
+                        validInput = false;
                     }
-                } try {
-                    if (Config.executeFailSafeOptions) {
-                        ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
-                        Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
-                        Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
+                    if (validInput && !cbUseCurrentDateStampForTransaction.Checked) {
+                        try {
+                            // Don't store these values in the Config object unless both are valid.
+                            startDate = Convert.ToDateTime(txtStartDate.Text);
+                            throughDate = Convert.ToDateTime(txtThroughDate.Text);
+                            if ((throughDate - startDate).TotalDays < 0) {
+                                throw new Exception("Through Date must follow or equal Start Date.");
+                            }
+                            if (startDate < Config.earliestPossibleDate) { throw new Exception("Start date cannot be earlier than " + Config.earliestPossibleDate.ToShortDateString()); }
+                        } catch (Exception ex) {
+                            validInput = false;
+                            MessageBox.Show("Input error: " + ex.Message, "Check Start Date and Through Date.");
+                        }
                     }
-                    sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
-                } catch (Exception ex) {
-                    txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
-                }
-                btnStartTransactionSimulator.Text = "Halt";
-                watch = Stopwatch.StartNew();
-                lblElapsedTime.Text = "";
-                ShowTimerControls(true);
-                timer1.Enabled = true;
-                txtSeed.Enabled = false;
-                lblStartTime.Text = (String.Format("{0:hh\\:mm\\:ss tt}", DateTime.Now));
-            }
-            break;
+                    if (validInput) {
+                        Config.useCurrentDateStampForTransaction = cbUseCurrentDateStampForTransaction.Checked;
+                        Config.startDate = startDate;
+                        Config.throughDate = throughDate;
+                        Config.mode = Config.modeEnum.running;
+                        Config.server = txtServer.Text;
+                        Config.login = txtLogin.Text;
+                        Config.password = txtPassword.Text;
+                        Config.database = txtDatabase.Text;
+                        Config.useCoupons = cbUseCoupons.Checked;
+                        Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
+                        // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:
+                        Config.storeCheckInterval = (Config.enum_availableCheckIntervals)cbStoreCheckInterval.SelectedIndex;
+                        Config.emplCheckInterval = (Config.enum_availableCheckIntervals)cbEmplCheckInterval.SelectedIndex;
+                        Config.productCheckInterval = (Config.enum_availableCheckIntervals)cbProductCheckInterval.SelectedIndex;
+                        Config.couponCheckInterval = (Config.enum_availableCheckIntervals)cbCouponCheckInterval.SelectedIndex;
+                        String[] tmp = cbCouponAmountToAdd.SelectedItem.ToString().Split();
+                        Config.couponAmountToAdd = Convert.ToInt32(tmp[0]);
+                        int numOfTransactionsToAdd;
+                        if (cbRunForever.Checked == true) {
+                            numOfTransactionsToAdd = 0; // Zero means run forever
+                        } else {
+                            try {
+                                numOfTransactionsToAdd = Convert.ToInt32(txtNumOfTransactionsToAdd.Text);
+                            } catch (Exception ex) {
+                                MessageBox.Show("Enter the number of transactions to add or select Run Forever", "Invalid Number");
+                                txtNumOfTransactionsToAdd.Focus();
+                                Utils.Log(ex.Message);
+                                return;
+                            }
+                        } try {
+                            if (Config.executeFailSafeOptions) {
+                                ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
+                                Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
+                                Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
+                            }
+                            sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
+                        } catch (Exception ex) {
+                            txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
+                        }
+                        btnStartTransactionSimulator.Text = "Halt";
+                        watch = Stopwatch.StartNew();
+                        lblElapsedTime.Text = "";
+                        ShowTimerControls(true);
+                        timer1.Enabled = true;
+                        txtSeed.Enabled = false;
+                        lblStartTime.Text = (String.Format("{0:hh\\:mm\\:ss tt}", DateTime.Now));
+                    }
+                    break;
 
-            case Config.modeEnum.running:
-            Config.mode = Config.modeEnum.idle;
-            btnStartTransactionSimulator.Text = "Go";
-            sg.Halt();
-            watch = null;
-            timer1.Enabled = false;
-            txtSeed.Enabled = true;
-            break;
+                case Config.modeEnum.running:
+                    Config.mode = Config.modeEnum.idle;
+                    btnStartTransactionSimulator.Text = "Go";
+                    sg.Halt();
+                    watch = null;
+                    timer1.Enabled = false;
+                    txtSeed.Enabled = true;
+                    break;
             }
         }
         private void ShowTimerControls(Boolean visible) {
@@ -166,6 +170,11 @@ namespace GroceryStoreSimulator {
             try { txtThroughDate.Text = Config.throughDate.ToShortDateString(); } catch (Exception ex) { txtThroughDate.Text = null; Utils.Log(ex.Message); }
             txtElapsedTimeToRun.Text = "0:1";
             ShowTimerControls(false);
+            cbURL.Items.Add("https://api.upcitemdb.com/prod/trial/lookup");
+            cbURL.Items.Add("https://api.upcdatabase.org/");
+            cbURL.Items.Add("https://api.barcodelookup.com");
+            cbURL.SelectedIndex = 2;
+            lblProviderNotes.Text = "upcitemdb wants 11 or 13 digit codes" + "\n" + "upcdatabase wants 13 digit codes" + "\n" + "barcodelookup.com wants 11 digit codes";
         }
         private void InitRandomNumberGenerator() {
             try {
@@ -476,9 +485,144 @@ namespace GroceryStoreSimulator {
             //              NewtonSoft JsonConvert from nuGet
             RestClient client = new RestClient("http://localhost:20570/ProductInfoService.svc/ProductInfo/");
             RestRequest request = new RestRequest(txtProductID.Text, Method.GET) { RequestFormat = DataFormat.Json };
-            RestResponse<ProductInfoWebService.ProductInfoREST.Product> response = (RestResponse<ProductInfoWebService.ProductInfoREST.Product>) client.Execute<ProductInfoWebService.ProductInfoREST.Product>(request);
+            RestResponse<ProductInfoWebService.ProductInfoREST.Product> response = (RestResponse<ProductInfoWebService.ProductInfoREST.Product>)client.Execute<ProductInfoWebService.ProductInfoREST.Product>(request);
 
             txtProductInfo.Text = response.Content;
+        }
+
+        private void btnUPCLookupOnlineSubmit_Click(object sender, EventArgs e)
+        {
+            txtCompleteURL.Text = "";
+            txtUPCLookupOnlineResults.Text = "";
+            if (cbURL.SelectedIndex > -1)
+            {
+                if (txtUPC.Text.Trim().Length != 0)
+                {
+                    if (cbURL.SelectedItem.ToString().Contains("upcitemdb"))
+                    {
+                        try
+                        {
+                            String url = cbURL.SelectedItem.ToString() + "?" + "upc=" + txtUPC.Text.Trim();
+                            txtCompleteURL.Text = url;
+                            String response = Get(url);
+                            txtUPCLookupOnlineResults.Text = response;
+                            var foo = JsonConvert.DeserializeObject<object>(response);
+                            //MessageBox.Show(foo["items"].ToString());
+                            myDeserialize(response);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error requesting UPC Data: " + ex.Message, "oops", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else if (cbURL.SelectedItem.ToString().Contains("upcdatabase"))
+                    {
+                        String url = cbURL.SelectedItem.ToString()
+                                         + "product/"
+                                         + txtUPC.Text.ToString().Trim()
+                                         + "?" + "apikey=" + "D9D70594759A404808F06BC4098EE3B9";
+                        txtCompleteURL.Text = url;
+                        String response = Get(url);
+                        txtUPCLookupOnlineResults.Text = response;
+                        var foo = JsonConvert.DeserializeObject<object>(response);
+                        //MessageBox.Show(foo["items"].ToString());
+                        myDeserialize(response);
+                    }
+                    else if (cbURL.SelectedItem.ToString().Contains("barcodelookup.com")) {
+//                      https://api.barcodelookup.com/v3/products?barcode=9780140157376&formatted=y&key=euqiq5ek5npia1q8v0hytv0kie3syp
+                        String url = "https://api.barcodelookup.com/v3/products?barcode="
+                                     + txtUPC.Text.ToString().Trim()
+                                     + "&" + "formatted=y&key=" + "euqiq5ek5npia1q8v0hytv0kie3syp";
+                        txtCompleteURL.Text = url;
+                        String response = Get(url);
+                        if (response != null)
+                        {
+                            txtUPCLookupOnlineResults.Text = response;
+                            var foo = JsonConvert.DeserializeObject<object>(response);
+                            //MessageBox.Show(foo["items"].ToString());
+                            myDeserializeFromBarcodeLookupDotCom(response);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No URL selected or URL not recognized", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Need a UPC.", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
+            {
+                MessageBox.Show("Need a URL/Provider.", "Missing information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /// <summary>
+        /// See https://www.newtonsoft.com/json/help/html/QueryJson.htm
+        /// </summary>
+        /// <param name="jsonString">The JSON returned by the Web Get </param>
+        private void myDeserializeFromBarcodeLookupDotCom(String jsonString)
+        {
+            try
+            {
+                JObject rss = JObject.Parse(jsonString);
+                String title = (String)rss["products"][0]["title"];
+                String description = "";  // (String)rss["items"][0]["description"];
+                String category = (String)rss["products"][0]["category"];
+                String brand = (String)rss["products"][0]["brand"];
+                String model = (String)rss["products"][0]["model"];
+                String manufacturer = (String)rss["products"][0]["manufacturer"];
+                String productIngredients = (String)rss["products"][0]["ingredients"];
+                txtTitle.Text = title;
+                txtDescription.Text = description;
+                txtCategory.Text = category;
+                txtBrand.Text = brand;
+                txtModel.Text = model;
+                txtManufacturer.Text = manufacturer;
+                txtProductIngredients.Text = productIngredients;
+            }
+            catch (Exception ex) { }
+        }
+        /// <summary>
+        /// See https://www.newtonsoft.com/json/help/html/QueryJson.htm
+        /// </summary>
+        /// <param name="jsonString">The JSON returned by the Web Get </param>
+        private void myDeserialize(String jsonString)
+        {
+            try {
+                JObject rss = JObject.Parse(jsonString);
+                String title = (String)rss["items"][0]["title"];
+                String description = (String)rss["items"][0]["description"];
+                String category = (String)rss["items"][0]["category"];
+                String brand = (String)rss["items"][0]["brand"];
+                String model = (String)rss["items"][0]["model"];
+                String manufacturer = (String)rss["items"][0]["manufacturer"];
+                txtTitle.Text = title;
+                txtDescription.Text = description;
+                txtCategory.Text = category;
+                txtBrand.Text = brand;
+                txtModel.Text = model;
+                txtManufacturer.Text = manufacturer;
+            } catch (Exception ex) { }
+        }
+        public string Get(string uri)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error Attempting to Access Web Site", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
  }

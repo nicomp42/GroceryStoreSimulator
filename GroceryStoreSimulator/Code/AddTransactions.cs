@@ -202,7 +202,7 @@ namespace GroceryStoreSimulator {
                     status = true;
                 } else {
                     string store = (string)Utils.MyDLookup("store", "tStore", "StoreID = " + tp.storeID, "");
-                    Write("Store: " + store.Trim() + " is closed. Cannot add transaction.");
+                    Write("Store: " + store.Trim() + " is closed. Cannot add transaction at " + tp.dateOfTransaction + " " + tp.timeOftransaction + ".");
                     status = false;
                 }
             } catch (Exception ex) {
