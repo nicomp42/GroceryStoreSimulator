@@ -88,6 +88,7 @@ namespace GroceryStoreSimulator {
                         Config.database = txtDatabase.Text;
                         Config.useCoupons = cbUseCoupons.Checked;
                         Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
+                        Config.prioritizeProducts = cbPrioritizeProducts.Checked;
                         // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:
                         Config.storeCheckInterval = (Config.enum_availableCheckIntervals)cbStoreCheckInterval.SelectedIndex;
                         Config.emplCheckInterval = (Config.enum_availableCheckIntervals)cbEmplCheckInterval.SelectedIndex;
@@ -107,12 +108,19 @@ namespace GroceryStoreSimulator {
                                 Utils.Log(ex.Message);
                                 return;
                             }
-                        } try {
+                        } 
+                        try {
                             if (Config.executeFailSafeOptions) {
                                 ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
                                 Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
                                 Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
                             }
+                            if (Config.prioritizeProducts) {
+
+                            }
+                            //*****************************
+                            // Finally, start transacting
+                            //*****************************
                             sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
                         } catch (Exception ex) {
                             txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;

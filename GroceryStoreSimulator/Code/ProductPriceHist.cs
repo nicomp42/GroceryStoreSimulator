@@ -34,7 +34,7 @@ namespace GroceryStoreSimulator {
 
         /// <summary>
         /// Zap the tProductPrice table and repopulate it with the original prices from tProduct.InitialPricePerSellableUnit
-        /// This is very destructive and should be used carefully.
+        /// This is destructive and should be used carefully.
         /// </summary>
         /// <param name="startDate">The date when the price change should take effect. Use Config.earliestPossibleDate for the earliest possible date
         public static void InitializeProductPriceHistAndCopyFromFromProductTable(DateTime startDate) {

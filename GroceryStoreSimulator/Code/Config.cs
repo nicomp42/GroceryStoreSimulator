@@ -33,7 +33,13 @@ namespace GroceryStoreSimulator {
         private static Boolean mExecuteFailSafeOptions;
         private static int mElapsedMinutesToRun;
         public static List<City> cityList;
+        private static bool mPrioritizeProducts;
 
+        public static bool prioritizeProducts
+        {
+            get { return mPrioritizeProducts; }
+            set { mPrioritizeProducts = value; }
+        }
         public static int elapsedMinutesToRun
         {
             get { return mElapsedMinutesToRun; }
