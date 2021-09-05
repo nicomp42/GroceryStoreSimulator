@@ -34,7 +34,13 @@ namespace GroceryStoreSimulator {
         private static int mElapsedMinutesToRun;
         public static List<City> cityList;
         private static bool mPrioritizeProducts;
+        private static bool mCheckForAllStoresClosed;
 
+        public static bool checkForAllStoresClosed
+        {
+            get { return mCheckForAllStoresClosed; }
+            set { mCheckForAllStoresClosed = value; }
+        }
         public static bool prioritizeProducts
         {
             get { return mPrioritizeProducts; }

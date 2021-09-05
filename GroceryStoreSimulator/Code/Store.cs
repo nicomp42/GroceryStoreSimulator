@@ -27,5 +27,21 @@ namespace GroceryStoreSimulator.Code
             };
             Utils.ExecuteNonQuery("spCopyStoreHistoryFromStoreTable", CommandType.StoredProcedure, null, parameters);
         }
+        /// <summary>
+        /// If all stores are currently closed, open some of them.
+        /// Not implemented yet
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns>Trueif all stores were closed and we opened some of them</returns>
+        public static int CheckForAllStoresClosed(SqlConnection connection, Random r)
+        {
+            int result = 0;
+            int countOfStores = DefaultValues.storeID_count;
+            // How many stores are currently closed?
+
+            int storeID_random = Utils.GetRandomStoreID(r, DefaultValues.storeID_count);
+
+            return result;
+        }
     }
 }

@@ -33,6 +33,8 @@
             this.fEmployeesWhoCanBeAStoreManagerTableAdapter = new GroceryStoreSimulator.DataSet1TableAdapters.fEmployeesWhoCanBeAStoreManagerTableAdapter();
             this.vStoreStatusTableTableAdapter = new GroceryStoreSimulator.DataSet2TableAdapters.vStoreStatusTableTableAdapter();
             this.tpConfig = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
+            this.cbCheckForAllStoresClosed = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
             this.cbPrioritizeProducts = new System.Windows.Forms.CheckBox();
             this.btnDeleteAllHistoryData = new System.Windows.Forms.Button();
@@ -248,6 +250,8 @@
             // 
             this.tpConfig.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tpConfig.Controls.Add(this.label37);
+            this.tpConfig.Controls.Add(this.label38);
+            this.tpConfig.Controls.Add(this.cbCheckForAllStoresClosed);
             this.tpConfig.Controls.Add(this.label36);
             this.tpConfig.Controls.Add(this.cbPrioritizeProducts);
             this.tpConfig.Controls.Add(this.btnDeleteAllHistoryData);
@@ -293,6 +297,26 @@
             this.tpConfig.TabIndex = 4;
             this.tpConfig.Text = "Config";
             this.tpConfig.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(27, 348);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(138, 13);
+            this.label38.TabIndex = 65;
+            this.label38.Text = "Check For All Stores Closed";
+            // 
+            // cbCheckForAllStoresClosed
+            // 
+            this.cbCheckForAllStoresClosed.AutoSize = true;
+            this.cbCheckForAllStoresClosed.Checked = true;
+            this.cbCheckForAllStoresClosed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCheckForAllStoresClosed.Location = new System.Drawing.Point(204, 348);
+            this.cbCheckForAllStoresClosed.Name = "cbCheckForAllStoresClosed";
+            this.cbCheckForAllStoresClosed.Size = new System.Drawing.Size(15, 14);
+            this.cbCheckForAllStoresClosed.TabIndex = 64;
+            this.cbCheckForAllStoresClosed.UseVisualStyleBackColor = true;
             // 
             // label36
             // 
@@ -375,7 +399,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(37, 305);
+            this.label25.Location = new System.Drawing.Point(27, 303);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(120, 13);
             this.label25.TabIndex = 52;
@@ -443,7 +467,7 @@
             // lblProductCheckInterval
             // 
             this.lblProductCheckInterval.AutoSize = true;
-            this.lblProductCheckInterval.Location = new System.Drawing.Point(36, 276);
+            this.lblProductCheckInterval.Location = new System.Drawing.Point(27, 276);
             this.lblProductCheckInterval.Name = "lblProductCheckInterval";
             this.lblProductCheckInterval.Size = new System.Drawing.Size(116, 13);
             this.lblProductCheckInterval.TabIndex = 45;
@@ -452,7 +476,7 @@
             // lblEmplCheckInterval
             // 
             this.lblEmplCheckInterval.AutoSize = true;
-            this.lblEmplCheckInterval.Location = new System.Drawing.Point(37, 249);
+            this.lblEmplCheckInterval.Location = new System.Drawing.Point(27, 249);
             this.lblEmplCheckInterval.Name = "lblEmplCheckInterval";
             this.lblEmplCheckInterval.Size = new System.Drawing.Size(125, 13);
             this.lblEmplCheckInterval.TabIndex = 44;
@@ -461,7 +485,7 @@
             // lblStoreCheckInterval
             // 
             this.lblStoreCheckInterval.AutoSize = true;
-            this.lblStoreCheckInterval.Location = new System.Drawing.Point(37, 222);
+            this.lblStoreCheckInterval.Location = new System.Drawing.Point(27, 222);
             this.lblStoreCheckInterval.Name = "lblStoreCheckInterval";
             this.lblStoreCheckInterval.Size = new System.Drawing.Size(104, 13);
             this.lblStoreCheckInterval.TabIndex = 43;
@@ -493,11 +517,11 @@
             // 
             // txtConfig
             // 
-            this.txtConfig.Location = new System.Drawing.Point(12, 361);
+            this.txtConfig.Location = new System.Drawing.Point(12, 381);
             this.txtConfig.Multiline = true;
             this.txtConfig.Name = "txtConfig";
             this.txtConfig.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtConfig.Size = new System.Drawing.Size(860, 89);
+            this.txtConfig.Size = new System.Drawing.Size(860, 104);
             this.txtConfig.TabIndex = 39;
             // 
             // txtSeed
@@ -1771,11 +1795,11 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(233, 327);
+            this.label37.Location = new System.Drawing.Point(229, 348);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(103, 13);
-            this.label37.TabIndex = 63;
-            this.label37.Text = "Not implemented yet";
+            this.label37.Size = new System.Drawing.Size(112, 13);
+            this.label37.TabIndex = 66;
+            this.label37.Text = "(Not Implemented Yet)";
             // 
             // frmMain
             // 
@@ -1989,6 +2013,8 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox cbPrioritizeProducts;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.CheckBox cbCheckForAllStoresClosed;
         private System.Windows.Forms.Label label37;
     }
 }

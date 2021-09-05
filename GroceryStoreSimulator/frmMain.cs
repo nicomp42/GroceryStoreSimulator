@@ -87,6 +87,7 @@ namespace GroceryStoreSimulator {
                         Config.password = txtPassword.Text;
                         Config.database = txtDatabase.Text;
                         Config.useCoupons = cbUseCoupons.Checked;
+                        Config.checkForAllStoresClosed = cbCheckForAllStoresClosed.Checked;
                         Config.executeFailSafeOptions = cbExecuteFailSafe.Checked;
                         Config.prioritizeProducts = cbPrioritizeProducts.Checked;
                         // This is tricky: the index of the selected item in the combo box must map to a specific enum. Be sure both are zero based:

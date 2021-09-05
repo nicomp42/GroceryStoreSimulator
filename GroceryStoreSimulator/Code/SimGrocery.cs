@@ -33,14 +33,13 @@ namespace GroceryStoreSimulator {
         /// Start adding transactions to the grocery store
         /// </summary>
         /// <param name="seed">Seed for random number generator. Use 0 for true randomness.</param>
-        public void StartTransactionSimulation(int numOfTransactionsToAdd, Random r, TextBox txtResults, Label lblStatus) { 
-            AddTransactions addTransactions = null;
+        public void StartTransactionSimulation(int numOfTransactionsToAdd, Random r, TextBox txtResults, Label lblStatus) {
             SqlConnection connection = new SqlConnection(Config.connectionString);
+            try {connection.Open();}
+            catch (Exception e) { Console.WriteLine(e.ToString()); }
+            AddTransactions addTransactions = null;
             addTransactions = new AddTransactions(numOfTransactionsToAdd, connection, r, txtResults, lblStatus);
             DefaultValues.computeDefaultValues();
-            try {
-                connection.Open();
-            } catch(Exception e) {Console.WriteLine(e.ToString());}
 
             // Kick off thread for the Transaction Adder
             oThread = new Thread(new ThreadStart(addTransactions.StartThread));

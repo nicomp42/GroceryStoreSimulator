@@ -10,8 +10,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Data;
@@ -29,6 +27,7 @@ namespace GroceryStoreSimulator {
         private int transactionCount = 0, transactionDetailCount = 0;
         private List<tStoreStatus> tStoreStatus = new List<tStoreStatus>();
         private int numOfTransactionsToAdd;
+        private int[] productPriorityArray;
         /// <summary>
         /// Constructor
         /// </summary>
@@ -41,6 +40,7 @@ namespace GroceryStoreSimulator {
             this.txtResults = txtResults;
             this.lblStatus = lblStatus;
             this.numOfTransactionsToAdd = numOfTransactionsToAdd;
+            if (Config.prioritizeProducts) {productPriorityArray = ProductPrioritizer.CreateProductPriorityArray(this.connection); }
         }
         /// <summary>
         /// Write a string to the UI
@@ -203,6 +203,13 @@ namespace GroceryStoreSimulator {
                 } else {
                     string store = (string)Utils.MyDLookup("store", "tStore", "StoreID = " + tp.storeID, "");
                     Write("Store: " + store.Trim() + " is closed. Cannot add transaction at " + tp.dateOfTransaction + " " + tp.timeOftransaction + ".");
+                    if (Config.checkForAllStoresClosed)
+                    {
+                        if (Store.CheckForAllStoresClosed(connection, r) > 0) {
+                            Write("All stores were closed so a few were re-opened");
+
+                        }
+                    }
                     status = false;
                 }
             } catch (Exception ex) {
@@ -311,9 +318,14 @@ namespace GroceryStoreSimulator {
         {
             try
             {
-                // Random Product
-                tp.productID = Utils.GetRandomProductID(r, DefaultValues.productID_count);
-
+                if (Config.prioritizeProducts)
+                {
+                    // Random Product with all products at the same level of priority/possibility
+                    tp.productID = Utils.GetRandomProductID(r, DefaultValues.productID_count);
+                } else  {
+                    // Some products are more possible than others...
+                    tp.productID = productPriorityArray[r.Next(0, productPriorityArray.Length)];
+                }
                 if (Config.useCoupons)
                 {
                     // Is there a coupon for this product?

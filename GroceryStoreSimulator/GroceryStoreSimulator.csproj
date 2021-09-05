@@ -62,6 +62,7 @@
     <Compile Include="Code\Ingredients.cs" />
     <Compile Include="Code\Order.cs" />
     <Compile Include="Code\Product.cs" />
+    <Compile Include="Code\ProductPrioritizer.cs" />
     <Compile Include="Code\ShoppingCart.cs" />
     <Compile Include="Code\ShoppingCartItem.cs" />
     <Compile Include="Code\SimCoupon.cs" />
@@ -103,16 +104,22 @@
       <DependentUpon>vLoyaltyIDsThatCanOrderOnline.xsd</DependentUpon>
     </Compile>
     <Compile Include="DefaultValues.cs" />
-    <Compile Include="frmAbout.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\ProductPriceHist.cs" />
-    <Compile Include="frmPlaceAnOrder.cs" />
+    <Compile Include="frmPlaceAnOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPlaceAnOrder.Designer.cs">
       <DependentUpon>frmPlaceAnOrder.cs</DependentUpon>
     </Compile>
