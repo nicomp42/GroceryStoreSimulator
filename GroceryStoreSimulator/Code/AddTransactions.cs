@@ -361,7 +361,7 @@ namespace GroceryStoreSimulator {
                     tp.timeOftransaction = Utils.GetRandomTime(r);
                 }
                 tp.emplID = 0;
-                tp.storeID = Utils.GetRandomStoreID(r, DefaultValues.storeID_count);
+                tp.storeID = Utils.GetRandomOpenStoreID(r, DefaultValues.storeID_count);    // Choose from only stores that are open for business
 
                 while (true) {
                     int emplID;

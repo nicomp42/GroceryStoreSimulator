@@ -96,6 +96,19 @@ namespace GroceryStoreSimulator {
                                         "");
         }
         /// <summary>
+        /// Get a random store ID from tStore for a store that is open for business
+        /// </summary>
+        /// <param name="r">The random number generator</param>
+        /// <param name="productID_count">The number of stores in tStore</param>
+        /// <returns>The randomly generated store ID</returns>
+        public static int GetRandomOpenStoreID(Random r, int storeID_count)
+        {
+            return (int)Utils.MyDLookup("StoreID",
+                                        "(SELECT ROW_NUMBER() OVER (ORDER BY storeID) AS RowNum, * FROM vCurrentStoreStatusForAllStores ) sub ",
+                                        " RowNum = " + (r.Next(storeID_count) + 1) + " AND IsOpenForBusiness = 1",
+                                        "");
+        }
+        /// <summary>
         /// Get a random store ID from tStore
         /// </summary>
         /// <param name="r">The random number generator</param>
