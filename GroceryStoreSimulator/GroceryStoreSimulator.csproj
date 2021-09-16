@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\City.cs" />
+    <Compile Include="Code\ciullajn.cs" />
     <Compile Include="Code\Config.cs" />
     <Compile Include="Code\Empl.cs" />
     <Compile Include="Code\EmplName.cs" />
