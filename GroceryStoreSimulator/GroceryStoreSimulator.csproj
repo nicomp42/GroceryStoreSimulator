@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\bockhoar.cs" />
     <Compile Include="Code\City.cs" />
     <Compile Include="Code\Config.cs" />
     <Compile Include="Code\Empl.cs" />
