@@ -69,6 +69,7 @@
     <Compile Include="Code\SimCoupon.cs" />
     <Compile Include="Code\SimGrocery.cs" />
     <Compile Include="Code\AddTransactions.cs" />
+    <Compile Include="Code\smith7ry.cs" />
     <Compile Include="Code\Store.cs" />
     <Compile Include="Code\tStoreStatus.cs" />
     <Compile Include="Code\Utils.cs" />
