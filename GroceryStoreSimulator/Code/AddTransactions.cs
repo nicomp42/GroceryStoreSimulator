@@ -361,7 +361,7 @@ namespace GroceryStoreSimulator {
                     tp.timeOftransaction = Utils.GetRandomTime(r);
                 }
                 tp.emplID = 0;
-                tp.storeID = Utils.GetRandomOpenStoreID(r, DefaultValues.storeID_count);    // Choose from only stores that are open for business
+                tp.storeID = Utils.GetRandomOpenStoreID(r, DefaultValues.storeID_count, tp.dateOfTransaction + " " + tp.timeOftransaction);    // Choose from only stores that are open for business
 
                 while (true) {
                     int emplID;
@@ -430,13 +430,14 @@ namespace GroceryStoreSimulator {
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.Add(new SqlParameter("storeID", storeID));
             String sql = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus(" + storeID + ", '" + dateTime + "')";
+//          String sql = "SELECT IsOpenForBusiness from fGetCurrentStoreStatus(" + storeID + ")";
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = connection;
             try {
                 reader = cmd.ExecuteReader();
                 if (reader.Read()) {
-                    bool isOpen = Convert.ToBoolean(reader.GetValue(0));    // Columns are, zero-based, 0 is the IsStoreOpenForBusiness flag
+                    bool isOpen = Convert.ToBoolean(reader.GetValue(0));    // Columns are, zero-based, 0 is the only column
                     status = isOpen;
                 }
             } catch (Exception ex) {
@@ -516,8 +517,7 @@ namespace GroceryStoreSimulator {
                 }
             } catch (Exception ex) {
                 Console.WriteLine("AddTransactions.ProcessStoreStatusValues(): " + ex.Message);
-            } finally {
-                try { reader.Close(); } catch (Exception ex) { Utils.Log(ex.Message); }
+                if (reader != null) { try { reader.Close(); } catch (Exception ex1) { Utils.Log(ex1.Message); }}
             }
             return true;
         }

@@ -116,9 +116,6 @@ namespace GroceryStoreSimulator {
                                 Empl.MakeAllEmplAvailableToWork(Config.startDate); // Config.earliestPossibleDate);                                   // Fail-safe strategy
                                 Store.MakeAllStoreOpenForBusiness(Config.startDate); // Config.earliestPossibleDate);                                 // Fail-safe strategy
                             }
-                            if (Config.prioritizeProducts) {
-
-                            }
                             //*****************************
                             // Finally, start transacting
                             //*****************************
@@ -166,15 +163,15 @@ namespace GroceryStoreSimulator {
             InitRandomNumberGenerator();
             // Select the Config page by default
             tcSimulate.SelectTab("tpConfig");
-            InitIntervalComboBox(cbStoreCheckInterval);
-            InitIntervalComboBox(cbEmplCheckInterval);
-            InitIntervalComboBox(cbProductCheckInterval);
-            InitIntervalComboBox(cbCouponCheckInterval);
-            cbStoreCheckInterval.SelectedIndex = 0;     // Interval = "Never"
-            cbEmplCheckInterval.SelectedIndex = 0;
-            cbProductCheckInterval.SelectedIndex = 0;
-            cbCouponCheckInterval.SelectedIndex = 0;
-            cbCouponAmountToAdd.SelectedIndex = 0;
+            InitIntervalComboBox(cbStoreCheckInterval); cbStoreCheckInterval.SelectedIndex = 4;
+            InitIntervalComboBox(cbEmplCheckInterval); cbEmplCheckInterval.SelectedIndex = 4;
+            InitIntervalComboBox(cbProductCheckInterval); cbProductCheckInterval.SelectedIndex = 4;
+            InitIntervalComboBox(cbCouponCheckInterval); cbCouponCheckInterval.SelectedIndex = 4;
+            //cbStoreCheckInterval.SelectedIndex = 0;     // Interval = "Never"
+            //cbEmplCheckInterval.SelectedIndex = 0;
+            //cbProductCheckInterval.SelectedIndex = 0;
+            //cbCouponCheckInterval.SelectedIndex = 0;
+            cbCouponAmountToAdd.SelectedIndex = 3;
             txtStartDate.Text = Config.startDate.ToShortDateString();
             try { txtThroughDate.Text = Config.throughDate.ToShortDateString(); } catch (Exception ex) { txtThroughDate.Text = null; Utils.Log(ex.Message); }
             txtElapsedTimeToRun.Text = "0:1";
@@ -447,8 +444,8 @@ namespace GroceryStoreSimulator {
                     txtConfig.AppendText(Environment.NewLine + "Connection failed " + txtServer.Text.Trim() + " .");
                 }
             } catch (Exception ex) {
+                txtConfig.AppendText("Connection failed! ");
                 txtConfig.AppendText(Environment.NewLine + ex.Message);
-                txtConfig.AppendText("Connection verified.");
             }
         }
 

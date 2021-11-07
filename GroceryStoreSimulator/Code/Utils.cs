@@ -101,12 +101,28 @@ namespace GroceryStoreSimulator {
         /// <param name="r">The random number generator</param>
         /// <param name="productID_count">The number of stores in tStore</param>
         /// <returns>The randomly generated store ID</returns>
-        public static int GetRandomOpenStoreID(Random r, int storeID_count)
+        public static int GetRandomOpenStoreID(Random r, int storeID_count, String dateTime)
         {
-            return (int)Utils.MyDLookup("StoreID",
-                                        "(SELECT ROW_NUMBER() OVER (ORDER BY storeID) AS RowNum, * FROM vCurrentStoreStatusForAllStores ) sub ",
-                                        " RowNum = " + (r.Next(storeID_count) + 1) + " AND IsOpenForBusiness = 1",
-                                        "");
+            int rowNum = (r.Next(storeID_count) + 1);
+            int randomOpenStoreID = -1;
+            int maxAttempts = 1000;
+            //int randomStoreID = 1;
+            for (int i = 0; i < maxAttempts; i++) {     // 1000 is arbitrary. Hopefully there's an open store!
+                try
+                {
+                    object tmp;
+                    int StoreID;
+                    StoreID = GetRandomStoreID(r, storeID_count);
+                    tmp = Utils.MyDLookup("IsOpenForBusiness",
+                                          "SELECT IsOpenForBusiness FROM fGetCurrentStoreStatus(" + StoreID + ", " + "'" + dateTime + "'" + ")",
+                                          "","");
+                    if (tmp != null) { if ((Boolean)tmp == true) { randomOpenStoreID = StoreID; break; } }
+                } catch (Exception ex) {
+                    rowNum = (r.Next(storeID_count) + 1);  // Guess again
+                }
+            }
+            if (randomOpenStoreID == -1) { throw new Exception("No random open store could be found after " + maxAttempts + " attempts."); }
+            return randomOpenStoreID;
         }
         /// <summary>
         /// Get a random store ID from tStore
@@ -177,12 +193,13 @@ namespace GroceryStoreSimulator {
                     } else {
                         result = null;
                     }
-
                     reader.Close();
                 } catch (Exception e) {
                     Console.WriteLine(e.Message);
                     result = null;                // null means we failed
-                    try { reader.Close(); } catch (Exception ex) {Utils.Log(ex.Message); }
+                    if (reader != null) {
+                        try {reader.Close();} catch (Exception ex) { Utils.Log(ex.Message); }
+                    }
                 }
                 return result;
             }

@@ -38,12 +38,16 @@ namespace GroceryStoreSimulator {
             try {connection.Open();}
             catch (Exception e) { Console.WriteLine(e.ToString()); }
             AddTransactions addTransactions = null;
-            addTransactions = new AddTransactions(numOfTransactionsToAdd, connection, r, txtResults, lblStatus);
-            DefaultValues.computeDefaultValues();
-
-            // Kick off thread for the Transaction Adder
-            oThread = new Thread(new ThreadStart(addTransactions.StartThread));
-            oThread.Start();    // Start the thread
+            try {
+                addTransactions = new AddTransactions(numOfTransactionsToAdd, connection, r, txtResults, lblStatus);
+                DefaultValues.computeDefaultValues();
+                // Kick off thread for the Transaction Adder
+                oThread = new Thread(new ThreadStart(addTransactions.StartThread));
+                oThread.Start();    // Start the thread
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Unable to add transactions",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }

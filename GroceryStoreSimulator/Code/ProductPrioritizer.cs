@@ -15,15 +15,25 @@ using System.Threading.Tasks;
 
 namespace GroceryStoreSimulator.Code
 {
+    /// <summary>
+    /// Products in a grocery store sell at different rates. 
+    /// We model this behavior, somewhat. 
+    /// </summary>
     class ProductPrioritizer
     {
         private static int productID_count;
-
+        /// <summary>
+        /// It's more real-world that some products sell better than others. 
+        /// Herein we create a collection prrioritized products
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
         public static int[] CreateProductPriorityArray(SqlConnection connection) {
             //List<ProductPrioritizer> productPrioritizer = new List<ProductPrioritizer>();
            // String result;
             // Figure out how many elements we will need in our prioritizer
             productID_count = (int)Utils.MyDLookup("productID", "tProduct", "", "COUNT");
+            if (productID_count == 0) {throw new Exception("ProductPrioritizer.CreateProductPriorityArray(): No products on file. Cannot build priority list.");}
             int totalPrioritizerElements = (productID_count * (productID_count + 1)) / 2;
             int[] productPrioritizer = new int[totalPrioritizerElements];
             int priorityCount = productID_count;
@@ -33,19 +43,23 @@ namespace GroceryStoreSimulator.Code
             cmd.CommandText = "SELECT productID from tProduct";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = connection;
+            int start = 0;
+            int stop = productID_count;
             try  {
                 reader = cmd.ExecuteReader();
                 while (reader.Read()) {
                     int productID = Convert.ToInt32(reader.GetValue(0));
-                    for (int k = 0; k < priorityCount; k++) {
+                    for (int k = 0; k < stop; k++, start++) {
 //                      productPrioritizer[idx] = priorityCount;        // These are row numbers. Not Product IDs
-                        productPrioritizer[idx] = productID;        // These are row numbers. Not Product IDs
+                        productPrioritizer[start] = productID;        // These are row numbers. Not Product IDs
                         idx++;
                     }
+                    stop = stop - 1;
+                    
                 }
             }
             catch (Exception ex) {
-                Utils.Log("ProductPrioritizer.CreateProductPriorityAaary(): " + ex.Message);
+                Utils.Log("ProductPrioritizer.CreateProductPriorityArray(): " + ex.Message);
             } finally {
                 try { reader.Close(); } catch (Exception ex) { Utils.Log("ProductPrioritizer.CreateProductPriorityAaary(): " + ex.Message); }
             }
