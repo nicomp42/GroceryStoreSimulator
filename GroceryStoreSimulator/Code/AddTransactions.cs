@@ -458,15 +458,15 @@ namespace GroceryStoreSimulator {
             bool isOpenForBusiness;
             bool isClosedForever;
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Select * from vCurrentStoreStatusForAllStores";
             cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Select * from vMostRecentStoreStatusForAllStores";       // This could be in the future. :)
             cmd.Connection = connection;
             try {
                 reader = cmd.ExecuteReader();
                 while (reader.Read()) {
-                    storeID = Convert.ToInt32(reader.GetValue(0));
-                    isOpenForBusiness = Convert.ToBoolean(reader.GetValue(3));
-                    isClosedForever = Convert.ToBoolean(reader.GetValue(4));
+                    storeID = Convert.ToInt32(reader.GetValue(5));
+                    isOpenForBusiness = Convert.ToBoolean(reader.GetValue(1));
+                    isClosedForever = Convert.ToBoolean(reader.GetValue(2));
                     int myRandomValue = r.Next(1001); // 0 to 1000
                     int storeStatusID = 0;
                     int tmpRandom;
