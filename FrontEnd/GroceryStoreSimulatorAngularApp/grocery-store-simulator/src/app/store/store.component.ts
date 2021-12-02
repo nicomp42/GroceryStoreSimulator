@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store, StoreService } from './store.service';
 
 @Component({
   templateUrl: './store.component.html',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+   stores: Observable<Store[]>;
+
+  constructor(private storeService: StoreService) {
+  
+    this.stores = this.storeService.getStores();
+
+  }
 
   ngOnInit(): void {
   }

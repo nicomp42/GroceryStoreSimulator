@@ -6,6 +6,9 @@ import { NavbarModule } from './navbar/navbar.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { StoreComponent } from './store/store.component'
+import { HttpClientModule } from '@angular/common/http';
+import { AppConfig } from './config/AppConfig';
+
 
 @NgModule({
   declarations: [
@@ -18,8 +21,9 @@ import { StoreComponent } from './store/store.component'
     AppRoutingModule,
     NavbarModule,
     DashboardModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AppConfig],
   bootstrap: [AppComponent],
   exports: [
   ]

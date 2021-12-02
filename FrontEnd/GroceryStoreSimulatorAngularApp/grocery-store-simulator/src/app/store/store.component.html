@@ -1,1 +1,7 @@
-<h1>You have reached the store component</h1>>
+<h1>You have reached the store component</h1>
+
+<div  class="list-group" *ngFor="let store of stores | async">
+
+<button type="button" class="list-group-item list-group-item-action">{{store.name}}</button>
+
+</div>
