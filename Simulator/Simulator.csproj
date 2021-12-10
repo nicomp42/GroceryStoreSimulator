@@ -1,0 +1,102 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+
+	<UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="DataSet1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="DataSet2.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\StoresAcceptingOnlineOrders.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\StoresNotClosedForever.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Datasets\vLoyaltyIDsThatCanOrderOnline.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>vLoyaltyIDsThatCanOrderOnline.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="tCouponDetail.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>tCouponDetail.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="tDiscountType.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>tDiscountType.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="Datasets\StoresAcceptingOnlineOrders.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>StoresAcceptingOnlineOrders.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="Datasets\StoresNotClosedForever.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>StoresNotClosedForever.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="Datasets\vLoyaltyIDsThatCanOrderOnline.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>vLoyaltyIDsThatCanOrderOnline.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="tCouponDetail.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>tCouponDetail.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Update="tDiscountType.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>tDiscountType.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>

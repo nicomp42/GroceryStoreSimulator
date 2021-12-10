@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GroceryStoreSimulator</RootNamespace>
     <AssemblyName>GroceryStoreSimulator</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,8 +36,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=106.13.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.13.0\lib\net452\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,56 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\City.cs" />
-    <Compile Include="Code\Config.cs" />
-    <Compile Include="Code\Empl.cs" />
-    <Compile Include="Code\EmplName.cs" />
-    <Compile Include="Code\Ingredients.cs" />
-    <Compile Include="Code\nicholdw.cs" />
-    <Compile Include="Code\Order.cs" />
-    <Compile Include="Code\Product.cs" />
-    <Compile Include="Code\ProductPrioritizer.cs" />
-    <Compile Include="Code\ShoppingCart.cs" />
-    <Compile Include="Code\ShoppingCartItem.cs" />
-    <Compile Include="Code\SimCoupon.cs" />
-    <Compile Include="Code\SimGrocery.cs" />
-    <Compile Include="Code\AddTransactions.cs" />
-    <Compile Include="Code\Store.cs" />
-    <Compile Include="Code\tStoreStatus.cs" />
-    <Compile Include="Code\Utils.cs" />
-    <Compile Include="Code\Coupon.cs" />
-    <Compile Include="DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Datasets\StoresAcceptingOnlineOrders.cs">
-      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Datasets\StoresAcceptingOnlineOrders.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Datasets\StoresNotClosedForever.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Datasets\vLoyaltyIDsThatCanOrderOnline.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>vLoyaltyIDsThatCanOrderOnline.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultValues.cs" />
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,13 +68,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\ProductPriceHist.cs" />
-    <Compile Include="frmPlaceAnOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPlaceAnOrder.Designer.cs">
-      <DependentUpon>frmPlaceAnOrder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\CouponServiceReference\Reference.cs">
@@ -132,26 +76,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="CouponDetailX.cs" />
-    <Compile Include="tCouponDetail.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tCouponDetail.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="tDiscountTypeX.cs" />
-    <Compile Include="tDiscountType.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tDiscountType.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPlaceAnOrder.resx">
-      <DependentUpon>frmPlaceAnOrder.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -164,65 +93,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet2.xsc">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet2.xss">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\StoresAcceptingOnlineOrders.xsc">
-      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\StoresAcceptingOnlineOrders.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StoresAcceptingOnlineOrders.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Datasets\StoresAcceptingOnlineOrders.xss">
-      <DependentUpon>StoresAcceptingOnlineOrders.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\StoresNotClosedForever.xsc">
-      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\StoresNotClosedForever.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StoresNotClosedForever.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Datasets\StoresNotClosedForever.xss">
-      <DependentUpon>StoresNotClosedForever.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\vLoyaltyIDsThatCanOrderOnline.xsc">
-      <DependentUpon>vLoyaltyIDsThatCanOrderOnline.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\vLoyaltyIDsThatCanOrderOnline.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>vLoyaltyIDsThatCanOrderOnline.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Datasets\vLoyaltyIDsThatCanOrderOnline.xss">
-      <DependentUpon>vLoyaltyIDsThatCanOrderOnline.xsd</DependentUpon>
-    </None>
-    <None Include="Data\randomCities.csv" />
-    <None Include="Data\randomNames.csv" />
-    <None Include="Data\States.csv" />
-    <None Include="Grocery Store Simulator Create.zip" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -234,28 +104,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\CouponServiceReference\CouponService.wsdl" />
-    <None Include="tCouponDetail.xsc">
-      <DependentUpon>tCouponDetail.xsd</DependentUpon>
-    </None>
-    <None Include="tCouponDetail.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>tCouponDetail.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="tCouponDetail.xss">
-      <DependentUpon>tCouponDetail.xsd</DependentUpon>
-    </None>
-    <None Include="tDiscountType.xsc">
-      <DependentUpon>tDiscountType.xsd</DependentUpon>
-    </None>
-    <None Include="tDiscountType.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>tDiscountType.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="tDiscountType.xss">
-      <DependentUpon>tDiscountType.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -293,6 +141,10 @@
     <ProjectReference Include="..\ProductInfoREST\ProductInfoREST.csproj">
       <Project>{838abb32-392e-4a94-9b82-b8e6ed15bf76}</Project>
       <Name>ProductInfoREST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simulator\Simulator.csproj">
+      <Project>{51e35a2e-b82b-4754-a9a5-e49632991b14}</Project>
+      <Name>Simulator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

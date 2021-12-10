@@ -9,27 +9,21 @@
 // GRANT EXECUTE TO db_executor;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using GroceryStoreSimulator.Code;
+using SimulatorNamespace;
 using RestSharp;
 using Newtonsoft.Json;
 using System.Net;
 using System.IO;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json.Linq;
 
-namespace GroceryStoreSimulator {
+namespace SimulatorGUI
+{
     public partial class frmMain : Form {
-        private SimGrocery sg = new SimGrocery();
+        private SimulatorNamespace.SimGrocery sg = new SimulatorNamespace.SimGrocery();
         private Stopwatch watch;
 
         public frmMain() {
@@ -415,11 +409,11 @@ namespace GroceryStoreSimulator {
             try {
                 Utils.CheckConnection();
                 // This line of code loads data into the 'dataSet2.vStoreStatusTable' table. You can move, or remove it, as needed.
-                vStoreStatusTableTableAdapter.Connection = Config.myConnection;
-                this.vStoreStatusTableTableAdapter.Fill(this.dataSet2.vStoreStatusTable);
+//                vStoreStatusTableTableAdapter.Connection = Config.myConnection;
+//              this.vStoreStatusTableTableAdapter.Fill(this.dataSet2.vStoreStatusTable);
                 // This line of code loads data into the 'dataSet1.fEmployeesWhoCanBeAStoreManager' table. You can move, or remove it, as needed.
-                fEmployeesWhoCanBeAStoreManagerTableAdapter.Connection = Config.myConnection;
-                this.fEmployeesWhoCanBeAStoreManagerTableAdapter.Fill(this.dataSet1.fEmployeesWhoCanBeAStoreManager);
+                //fEmployeesWhoCanBeAStoreManagerTableAdapter.Connection = Config.myConnection;
+//                this.fEmployeesWhoCanBeAStoreManagerTableAdapter.Fill(this.dataSet1.fEmployeesWhoCanBeAStoreManager);
                 //LoadManagerComboBox();
                 //LoadStoreStatusComboBox();
             } catch (Exception ex) {
@@ -476,13 +470,13 @@ namespace GroceryStoreSimulator {
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
-            frmAbout frm = new frmAbout();
+            GroceryStoreSimulator.frmAbout frm = new GroceryStoreSimulator.frmAbout();
             frm.Show();
         }
 
         private void placeOrderToolStripMenuItem_Click(object sender, EventArgs e) {
-            frmPlaceAnOrder placeAnOrder = new frmPlaceAnOrder();
-            placeAnOrder.Show();
+            //frmPlaceAnOrder placeAnOrder = new frmPlaceAnOrder();
+            //placeAnOrder.Show();
 
         }
 
