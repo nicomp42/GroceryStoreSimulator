@@ -50,9 +50,10 @@ namespace SimulatorNamespace {
             try {
                 if (txtResults != null) {
                     txtResults.AppendText(Environment.NewLine + message);
+                } else if (Config.verboseConsoleMode == true) {
+                    Console.WriteLine(message);
                 }
             } catch (Exception ex) {Utils.Log(ex.Message);}
-            //Console.WriteLine(message);
             return 42;      // This is only here so I can use this method as a delegate. See the call to tEmpl.RandomizeWorkStatusForAllEmployees in this class
         }
 
@@ -206,14 +207,19 @@ namespace SimulatorNamespace {
                     {
                         if (Store.CheckForAllStoresClosed(connection, r) > 0) {
                             Write("All stores were closed so a few were re-opened");
-
                         }
                     }
                     status = false;
                 }
             } catch (Exception ex) {
                 // Something went wrong. 
-                txtResults.AppendText(Environment.NewLine + "AddTransactions.addTransaction: " + ex.Message);
+                if (txtResults != null) {
+                    txtResults.AppendText(Environment.NewLine + "AddTransactions.addTransaction: " + ex.Message);
+                } else {
+                    if (Config.verboseConsoleMode == true) {
+                        Console.WriteLine("AddTransactions.AddTransaction(): " + ex.Message);
+                    }
+                }
             }
             return status;
         }
@@ -306,7 +312,9 @@ namespace SimulatorNamespace {
         /// <param name="transactionCount">The number of transaction records that have been added</param>
         /// <param name="transactionDetailCount">The number of transaction detail records that have been added</param>
         public void WriteStatus(int transactionCount, int transactionDetailCount) {
-            lblStatus.Text = transactionCount + " transactions, " + transactionDetailCount + " transaction details";
+            if (lblStatus != null) {
+                lblStatus.Text = transactionCount + " transactions, " + transactionDetailCount + " transaction details";
+            }
         }
         /// <summary>
         /// Compute random values for a transaction detail. Be sure you called computeRandomValuesForTransaction first.
@@ -342,7 +350,13 @@ namespace SimulatorNamespace {
                 tp.pricePerSellableUnitAsMarked = tp.pricePerSellableUnitToTheCustomer;
             } catch (Exception ex) {
                 // Something went wrong. 
-                txtResults.AppendText(Environment.NewLine + "AddTransactions.computeRandomValuesForTransactionDetail: " + ex.Message);
+                if (txtResults != null)
+                {
+                    txtResults.AppendText(Environment.NewLine + "AddTransactions.computeRandomValuesForTransactionDetail: " + ex.Message);
+                } else if (Config.verboseConsoleMode == true)
+                {
+                    Console.WriteLine("AddTransactions.computeRandomValuesForTransactionDetail(): " + ex.Message);
+                }
             }
         }
         /// <summary>

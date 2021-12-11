@@ -51,7 +51,10 @@ namespace SimulatorNamespace {
 
         public static void Log(String message) {
             // ToDo: implement this
-            Console.WriteLine(message);
+            if (Config.verboseConsoleMode == true) {
+                Console.WriteLine("Utils.Log(): " + message);
+ //             Console.WriteLine("Utils.Log(): " + message);
+            }
         }
         /// <summary>
         /// Compute a randomly constructed string of upper case letters

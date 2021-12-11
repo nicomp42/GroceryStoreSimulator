@@ -12,6 +12,7 @@ using System.IO;
 
 namespace SimulatorNamespace {
     public class Config {
+        private static Boolean mVerboseConsoleMode = false;
         private static int transactionDelay = 5; // Default is 5 millisecond delay between customer transactions that are added to the database
         private static List<EmplName> mEmplList;
         public static string version = "1.0.6";
@@ -33,6 +34,11 @@ namespace SimulatorNamespace {
         private static bool mPrioritizeProducts;
         private static bool mCheckForAllStoresClosed;
 
+        public static Boolean verboseConsoleMode
+        {
+            get { return mVerboseConsoleMode; }
+            set { mVerboseConsoleMode = value; }
+        }
         public static List<EmplName> emplList {
             get { return mEmplList.GetRange(0,mEmplList.Count); }
             set { mEmplList = value.GetRange(0, value.Count); }

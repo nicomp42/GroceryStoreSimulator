@@ -124,7 +124,7 @@ namespace SimulatorNamespace {
         /// Get a random coupon detail that is available for a customer to use based on the current date and date range of the contents in tCoupon AND a specific product ID.
         /// If there is such a coupon. There may not be one.
         /// </summary>
-        /// <returns>The Coupon Detail ID of the coupon in tCouponDetail</returns>
+        /// <returns>The Coupon Detail ID of the coupon in tCouponDetail, or 0 if none on file</returns>
         public static int getRandomCouponDetailID(int productID, Random r, SqlConnection connection) {
             int couponDetailID = 0;
             SqlDataReader reader = null;
@@ -139,7 +139,9 @@ namespace SimulatorNamespace {
                 while (reader.Read()) {
                     couponDetailIDList.Add(Convert.ToInt32(reader.GetValue(0)));
                 }
-                couponDetailID = couponDetailIDList[r.Next(couponDetailIDList.Count - 1)];
+                if (couponDetailIDList.Count > 0) {
+                    couponDetailID = couponDetailIDList[r.Next(couponDetailIDList.Count - 1)];
+                }
             } catch (Exception ex) {
                 // todo: Handle this exception
                 Utils.Log(ex.Message);
