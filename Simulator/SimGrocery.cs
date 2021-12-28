@@ -46,7 +46,8 @@ namespace SimulatorNamespace {
                 oThread.Start();    // Start the thread
             }
             catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Unable to add transactions",MessageBoxButtons.OK,MessageBoxIcon.Error);
+               // ToDo: this needs to be handled differently because sometimes we are a GUI, sometimes console, sometimes web.
+               // MessageBox.Show(ex.Message, "Unable to add transactions",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }
