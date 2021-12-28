@@ -1,5 +1,7 @@
-﻿namespace GroceryStoreSimulator {
-    partial class frmMain {
+﻿namespace SimulatorGUI
+{
+    partial class frmMain
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -9,8 +11,10 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,17 +26,14 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.vStoreStatusTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet2 = new GroceryStoreSimulator.DataSet2();
             this.fEmployeesWhoCanBeAStoreManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new GroceryStoreSimulator.DataSet1();
-            this.fEmployeesWhoCanBeAStoreManagerTableAdapter = new GroceryStoreSimulator.DataSet1TableAdapters.fEmployeesWhoCanBeAStoreManagerTableAdapter();
-            this.vStoreStatusTableTableAdapter = new GroceryStoreSimulator.DataSet2TableAdapters.vStoreStatusTableTableAdapter();
             this.tpConfig = new System.Windows.Forms.TabPage();
+            this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.cbCheckForAllStoresClosed = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -184,12 +185,8 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vStoreStatusTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fEmployeesWhoCanBeAStoreManagerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.tpConfig.SuspendLayout();
             this.pnlUseCurrentDateStampForTransaction.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -212,39 +209,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // vStoreStatusTableBindingSource
-            // 
-            this.vStoreStatusTableBindingSource.DataMember = "vStoreStatusTable";
-            this.vStoreStatusTableBindingSource.DataSource = this.dataSet2;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fEmployeesWhoCanBeAStoreManagerBindingSource
-            // 
-            this.fEmployeesWhoCanBeAStoreManagerBindingSource.DataMember = "fEmployeesWhoCanBeAStoreManager";
-            this.fEmployeesWhoCanBeAStoreManagerBindingSource.DataSource = this.dataSet1BindingSource;
-            // 
-            // dataSet1BindingSource
-            // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fEmployeesWhoCanBeAStoreManagerTableAdapter
-            // 
-            this.fEmployeesWhoCanBeAStoreManagerTableAdapter.ClearBeforeFill = true;
-            // 
-            // vStoreStatusTableTableAdapter
-            // 
-            this.vStoreStatusTableTableAdapter.ClearBeforeFill = true;
             // 
             // tpConfig
             // 
@@ -297,6 +261,15 @@
             this.tpConfig.TabIndex = 4;
             this.tpConfig.Text = "Config";
             this.tpConfig.UseVisualStyleBackColor = true;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(229, 348);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(112, 13);
+            this.label37.TabIndex = 66;
+            this.label37.Text = "(Not Implemented Yet)";
             // 
             // label38
             // 
@@ -1792,15 +1765,6 @@
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(229, 348);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(112, 13);
-            this.label37.TabIndex = 66;
-            this.label37.Text = "(Not Implemented Yet)";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1815,10 +1779,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResizeEnd += new System.EventHandler(this.frmMain_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.vStoreStatusTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fEmployeesWhoCanBeAStoreManagerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.tpConfig.ResumeLayout(false);
             this.tpConfig.PerformLayout();
             this.pnlUseCurrentDateStampForTransaction.ResumeLayout(false);
@@ -1856,13 +1817,8 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private System.Windows.Forms.BindingSource fEmployeesWhoCanBeAStoreManagerBindingSource;
-        private DataSet1TableAdapters.fEmployeesWhoCanBeAStoreManagerTableAdapter fEmployeesWhoCanBeAStoreManagerTableAdapter;
-        private DataSet2 dataSet2;
         private System.Windows.Forms.BindingSource vStoreStatusTableBindingSource;
-        private DataSet2TableAdapters.vStoreStatusTableTableAdapter vStoreStatusTableTableAdapter;
         private System.Windows.Forms.TabPage tpConfig;
         private System.Windows.Forms.Button btnDeleteAllHistoryData;
         private System.Windows.Forms.CheckBox cbExecuteFailSafe;

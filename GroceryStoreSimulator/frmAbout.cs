@@ -3,7 +3,8 @@
  * Bill Nicholson
  * nicholdw@ucmail.uc.edu
  * University of Cincinnati Clermont College
- * ***************************************************************/using System;
+ * ***************************************************************/using SimulatorNamespace;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

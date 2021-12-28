@@ -14,7 +14,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -143,7 +143,7 @@
       <Name>ProductInfoREST</Name>
     </ProjectReference>
     <ProjectReference Include="..\Simulator\Simulator.csproj">
-      <Project>{51e35a2e-b82b-4754-a9a5-e49632991b14}</Project>
+      <Project>{31e89183-ef68-41eb-aa64-a6a34045c06d}</Project>
       <Name>Simulator</Name>
     </ProjectReference>
   </ItemGroup>
