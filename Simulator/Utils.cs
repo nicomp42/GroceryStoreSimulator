@@ -157,7 +157,7 @@ namespace SimulatorNamespace {
                 object result = null;
                 System.Data.SqlClient.SqlDataReader reader = null;
 
-                if (pAggregate.Trim().Length != 0) {
+                if (!String.IsNullOrEmpty(pAggregate) && pAggregate.Trim().Length != 0) {
                     aggregate = pAggregate;      // MAX, MIN, etc.
                     asName = "foo";              // We need a unique name because this is a calculated field
                 } else {
