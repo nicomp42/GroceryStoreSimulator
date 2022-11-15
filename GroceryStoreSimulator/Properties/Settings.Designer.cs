@@ -12,7 +12,7 @@ namespace GroceryStoreSimulator.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,7 @@ namespace GroceryStoreSimulator.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=il-server-001.uccc.uc.edu\\mssqlserver2012;User ID=GroceryStoreSimulat" +
-            "orLogin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=lcb-sql.uccob.uc.edu\\nicholdw;User ID=GroceryStoreSimulatorLogin")]
         public string SimGroceryConnectionString {
             get {
                 return ((string)(this["SimGroceryConnectionString"]));
@@ -37,9 +36,9 @@ namespace GroceryStoreSimulator.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=il-server-001.uccc.uc.edu\\mssqlserver2012;Initial Catalog=GroceryStor" +
-            "eSimulator;User ID=nicomp;Password=Danger42;Encrypt=False;TrustServerCertificate" +
-            "=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=lcb-sql.uccob.uc.edu\\nicholdw;Initial Catalog=GroceryStoreSimulator;U" +
+            "ser ID=GroceryStoreSimulatorLogin;Password=P@ssword42;Encrypt=False;TrustServerC" +
+            "ertificate=True")]
         public string GroceryStoreSimulatorConnectionString {
             get {
                 return ((string)(this["GroceryStoreSimulatorConnectionString"]));

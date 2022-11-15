@@ -201,10 +201,9 @@ namespace SimulatorNamespace {
         static Config()
         {
             mEmplList = new List<EmplName>();
-//            mServer = "IL-SERVER-001.uccc.uc.edu\\MSSQLSERVER2012";
-            mServer = "SQLSERVER001";
+            mServer = "lcb-sql.uccob.uc.edu\\nicholdw";
             mLogin = "GroceryStoreSimulatorLogin";
-            mPassword = "P@ssword";
+            mPassword = "P@ssword42";
             mDatabase = "GroceryStoreSimulator";
             mUseCoupons = false;
             mRandomNumberSeed = 42;

@@ -625,6 +625,9 @@ namespace SimulatorGUI
             }
         }
 
+        private void txtServer_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
  }
