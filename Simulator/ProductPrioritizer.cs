@@ -30,7 +30,7 @@ namespace SimulatorNamespace
         /// <returns></returns>
         public static int[] CreateProductPriorityArray(SqlConnection connection) {
             //List<ProductPrioritizer> productPrioritizer = new List<ProductPrioritizer>();
-           // String result;
+            // String result;
             // Figure out how many elements we will need in our prioritizer
             productID_count = (int)Utils.MyDLookup("productID", "tProduct", "", "COUNT");
             if (productID_count == 0) {throw new Exception("ProductPrioritizer.CreateProductPriorityArray(): No products on file. Cannot build priority list.");}
@@ -55,7 +55,6 @@ namespace SimulatorNamespace
                         idx++;
                     }
                     stop = stop - 1;
-                    
                 }
             }
             catch (Exception ex) {

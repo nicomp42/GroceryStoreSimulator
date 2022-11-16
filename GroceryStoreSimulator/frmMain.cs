@@ -4,7 +4,7 @@
  * nicholdw@ucmail.uc.edu
  * University of Cincinnati Clermont College
  * ***************************************************************/
-// use simgrocery
+// use GroceryStoreSimulator
 // CREATE ROLE db_executor;
 // GRANT EXECUTE TO db_executor;
 
@@ -28,6 +28,9 @@ namespace SimulatorGUI
 
         public frmMain() {
             InitializeComponent();
+            tcSimulate.TabPages.Remove(tpProductPrioritization);
+            rbPrioritizeProductsAtStartOfSimulationOnly.Checked = true;
+            UpdateControls();
         }
         private void btnStartTransactionSimulator_Click(object sender, EventArgs e) {
             TextBox.CheckForIllegalCrossThreadCalls = false;    // We will spawn a thread that writes to a control on this thread.
@@ -91,6 +94,10 @@ namespace SimulatorGUI
                         Config.couponCheckInterval = (Config.enum_availableCheckIntervals)cbCouponCheckInterval.SelectedIndex;
                         String[] tmp = cbCouponAmountToAdd.SelectedItem.ToString().Split();
                         Config.couponAmountToAdd = Convert.ToInt32(tmp[0]);
+                        Config.prioritizeProductsAtStartOfSimulationOnly = rbPrioritizeProductsAtStartOfSimulationOnly.Checked;
+                        Config.prioritizeProductsAtStartOfEachDay = rbPrioritizeProductsAtStartOfEachDay.Checked;
+                        Config.prioritizeProductsEachDayOfWeek = rbPrioritizeProductsEachDayOfWeek.Checked;
+                        Config.prioritizeProductsEachDayOfMonth = rbPrioritizeProductsEachDayOfMonth.Checked;
                         int numOfTransactionsToAdd;
                         if (cbRunForever.Checked == true) {
                             numOfTransactionsToAdd = 0; // Zero means run forever
@@ -626,6 +633,30 @@ namespace SimulatorGUI
         }
 
         private void txtServer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbPrioritizeProducts_CheckedChanged(object sender, EventArgs e)
+        {
+            // User checked/unchecked the Product Prioritization feature
+            UpdateControls();
+        }
+        private void UpdateControls()
+        {
+            // Show and Hide don't work on individual tab pages:
+            // https://stackoverflow.com/questions/22323836/hide-show-tab-pages-c-sharp
+            if (cbPrioritizeProducts.Checked) {
+                //tpProductPrioritization.Show();
+                tcSimulate.TabPages.Add(tpProductPrioritization);
+            } else {
+                //tpProductPrioritization.Hide();
+                tcSimulate.TabPages.Remove(tpProductPrioritization);
+            }
+
+        }
+
+        private void label39_Click(object sender, EventArgs e)
         {
 
         }

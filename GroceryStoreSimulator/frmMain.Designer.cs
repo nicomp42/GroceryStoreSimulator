@@ -178,6 +178,12 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtUPC = new System.Windows.Forms.TextBox();
+            this.tpProductPrioritization = new System.Windows.Forms.TabPage();
+            this.gbProductPrioritizationModes = new System.Windows.Forms.GroupBox();
+            this.rbPrioritizeProductsAtStartOfEachDay = new System.Windows.Forms.RadioButton();
+            this.rbPrioritizeProductsAtStartOfSimulationOnly = new System.Windows.Forms.RadioButton();
+            this.rbPrioritizeProductsEachDayOfMonth = new System.Windows.Forms.RadioButton();
+            this.rbPrioritizeProductsEachDayOfWeek = new System.Windows.Forms.RadioButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -185,6 +191,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblNotImplemented = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vStoreStatusTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fEmployeesWhoCanBeAStoreManagerBindingSource)).BeginInit();
             this.tpConfig.SuspendLayout();
@@ -202,6 +209,8 @@
             this.tcSimulate.SuspendLayout();
             this.tpTest.SuspendLayout();
             this.tpUPCLookup01.SuspendLayout();
+            this.tpProductPrioritization.SuspendLayout();
+            this.gbProductPrioritizationModes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,9 +264,9 @@
             this.tpConfig.Controls.Add(this.lblServer);
             this.tpConfig.Controls.Add(this.panel2);
             this.tpConfig.Location = new System.Drawing.Point(4, 25);
-            this.tpConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpConfig.Margin = new System.Windows.Forms.Padding(4);
             this.tpConfig.Name = "tpConfig";
-            this.tpConfig.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpConfig.Padding = new System.Windows.Forms.Padding(4);
             this.tpConfig.Size = new System.Drawing.Size(1183, 639);
             this.tpConfig.TabIndex = 4;
             this.tpConfig.Text = "Config";
@@ -289,7 +298,7 @@
             this.cbCheckForAllStoresClosed.Checked = true;
             this.cbCheckForAllStoresClosed.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbCheckForAllStoresClosed.Location = new System.Drawing.Point(272, 428);
-            this.cbCheckForAllStoresClosed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCheckForAllStoresClosed.Margin = new System.Windows.Forms.Padding(4);
             this.cbCheckForAllStoresClosed.Name = "cbCheckForAllStoresClosed";
             this.cbCheckForAllStoresClosed.Size = new System.Drawing.Size(15, 14);
             this.cbCheckForAllStoresClosed.TabIndex = 64;
@@ -311,18 +320,19 @@
             this.cbPrioritizeProducts.Checked = true;
             this.cbPrioritizeProducts.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbPrioritizeProducts.Location = new System.Drawing.Point(273, 402);
-            this.cbPrioritizeProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPrioritizeProducts.Margin = new System.Windows.Forms.Padding(4);
             this.cbPrioritizeProducts.Name = "cbPrioritizeProducts";
             this.cbPrioritizeProducts.Size = new System.Drawing.Size(15, 14);
             this.cbPrioritizeProducts.TabIndex = 61;
             this.cbPrioritizeProducts.UseVisualStyleBackColor = true;
+            this.cbPrioritizeProducts.CheckedChanged += new System.EventHandler(this.cbPrioritizeProducts_CheckedChanged);
             // 
             // btnDeleteAllHistoryData
             // 
             this.btnDeleteAllHistoryData.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnDeleteAllHistoryData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnDeleteAllHistoryData.Location = new System.Drawing.Point(1031, 80);
-            this.btnDeleteAllHistoryData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteAllHistoryData.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteAllHistoryData.Name = "btnDeleteAllHistoryData";
             this.btnDeleteAllHistoryData.Size = new System.Drawing.Size(100, 42);
             this.btnDeleteAllHistoryData.TabIndex = 60;
@@ -336,7 +346,7 @@
             this.cbExecuteFailSafe.Checked = true;
             this.cbExecuteFailSafe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbExecuteFailSafe.Location = new System.Drawing.Point(821, 240);
-            this.cbExecuteFailSafe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbExecuteFailSafe.Margin = new System.Windows.Forms.Padding(4);
             this.cbExecuteFailSafe.Name = "cbExecuteFailSafe";
             this.cbExecuteFailSafe.Size = new System.Drawing.Size(179, 20);
             this.cbExecuteFailSafe.TabIndex = 56;
@@ -356,7 +366,7 @@
             "100000 coupons",
             "1000000 coupons"});
             this.cbCouponAmountToAdd.Location = new System.Drawing.Point(561, 369);
-            this.cbCouponAmountToAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCouponAmountToAdd.Margin = new System.Windows.Forms.Padding(4);
             this.cbCouponAmountToAdd.Name = "cbCouponAmountToAdd";
             this.cbCouponAmountToAdd.Size = new System.Drawing.Size(160, 24);
             this.cbCouponAmountToAdd.TabIndex = 55;
@@ -375,7 +385,7 @@
             // 
             this.cbCouponCheckInterval.FormattingEnabled = true;
             this.cbCouponCheckInterval.Location = new System.Drawing.Point(273, 369);
-            this.cbCouponCheckInterval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCouponCheckInterval.Margin = new System.Windows.Forms.Padding(4);
             this.cbCouponCheckInterval.Name = "cbCouponCheckInterval";
             this.cbCouponCheckInterval.Size = new System.Drawing.Size(232, 24);
             this.cbCouponCheckInterval.TabIndex = 53;
@@ -399,7 +409,7 @@
             this.pnlUseCurrentDateStampForTransaction.Controls.Add(this.label23);
             this.pnlUseCurrentDateStampForTransaction.Controls.Add(this.txtStartDate);
             this.pnlUseCurrentDateStampForTransaction.Location = new System.Drawing.Point(821, 268);
-            this.pnlUseCurrentDateStampForTransaction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUseCurrentDateStampForTransaction.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUseCurrentDateStampForTransaction.Name = "pnlUseCurrentDateStampForTransaction";
             this.pnlUseCurrentDateStampForTransaction.Size = new System.Drawing.Size(340, 123);
             this.pnlUseCurrentDateStampForTransaction.TabIndex = 51;
@@ -420,7 +430,7 @@
             this.cbUseCurrentDateStampForTransaction.Checked = true;
             this.cbUseCurrentDateStampForTransaction.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbUseCurrentDateStampForTransaction.Location = new System.Drawing.Point(125, 86);
-            this.cbUseCurrentDateStampForTransaction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbUseCurrentDateStampForTransaction.Margin = new System.Windows.Forms.Padding(4);
             this.cbUseCurrentDateStampForTransaction.Name = "cbUseCurrentDateStampForTransaction";
             this.cbUseCurrentDateStampForTransaction.Size = new System.Drawing.Size(188, 20);
             this.cbUseCurrentDateStampForTransaction.TabIndex = 50;
@@ -430,7 +440,7 @@
             // txtThroughDate
             // 
             this.txtThroughDate.Location = new System.Drawing.Point(125, 50);
-            this.txtThroughDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtThroughDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtThroughDate.Name = "txtThroughDate";
             this.txtThroughDate.Size = new System.Drawing.Size(176, 22);
             this.txtThroughDate.TabIndex = 48;
@@ -449,7 +459,7 @@
             // txtStartDate
             // 
             this.txtStartDate.Location = new System.Drawing.Point(125, 21);
-            this.txtStartDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStartDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtStartDate.Name = "txtStartDate";
             this.txtStartDate.Size = new System.Drawing.Size(176, 22);
             this.txtStartDate.TabIndex = 46;
@@ -489,7 +499,7 @@
             // 
             this.cbProductCheckInterval.FormattingEnabled = true;
             this.cbProductCheckInterval.Location = new System.Drawing.Point(273, 336);
-            this.cbProductCheckInterval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbProductCheckInterval.Margin = new System.Windows.Forms.Padding(4);
             this.cbProductCheckInterval.Name = "cbProductCheckInterval";
             this.cbProductCheckInterval.Size = new System.Drawing.Size(232, 24);
             this.cbProductCheckInterval.TabIndex = 42;
@@ -498,7 +508,7 @@
             // 
             this.cbEmplCheckInterval.FormattingEnabled = true;
             this.cbEmplCheckInterval.Location = new System.Drawing.Point(273, 303);
-            this.cbEmplCheckInterval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbEmplCheckInterval.Margin = new System.Windows.Forms.Padding(4);
             this.cbEmplCheckInterval.Name = "cbEmplCheckInterval";
             this.cbEmplCheckInterval.Size = new System.Drawing.Size(232, 24);
             this.cbEmplCheckInterval.TabIndex = 41;
@@ -507,7 +517,7 @@
             // 
             this.cbStoreCheckInterval.FormattingEnabled = true;
             this.cbStoreCheckInterval.Location = new System.Drawing.Point(273, 270);
-            this.cbStoreCheckInterval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbStoreCheckInterval.Margin = new System.Windows.Forms.Padding(4);
             this.cbStoreCheckInterval.Name = "cbStoreCheckInterval";
             this.cbStoreCheckInterval.Size = new System.Drawing.Size(232, 24);
             this.cbStoreCheckInterval.TabIndex = 40;
@@ -515,7 +525,7 @@
             // txtConfig
             // 
             this.txtConfig.Location = new System.Drawing.Point(16, 469);
-            this.txtConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfig.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfig.Multiline = true;
             this.txtConfig.Name = "txtConfig";
             this.txtConfig.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -525,7 +535,7 @@
             // txtSeed
             // 
             this.txtSeed.Location = new System.Drawing.Point(973, 156);
-            this.txtSeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeed.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeed.Name = "txtSeed";
             this.txtSeed.Size = new System.Drawing.Size(48, 22);
             this.txtSeed.TabIndex = 15;
@@ -534,7 +544,7 @@
             // txtDatabase
             // 
             this.txtDatabase.Location = new System.Drawing.Point(131, 85);
-            this.txtDatabase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDatabase.Margin = new System.Windows.Forms.Padding(4);
             this.txtDatabase.Name = "txtDatabase";
             this.txtDatabase.Size = new System.Drawing.Size(269, 22);
             this.txtDatabase.TabIndex = 9;
@@ -542,7 +552,7 @@
             // txtTransactionDelay
             // 
             this.txtTransactionDelay.Location = new System.Drawing.Point(273, 127);
-            this.txtTransactionDelay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTransactionDelay.Margin = new System.Windows.Forms.Padding(4);
             this.txtTransactionDelay.Name = "txtTransactionDelay";
             this.txtTransactionDelay.Size = new System.Drawing.Size(84, 22);
             this.txtTransactionDelay.TabIndex = 7;
@@ -550,7 +560,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(452, 53);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(207, 22);
             this.txtPassword.TabIndex = 3;
@@ -558,7 +568,7 @@
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(129, 53);
-            this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(4);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(207, 22);
             this.txtLogin.TabIndex = 2;
@@ -566,7 +576,7 @@
             // txtServer
             // 
             this.txtServer.Location = new System.Drawing.Point(129, 21);
-            this.txtServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtServer.Margin = new System.Windows.Forms.Padding(4);
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(731, 22);
             this.txtServer.TabIndex = 0;
@@ -575,7 +585,7 @@
             // btnTestDatabaseConnection
             // 
             this.btnTestDatabaseConnection.Location = new System.Drawing.Point(884, 21);
-            this.btnTestDatabaseConnection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTestDatabaseConnection.Margin = new System.Windows.Forms.Padding(4);
             this.btnTestDatabaseConnection.Name = "btnTestDatabaseConnection";
             this.btnTestDatabaseConnection.Size = new System.Drawing.Size(100, 65);
             this.btnTestDatabaseConnection.TabIndex = 38;
@@ -586,7 +596,7 @@
             // btnInitRandomNumberGenerator
             // 
             this.btnInitRandomNumberGenerator.Location = new System.Drawing.Point(1031, 153);
-            this.btnInitRandomNumberGenerator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInitRandomNumberGenerator.Margin = new System.Windows.Forms.Padding(4);
             this.btnInitRandomNumberGenerator.Name = "btnInitRandomNumberGenerator";
             this.btnInitRandomNumberGenerator.Size = new System.Drawing.Size(100, 65);
             this.btnInitRandomNumberGenerator.TabIndex = 34;
@@ -621,7 +631,7 @@
             this.cbRunForever.Checked = true;
             this.cbRunForever.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbRunForever.Location = new System.Drawing.Point(343, 229);
-            this.cbRunForever.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRunForever.Margin = new System.Windows.Forms.Padding(4);
             this.cbRunForever.Name = "cbRunForever";
             this.cbRunForever.Size = new System.Drawing.Size(100, 20);
             this.cbRunForever.TabIndex = 29;
@@ -663,7 +673,7 @@
             this.cbUseCoupons.AutoSize = true;
             this.cbUseCoupons.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbUseCoupons.Location = new System.Drawing.Point(64, 159);
-            this.cbUseCoupons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbUseCoupons.Margin = new System.Windows.Forms.Padding(4);
             this.cbUseCoupons.Name = "cbUseCoupons";
             this.cbUseCoupons.Size = new System.Drawing.Size(209, 20);
             this.cbUseCoupons.TabIndex = 11;
@@ -739,7 +749,7 @@
             this.panel2.Controls.Add(this.txtElapsedTimeToRun);
             this.panel2.Controls.Add(this.txtNumOfTransactionsToAdd);
             this.panel2.Location = new System.Drawing.Point(40, 187);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(425, 74);
             this.panel2.TabIndex = 59;
@@ -770,7 +780,7 @@
             this.cbIgnoreElapsedTime.Checked = true;
             this.cbIgnoreElapsedTime.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbIgnoreElapsedTime.Location = new System.Drawing.Point(303, 12);
-            this.cbIgnoreElapsedTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbIgnoreElapsedTime.Margin = new System.Windows.Forms.Padding(4);
             this.cbIgnoreElapsedTime.Name = "cbIgnoreElapsedTime";
             this.cbIgnoreElapsedTime.Size = new System.Drawing.Size(100, 20);
             this.cbIgnoreElapsedTime.TabIndex = 60;
@@ -780,7 +790,7 @@
             // txtElapsedTimeToRun
             // 
             this.txtElapsedTimeToRun.Location = new System.Drawing.Point(180, 10);
-            this.txtElapsedTimeToRun.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtElapsedTimeToRun.Margin = new System.Windows.Forms.Padding(4);
             this.txtElapsedTimeToRun.Name = "txtElapsedTimeToRun";
             this.txtElapsedTimeToRun.Size = new System.Drawing.Size(73, 22);
             this.txtElapsedTimeToRun.TabIndex = 57;
@@ -789,7 +799,7 @@
             // txtNumOfTransactionsToAdd
             // 
             this.txtNumOfTransactionsToAdd.Location = new System.Drawing.Point(180, 37);
-            this.txtNumOfTransactionsToAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumOfTransactionsToAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumOfTransactionsToAdd.Name = "txtNumOfTransactionsToAdd";
             this.txtNumOfTransactionsToAdd.Size = new System.Drawing.Size(73, 22);
             this.txtNumOfTransactionsToAdd.TabIndex = 27;
@@ -800,9 +810,9 @@
             this.tpIngredients.Controls.Add(this.btnProcessIngredients);
             this.tpIngredients.Controls.Add(this.pnlIngredients);
             this.tpIngredients.Location = new System.Drawing.Point(4, 25);
-            this.tpIngredients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpIngredients.Margin = new System.Windows.Forms.Padding(4);
             this.tpIngredients.Name = "tpIngredients";
-            this.tpIngredients.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpIngredients.Padding = new System.Windows.Forms.Padding(4);
             this.tpIngredients.Size = new System.Drawing.Size(1183, 639);
             this.tpIngredients.TabIndex = 6;
             this.tpIngredients.Text = "Ingredients";
@@ -811,7 +821,7 @@
             // btnProcessIngredients
             // 
             this.btnProcessIngredients.Location = new System.Drawing.Point(1019, 486);
-            this.btnProcessIngredients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProcessIngredients.Margin = new System.Windows.Forms.Padding(4);
             this.btnProcessIngredients.Name = "btnProcessIngredients";
             this.btnProcessIngredients.Size = new System.Drawing.Size(153, 28);
             this.btnProcessIngredients.TabIndex = 34;
@@ -824,7 +834,7 @@
             this.pnlIngredients.Controls.Add(this.lblIngredients);
             this.pnlIngredients.Controls.Add(this.txtIngredients);
             this.pnlIngredients.Location = new System.Drawing.Point(825, 194);
-            this.pnlIngredients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlIngredients.Margin = new System.Windows.Forms.Padding(4);
             this.pnlIngredients.Name = "pnlIngredients";
             this.pnlIngredients.Size = new System.Drawing.Size(347, 289);
             this.pnlIngredients.TabIndex = 35;
@@ -843,7 +853,7 @@
             // txtIngredients
             // 
             this.txtIngredients.Location = new System.Drawing.Point(21, 43);
-            this.txtIngredients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIngredients.Margin = new System.Windows.Forms.Padding(4);
             this.txtIngredients.Multiline = true;
             this.txtIngredients.Name = "txtIngredients";
             this.txtIngredients.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -860,9 +870,9 @@
             this.tpProducts.Controls.Add(this.btnCalcNewProductPrice);
             this.tpProducts.Controls.Add(this.btnLookUpProduct);
             this.tpProducts.Location = new System.Drawing.Point(4, 25);
-            this.tpProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpProducts.Margin = new System.Windows.Forms.Padding(4);
             this.tpProducts.Name = "tpProducts";
-            this.tpProducts.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpProducts.Padding = new System.Windows.Forms.Padding(4);
             this.tpProducts.Size = new System.Drawing.Size(1183, 639);
             this.tpProducts.TabIndex = 3;
             this.tpProducts.Text = "Products";
@@ -881,7 +891,7 @@
             // btnReinitializeProductPriceHistory
             // 
             this.btnReinitializeProductPriceHistory.Location = new System.Drawing.Point(465, 489);
-            this.btnReinitializeProductPriceHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReinitializeProductPriceHistory.Margin = new System.Windows.Forms.Padding(4);
             this.btnReinitializeProductPriceHistory.Name = "btnReinitializeProductPriceHistory";
             this.btnReinitializeProductPriceHistory.Size = new System.Drawing.Size(257, 28);
             this.btnReinitializeProductPriceHistory.TabIndex = 5;
@@ -892,7 +902,7 @@
             // txtProductPriceHist
             // 
             this.txtProductPriceHist.Location = new System.Drawing.Point(748, 345);
-            this.txtProductPriceHist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProductPriceHist.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductPriceHist.Multiline = true;
             this.txtProductPriceHist.Name = "txtProductPriceHist";
             this.txtProductPriceHist.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -902,7 +912,7 @@
             // txtProductInfo
             // 
             this.txtProductInfo.Location = new System.Drawing.Point(21, 42);
-            this.txtProductInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProductInfo.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductInfo.Multiline = true;
             this.txtProductInfo.Name = "txtProductInfo";
             this.txtProductInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -912,7 +922,7 @@
             // txtProduct
             // 
             this.txtProduct.Location = new System.Drawing.Point(21, 7);
-            this.txtProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProduct.Margin = new System.Windows.Forms.Padding(4);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(171, 22);
             this.txtProduct.TabIndex = 1;
@@ -920,7 +930,7 @@
             // btnCalcNewProductPrice
             // 
             this.btnCalcNewProductPrice.Location = new System.Drawing.Point(915, 489);
-            this.btnCalcNewProductPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCalcNewProductPrice.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalcNewProductPrice.Name = "btnCalcNewProductPrice";
             this.btnCalcNewProductPrice.Size = new System.Drawing.Size(257, 28);
             this.btnCalcNewProductPrice.TabIndex = 6;
@@ -931,7 +941,7 @@
             // btnLookUpProduct
             // 
             this.btnLookUpProduct.Location = new System.Drawing.Point(201, 6);
-            this.btnLookUpProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLookUpProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnLookUpProduct.Name = "btnLookUpProduct";
             this.btnLookUpProduct.Size = new System.Drawing.Size(100, 28);
             this.btnLookUpProduct.TabIndex = 2;
@@ -945,9 +955,9 @@
             this.tpStores.Controls.Add(this.txtStoreStatus);
             this.tpStores.Controls.Add(this.pnlAddStore);
             this.tpStores.Location = new System.Drawing.Point(4, 25);
-            this.tpStores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpStores.Margin = new System.Windows.Forms.Padding(4);
             this.tpStores.Name = "tpStores";
-            this.tpStores.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpStores.Padding = new System.Windows.Forms.Padding(4);
             this.tpStores.Size = new System.Drawing.Size(1183, 639);
             this.tpStores.TabIndex = 2;
             this.tpStores.Text = "Stores";
@@ -960,7 +970,7 @@
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.cbNewStoreStatusID);
             this.panel1.Location = new System.Drawing.Point(17, 463);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(645, 39);
             this.panel1.TabIndex = 22;
@@ -971,7 +981,7 @@
             this.btnResetStoreStatusHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetStoreStatusHistory.ForeColor = System.Drawing.Color.Red;
             this.btnResetStoreStatusHistory.Location = new System.Drawing.Point(537, 5);
-            this.btnResetStoreStatusHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetStoreStatusHistory.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetStoreStatusHistory.Name = "btnResetStoreStatusHistory";
             this.btnResetStoreStatusHistory.Size = new System.Drawing.Size(100, 28);
             this.btnResetStoreStatusHistory.TabIndex = 21;
@@ -995,7 +1005,7 @@
             this.cbNewStoreStatusID.DisplayMember = "StoreStatus";
             this.cbNewStoreStatusID.FormattingEnabled = true;
             this.cbNewStoreStatusID.Location = new System.Drawing.Point(340, 7);
-            this.cbNewStoreStatusID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbNewStoreStatusID.Margin = new System.Windows.Forms.Padding(4);
             this.cbNewStoreStatusID.Name = "cbNewStoreStatusID";
             this.cbNewStoreStatusID.Size = new System.Drawing.Size(188, 24);
             this.cbNewStoreStatusID.TabIndex = 19;
@@ -1004,7 +1014,7 @@
             // txtStoreStatus
             // 
             this.txtStoreStatus.Location = new System.Drawing.Point(8, 279);
-            this.txtStoreStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStoreStatus.Margin = new System.Windows.Forms.Padding(4);
             this.txtStoreStatus.Multiline = true;
             this.txtStoreStatus.Name = "txtStoreStatus";
             this.txtStoreStatus.ReadOnly = true;
@@ -1035,7 +1045,7 @@
             this.pnlAddStore.Controls.Add(this.txtStoreNumber);
             this.pnlAddStore.Controls.Add(this.btnAddStore);
             this.pnlAddStore.Location = new System.Drawing.Point(8, 7);
-            this.pnlAddStore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddStore.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddStore.Name = "pnlAddStore";
             this.pnlAddStore.Size = new System.Drawing.Size(1164, 265);
             this.pnlAddStore.TabIndex = 0;
@@ -1056,7 +1066,7 @@
             this.cbStoreStatusID.DisplayMember = "StoreStatus";
             this.cbStoreStatusID.FormattingEnabled = true;
             this.cbStoreStatusID.Location = new System.Drawing.Point(345, 33);
-            this.cbStoreStatusID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbStoreStatusID.Margin = new System.Windows.Forms.Padding(4);
             this.cbStoreStatusID.Name = "cbStoreStatusID";
             this.cbStoreStatusID.Size = new System.Drawing.Size(167, 24);
             this.cbStoreStatusID.TabIndex = 9;
@@ -1078,7 +1088,7 @@
             this.cbManagerID.DisplayMember = "EmplName";
             this.cbManagerID.FormattingEnabled = true;
             this.cbManagerID.Location = new System.Drawing.Point(345, 2);
-            this.cbManagerID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbManagerID.Margin = new System.Windows.Forms.Padding(4);
             this.cbManagerID.Name = "cbManagerID";
             this.cbManagerID.Size = new System.Drawing.Size(549, 24);
             this.cbManagerID.TabIndex = 8;
@@ -1087,7 +1097,7 @@
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(109, 203);
-            this.txtZip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtZip.Margin = new System.Windows.Forms.Padding(4);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(132, 22);
             this.txtZip.TabIndex = 7;
@@ -1105,7 +1115,7 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(109, 139);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(132, 22);
             this.txtCity.TabIndex = 5;
@@ -1123,7 +1133,7 @@
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(109, 171);
-            this.txtState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtState.Margin = new System.Windows.Forms.Padding(4);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(132, 22);
             this.txtState.TabIndex = 6;
@@ -1141,7 +1151,7 @@
             // txtAddress2
             // 
             this.txtAddress2.Location = new System.Drawing.Point(109, 105);
-            this.txtAddress2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress2.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(132, 22);
             this.txtAddress2.TabIndex = 4;
@@ -1149,7 +1159,7 @@
             // txtAddress1
             // 
             this.txtAddress1.Location = new System.Drawing.Point(109, 73);
-            this.txtAddress1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress1.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(132, 22);
             this.txtAddress1.TabIndex = 3;
@@ -1177,7 +1187,7 @@
             // txtStore
             // 
             this.txtStore.Location = new System.Drawing.Point(109, 34);
-            this.txtStore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStore.Margin = new System.Windows.Forms.Padding(4);
             this.txtStore.Name = "txtStore";
             this.txtStore.Size = new System.Drawing.Size(132, 22);
             this.txtStore.TabIndex = 2;
@@ -1205,7 +1215,7 @@
             // txtStoreNumber
             // 
             this.txtStoreNumber.Location = new System.Drawing.Point(109, 4);
-            this.txtStoreNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStoreNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtStoreNumber.Name = "txtStoreNumber";
             this.txtStoreNumber.Size = new System.Drawing.Size(132, 22);
             this.txtStoreNumber.TabIndex = 1;
@@ -1213,7 +1223,7 @@
             // btnAddStore
             // 
             this.btnAddStore.Location = new System.Drawing.Point(1056, 233);
-            this.btnAddStore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddStore.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddStore.Name = "btnAddStore";
             this.btnAddStore.Size = new System.Drawing.Size(104, 28);
             this.btnAddStore.TabIndex = 10;
@@ -1237,9 +1247,9 @@
             this.tpCoupon.Controls.Add(this.label3);
             this.tpCoupon.Controls.Add(this.btnCheck);
             this.tpCoupon.Location = new System.Drawing.Point(4, 25);
-            this.tpCoupon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpCoupon.Margin = new System.Windows.Forms.Padding(4);
             this.tpCoupon.Name = "tpCoupon";
-            this.tpCoupon.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpCoupon.Padding = new System.Windows.Forms.Padding(4);
             this.tpCoupon.Size = new System.Drawing.Size(1183, 639);
             this.tpCoupon.TabIndex = 1;
             this.tpCoupon.Text = "Coupon";
@@ -1268,7 +1278,7 @@
             // txtCouponsToAdd
             // 
             this.txtCouponsToAdd.Location = new System.Drawing.Point(975, 487);
-            this.txtCouponsToAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCouponsToAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtCouponsToAdd.Name = "txtCouponsToAdd";
             this.txtCouponsToAdd.Size = new System.Drawing.Size(73, 22);
             this.txtCouponsToAdd.TabIndex = 5;
@@ -1276,7 +1286,7 @@
             // txtCouponStatus
             // 
             this.txtCouponStatus.Location = new System.Drawing.Point(8, 169);
-            this.txtCouponStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCouponStatus.Margin = new System.Windows.Forms.Padding(4);
             this.txtCouponStatus.Multiline = true;
             this.txtCouponStatus.Name = "txtCouponStatus";
             this.txtCouponStatus.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -1286,7 +1296,7 @@
             // txtCouponGetInfoResult
             // 
             this.txtCouponGetInfoResult.Location = new System.Drawing.Point(501, 27);
-            this.txtCouponGetInfoResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCouponGetInfoResult.Margin = new System.Windows.Forms.Padding(4);
             this.txtCouponGetInfoResult.Multiline = true;
             this.txtCouponGetInfoResult.Name = "txtCouponGetInfoResult";
             this.txtCouponGetInfoResult.ReadOnly = true;
@@ -1298,7 +1308,7 @@
             // txtCouponID
             // 
             this.txtCouponID.Location = new System.Drawing.Point(179, 60);
-            this.txtCouponID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCouponID.Margin = new System.Windows.Forms.Padding(4);
             this.txtCouponID.Name = "txtCouponID";
             this.txtCouponID.Size = new System.Drawing.Size(132, 22);
             this.txtCouponID.TabIndex = 1;
@@ -1307,7 +1317,7 @@
             // txtCoupon
             // 
             this.txtCoupon.Location = new System.Drawing.Point(179, 25);
-            this.txtCoupon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCoupon.Margin = new System.Windows.Forms.Padding(4);
             this.txtCoupon.Name = "txtCoupon";
             this.txtCoupon.Size = new System.Drawing.Size(132, 22);
             this.txtCoupon.TabIndex = 0;
@@ -1316,7 +1326,7 @@
             // btnAddCoupons
             // 
             this.btnAddCoupons.Location = new System.Drawing.Point(1057, 487);
-            this.btnAddCoupons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddCoupons.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddCoupons.Name = "btnAddCoupons";
             this.btnAddCoupons.Size = new System.Drawing.Size(115, 28);
             this.btnAddCoupons.TabIndex = 6;
@@ -1338,7 +1348,7 @@
             // btnGetCouponInfo
             // 
             this.btnGetCouponInfo.Location = new System.Drawing.Point(337, 60);
-            this.btnGetCouponInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGetCouponInfo.Margin = new System.Windows.Forms.Padding(4);
             this.btnGetCouponInfo.Name = "btnGetCouponInfo";
             this.btnGetCouponInfo.Size = new System.Drawing.Size(100, 28);
             this.btnGetCouponInfo.TabIndex = 3;
@@ -1372,7 +1382,7 @@
             // btnCheck
             // 
             this.btnCheck.Location = new System.Drawing.Point(337, 25);
-            this.btnCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheck.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(100, 28);
             this.btnCheck.TabIndex = 2;
@@ -1394,9 +1404,9 @@
             this.tpSimulate.Controls.Add(this.txtResults);
             this.tpSimulate.Controls.Add(this.btnStartTransactionSimulator);
             this.tpSimulate.Location = new System.Drawing.Point(4, 25);
-            this.tpSimulate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSimulate.Margin = new System.Windows.Forms.Padding(4);
             this.tpSimulate.Name = "tpSimulate";
-            this.tpSimulate.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSimulate.Padding = new System.Windows.Forms.Padding(4);
             this.tpSimulate.Size = new System.Drawing.Size(1183, 639);
             this.tpSimulate.TabIndex = 0;
             this.tpSimulate.Text = "Simulation";
@@ -1465,7 +1475,7 @@
             this.pbGroceries.Image = global::GroceryStoreSimulator.Properties.Resources.Groceries;
             this.pbGroceries.InitialImage = global::GroceryStoreSimulator.Properties.Resources.Groceries;
             this.pbGroceries.Location = new System.Drawing.Point(957, 4);
-            this.pbGroceries.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbGroceries.Margin = new System.Windows.Forms.Padding(4);
             this.pbGroceries.Name = "pbGroceries";
             this.pbGroceries.Size = new System.Drawing.Size(184, 111);
             this.pbGroceries.TabIndex = 17;
@@ -1494,7 +1504,7 @@
             // txtResults
             // 
             this.txtResults.Location = new System.Drawing.Point(23, 39);
-            this.txtResults.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResults.Margin = new System.Windows.Forms.Padding(4);
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ReadOnly = true;
@@ -1505,7 +1515,7 @@
             // btnStartTransactionSimulator
             // 
             this.btnStartTransactionSimulator.Location = new System.Drawing.Point(983, 454);
-            this.btnStartTransactionSimulator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStartTransactionSimulator.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartTransactionSimulator.Name = "btnStartTransactionSimulator";
             this.btnStartTransactionSimulator.Size = new System.Drawing.Size(189, 28);
             this.btnStartTransactionSimulator.TabIndex = 9;
@@ -1523,8 +1533,9 @@
             this.tcSimulate.Controls.Add(this.tpConfig);
             this.tcSimulate.Controls.Add(this.tpTest);
             this.tcSimulate.Controls.Add(this.tpUPCLookup01);
+            this.tcSimulate.Controls.Add(this.tpProductPrioritization);
             this.tcSimulate.Location = new System.Drawing.Point(16, 33);
-            this.tcSimulate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcSimulate.Margin = new System.Windows.Forms.Padding(4);
             this.tcSimulate.Name = "tcSimulate";
             this.tcSimulate.SelectedIndex = 0;
             this.tcSimulate.Size = new System.Drawing.Size(1191, 668);
@@ -1538,9 +1549,9 @@
             this.tpTest.Controls.Add(this.lblProductID);
             this.tpTest.Controls.Add(this.txtProductID);
             this.tpTest.Location = new System.Drawing.Point(4, 25);
-            this.tpTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpTest.Margin = new System.Windows.Forms.Padding(4);
             this.tpTest.Name = "tpTest";
-            this.tpTest.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpTest.Padding = new System.Windows.Forms.Padding(4);
             this.tpTest.Size = new System.Drawing.Size(1183, 639);
             this.tpTest.TabIndex = 7;
             this.tpTest.Text = "Test";
@@ -1549,7 +1560,7 @@
             // txtProductInfoWebServiceResults
             // 
             this.txtProductInfoWebServiceResults.Location = new System.Drawing.Point(499, 33);
-            this.txtProductInfoWebServiceResults.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProductInfoWebServiceResults.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductInfoWebServiceResults.Multiline = true;
             this.txtProductInfoWebServiceResults.Name = "txtProductInfoWebServiceResults";
             this.txtProductInfoWebServiceResults.Size = new System.Drawing.Size(383, 93);
@@ -1558,7 +1569,7 @@
             // btnTestProductInfoWebService
             // 
             this.btnTestProductInfoWebService.Location = new System.Drawing.Point(279, 30);
-            this.btnTestProductInfoWebService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTestProductInfoWebService.Margin = new System.Windows.Forms.Padding(4);
             this.btnTestProductInfoWebService.Name = "btnTestProductInfoWebService";
             this.btnTestProductInfoWebService.Size = new System.Drawing.Size(204, 28);
             this.btnTestProductInfoWebService.TabIndex = 2;
@@ -1579,7 +1590,7 @@
             // txtProductID
             // 
             this.txtProductID.Location = new System.Drawing.Point(117, 31);
-            this.txtProductID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProductID.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(132, 22);
             this.txtProductID.TabIndex = 0;
@@ -1821,6 +1832,75 @@
             this.txtUPC.TabIndex = 1;
             this.txtUPC.Text = "30100100393";
             // 
+            // tpProductPrioritization
+            // 
+            this.tpProductPrioritization.Controls.Add(this.gbProductPrioritizationModes);
+            this.tpProductPrioritization.Location = new System.Drawing.Point(4, 25);
+            this.tpProductPrioritization.Name = "tpProductPrioritization";
+            this.tpProductPrioritization.Size = new System.Drawing.Size(1183, 639);
+            this.tpProductPrioritization.TabIndex = 9;
+            this.tpProductPrioritization.Text = "Product Prioritization";
+            this.tpProductPrioritization.UseVisualStyleBackColor = true;
+            // 
+            // gbProductPrioritizationModes
+            // 
+            this.gbProductPrioritizationModes.AutoSize = true;
+            this.gbProductPrioritizationModes.Controls.Add(this.lblNotImplemented);
+            this.gbProductPrioritizationModes.Controls.Add(this.rbPrioritizeProductsAtStartOfEachDay);
+            this.gbProductPrioritizationModes.Controls.Add(this.rbPrioritizeProductsAtStartOfSimulationOnly);
+            this.gbProductPrioritizationModes.Controls.Add(this.rbPrioritizeProductsEachDayOfMonth);
+            this.gbProductPrioritizationModes.Controls.Add(this.rbPrioritizeProductsEachDayOfWeek);
+            this.gbProductPrioritizationModes.Location = new System.Drawing.Point(12, 13);
+            this.gbProductPrioritizationModes.Name = "gbProductPrioritizationModes";
+            this.gbProductPrioritizationModes.Size = new System.Drawing.Size(328, 145);
+            this.gbProductPrioritizationModes.TabIndex = 1;
+            this.gbProductPrioritizationModes.TabStop = false;
+            this.gbProductPrioritizationModes.Text = "Product Prioritization Modes";
+            // 
+            // rbPrioritizeProductsAtStartOfEachDay
+            // 
+            this.rbPrioritizeProductsAtStartOfEachDay.AutoSize = true;
+            this.rbPrioritizeProductsAtStartOfEachDay.Location = new System.Drawing.Point(6, 52);
+            this.rbPrioritizeProductsAtStartOfEachDay.Name = "rbPrioritizeProductsAtStartOfEachDay";
+            this.rbPrioritizeProductsAtStartOfEachDay.Size = new System.Drawing.Size(138, 20);
+            this.rbPrioritizeProductsAtStartOfEachDay.TabIndex = 3;
+            this.rbPrioritizeProductsAtStartOfEachDay.TabStop = true;
+            this.rbPrioritizeProductsAtStartOfEachDay.Text = "At start of each day";
+            this.rbPrioritizeProductsAtStartOfEachDay.UseVisualStyleBackColor = true;
+            // 
+            // rbPrioritizeProductsAtStartOfSimulationOnly
+            // 
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.AutoSize = true;
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.Location = new System.Drawing.Point(6, 26);
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.Name = "rbPrioritizeProductsAtStartOfSimulationOnly";
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.Size = new System.Drawing.Size(170, 20);
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.TabIndex = 2;
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.TabStop = true;
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.Text = "At start of simulation only";
+            this.rbPrioritizeProductsAtStartOfSimulationOnly.UseVisualStyleBackColor = true;
+            // 
+            // rbPrioritizeProductsEachDayOfMonth
+            // 
+            this.rbPrioritizeProductsEachDayOfMonth.AutoSize = true;
+            this.rbPrioritizeProductsEachDayOfMonth.Location = new System.Drawing.Point(6, 104);
+            this.rbPrioritizeProductsEachDayOfMonth.Name = "rbPrioritizeProductsEachDayOfMonth";
+            this.rbPrioritizeProductsEachDayOfMonth.Size = new System.Drawing.Size(103, 20);
+            this.rbPrioritizeProductsEachDayOfMonth.TabIndex = 1;
+            this.rbPrioritizeProductsEachDayOfMonth.TabStop = true;
+            this.rbPrioritizeProductsEachDayOfMonth.Text = "Day of month";
+            this.rbPrioritizeProductsEachDayOfMonth.UseVisualStyleBackColor = true;
+            // 
+            // rbPrioritizeProductsEachDayOfWeek
+            // 
+            this.rbPrioritizeProductsEachDayOfWeek.AutoSize = true;
+            this.rbPrioritizeProductsEachDayOfWeek.Location = new System.Drawing.Point(6, 77);
+            this.rbPrioritizeProductsEachDayOfWeek.Name = "rbPrioritizeProductsEachDayOfWeek";
+            this.rbPrioritizeProductsEachDayOfWeek.Size = new System.Drawing.Size(99, 20);
+            this.rbPrioritizeProductsEachDayOfWeek.TabIndex = 0;
+            this.rbPrioritizeProductsEachDayOfWeek.TabStop = true;
+            this.rbPrioritizeProductsEachDayOfWeek.Text = "Day of week";
+            this.rbPrioritizeProductsEachDayOfWeek.UseVisualStyleBackColor = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -1877,6 +1957,18 @@
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // lblNotImplemented
+            // 
+            this.lblNotImplemented.AutoSize = true;
+            this.lblNotImplemented.BackColor = System.Drawing.Color.DarkSalmon;
+            this.lblNotImplemented.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNotImplemented.Location = new System.Drawing.Point(187, 0);
+            this.lblNotImplemented.Name = "lblNotImplemented";
+            this.lblNotImplemented.Size = new System.Drawing.Size(135, 18);
+            this.lblNotImplemented.TabIndex = 2;
+            this.lblNotImplemented.Text = "Not implemented, yet";
+            this.lblNotImplemented.Click += new System.EventHandler(this.label39_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1886,7 +1978,7 @@
             this.Controls.Add(this.tcSimulate);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "SimGrocery by Your Friends at Produce World";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -1920,6 +2012,10 @@
             this.tpTest.PerformLayout();
             this.tpUPCLookup01.ResumeLayout(false);
             this.tpUPCLookup01.PerformLayout();
+            this.tpProductPrioritization.ResumeLayout(false);
+            this.tpProductPrioritization.PerformLayout();
+            this.gbProductPrioritizationModes.ResumeLayout(false);
+            this.gbProductPrioritizationModes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2085,6 +2181,13 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.CheckBox cbCheckForAllStoresClosed;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TabPage tpProductPrioritization;
+        private System.Windows.Forms.GroupBox gbProductPrioritizationModes;
+        private System.Windows.Forms.RadioButton rbPrioritizeProductsEachDayOfMonth;
+        private System.Windows.Forms.RadioButton rbPrioritizeProductsEachDayOfWeek;
+        private System.Windows.Forms.RadioButton rbPrioritizeProductsAtStartOfSimulationOnly;
+        private System.Windows.Forms.RadioButton rbPrioritizeProductsAtStartOfEachDay;
+        private System.Windows.Forms.Label lblNotImplemented;
     }
 }
 

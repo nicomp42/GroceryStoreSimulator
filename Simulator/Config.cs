@@ -33,7 +33,31 @@ namespace SimulatorNamespace {
         private static List<City> mCityList;
         private static bool mPrioritizeProducts;
         private static bool mCheckForAllStoresClosed;
+        private static bool mPrioritizeProductsAtStartOfSimulationOnly;
+        private static bool mPrioritizeProductsAtStartOfEachDay;
+        private static bool mPrioritizeProductsEachDayOfWeek;
+        private static bool mPrioritizeProductsEachDayOfMonth;
 
+        public static Boolean prioritizeProductsAtStartOfSimulationOnly
+        {
+            get { return mPrioritizeProductsAtStartOfSimulationOnly; }  
+            set { mPrioritizeProductsAtStartOfSimulationOnly = value; }     
+        }
+        public static Boolean prioritizeProductsAtStartOfEachDay
+        {
+            get { return mPrioritizeProductsAtStartOfEachDay; }    
+            set { mPrioritizeProductsAtStartOfEachDay = value; }
+        }
+        public static Boolean prioritizeProductsEachDayOfWeek
+        {
+            get { return mPrioritizeProductsEachDayOfWeek; }
+            set {mPrioritizeProductsEachDayOfWeek = value; }
+        }
+        public static Boolean prioritizeProductsEachDayOfMonth
+        {
+            get { return mPrioritizeProductsEachDayOfMonth; }
+            set {mPrioritizeProductsEachDayOfMonth = value; }
+        }
         public static Boolean verboseConsoleMode
         {
             get { return mVerboseConsoleMode; }

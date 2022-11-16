@@ -325,7 +325,7 @@ namespace SimulatorNamespace {
         {
             try
             {
-                if (Config.prioritizeProducts)
+                if (!Config.prioritizeProducts)
                 {
                     // Random Product with all products at the same level of priority/possibility
                     tp.productID = Utils.GetRandomProductID(r, DefaultValues.productID_count);
