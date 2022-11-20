@@ -180,6 +180,7 @@
             this.txtUPC = new System.Windows.Forms.TextBox();
             this.tpProductPrioritization = new System.Windows.Forms.TabPage();
             this.gbProductPrioritizationModes = new System.Windows.Forms.GroupBox();
+            this.lblNotImplemented = new System.Windows.Forms.Label();
             this.rbPrioritizeProductsAtStartOfEachDay = new System.Windows.Forms.RadioButton();
             this.rbPrioritizeProductsAtStartOfSimulationOnly = new System.Windows.Forms.RadioButton();
             this.rbPrioritizeProductsEachDayOfMonth = new System.Windows.Forms.RadioButton();
@@ -191,7 +192,6 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblNotImplemented = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vStoreStatusTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fEmployeesWhoCanBeAStoreManagerBindingSource)).BeginInit();
             this.tpConfig.SuspendLayout();
@@ -343,8 +343,6 @@
             // cbExecuteFailSafe
             // 
             this.cbExecuteFailSafe.AutoSize = true;
-            this.cbExecuteFailSafe.Checked = true;
-            this.cbExecuteFailSafe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbExecuteFailSafe.Location = new System.Drawing.Point(821, 240);
             this.cbExecuteFailSafe.Margin = new System.Windows.Forms.Padding(4);
             this.cbExecuteFailSafe.Name = "cbExecuteFailSafe";
@@ -1857,6 +1855,18 @@
             this.gbProductPrioritizationModes.TabStop = false;
             this.gbProductPrioritizationModes.Text = "Product Prioritization Modes";
             // 
+            // lblNotImplemented
+            // 
+            this.lblNotImplemented.AutoSize = true;
+            this.lblNotImplemented.BackColor = System.Drawing.Color.DarkSalmon;
+            this.lblNotImplemented.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNotImplemented.Location = new System.Drawing.Point(187, 0);
+            this.lblNotImplemented.Name = "lblNotImplemented";
+            this.lblNotImplemented.Size = new System.Drawing.Size(135, 18);
+            this.lblNotImplemented.TabIndex = 2;
+            this.lblNotImplemented.Text = "Not implemented, yet";
+            this.lblNotImplemented.Click += new System.EventHandler(this.label39_Click);
+            // 
             // rbPrioritizeProductsAtStartOfEachDay
             // 
             this.rbPrioritizeProductsAtStartOfEachDay.AutoSize = true;
@@ -1956,18 +1966,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // lblNotImplemented
-            // 
-            this.lblNotImplemented.AutoSize = true;
-            this.lblNotImplemented.BackColor = System.Drawing.Color.DarkSalmon;
-            this.lblNotImplemented.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNotImplemented.Location = new System.Drawing.Point(187, 0);
-            this.lblNotImplemented.Name = "lblNotImplemented";
-            this.lblNotImplemented.Size = new System.Drawing.Size(135, 18);
-            this.lblNotImplemented.TabIndex = 2;
-            this.lblNotImplemented.Text = "Not implemented, yet";
-            this.lblNotImplemented.Click += new System.EventHandler(this.label39_Click);
             // 
             // frmMain
             // 

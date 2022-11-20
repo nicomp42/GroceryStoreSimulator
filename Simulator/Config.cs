@@ -37,6 +37,19 @@ namespace SimulatorNamespace {
         private static bool mPrioritizeProductsAtStartOfEachDay;
         private static bool mPrioritizeProductsEachDayOfWeek;
         private static bool mPrioritizeProductsEachDayOfMonth;
+        private static int mMinTransactionDetailRecordsPerTransaction;
+        private static int mMaxTransactionDetailRecordsPerTransaction;
+        public static int minTransactionDetailRecordsPerTransaction
+        {
+            get { return mMinTransactionDetailRecordsPerTransaction; }
+            set { mMinTransactionDetailRecordsPerTransaction = value; }
+        }
+
+        private static int maxTransactionDetailRecordsPerTransaction
+        {
+            set { mMaxTransactionDetailRecordsPerTransaction = value; }
+            get { return mMaxTransactionDetailRecordsPerTransaction; }
+        }
 
         public static Boolean prioritizeProductsAtStartOfSimulationOnly
         {
@@ -233,6 +246,8 @@ namespace SimulatorNamespace {
             mRandomNumberSeed = 42;
             cityList = new List<City>();
             mElapsedMinutesToRun = 1;       // Default
+            mMinTransactionDetailRecordsPerTransaction = 1;
+            mMaxTransactionDetailRecordsPerTransaction = 30;
         }
         /// <summary>
         /// Read the .csv file with people names that we will use to make up random employee names

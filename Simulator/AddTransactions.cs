@@ -171,6 +171,9 @@ namespace SimulatorNamespace {
                     Write("Store: " + store.Trim() + ". TransactionID = " + tp.transactionID);
 
                     // Add more transaction detail records for this transaction
+                    // ToDo: Use the max/min number of transaction detail limits here rather than 0-30
+                    // ToDo: Easter Egg
+                    //int totalTransactionDetailRecords = 1;    // r.Next(31);     // 0 to 30
                     int totalTransactionDetailRecords = r.Next(31);     // 0 to 30
                     if (totalTransactionDetailRecords == 30) totalTransactionDetailRecords = r.Next(101);   // One out of 30 of these loops can go as high as 100 items
                     for (int i = 0; i < totalTransactionDetailRecords; i++) {
@@ -182,6 +185,7 @@ namespace SimulatorNamespace {
                         cmd.Parameters["@TransactionDetailID"].Direction = ParameterDirection.Output;
 
                         cmd.Parameters.Add(new SqlParameter("transactionID", tp.transactionID));
+                        //tp.productID = 504;  // ToDo Easter Egg
                         cmd.Parameters.Add(new SqlParameter("productID", tp.productID));
                         cmd.Parameters.Add(new SqlParameter("qty", tp.qty));
                         cmd.Parameters.Add(new SqlParameter("pricePerSellableUnitToTheCustomer", tp.pricePerSellableUnitToTheCustomer));
@@ -457,7 +461,9 @@ namespace SimulatorNamespace {
                 status = false;
                 Utils.Log(ex.Message);
             } finally {
-                try { reader.Close(); } catch (Exception ex) { Utils.Log(ex.Message);}
+                if (reader != null){
+                    try {reader.Close();}catch (Exception ex) { Utils.Log(ex.Message); }
+                }
             }
             return status;
         }
@@ -478,6 +484,10 @@ namespace SimulatorNamespace {
                 reader = cmd.ExecuteReader();
                 while (reader.Read()) {
                     storeID = Convert.ToInt32(reader.GetValue(5));
+                    if (storeID == 229)
+                    {
+                        int x;
+                        x = 42;            }
                     isOpenForBusiness = Convert.ToBoolean(reader.GetValue(1));
                     isClosedForever = Convert.ToBoolean(reader.GetValue(2));
                     int myRandomValue = r.Next(1001); // 0 to 1000

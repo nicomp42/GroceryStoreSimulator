@@ -134,6 +134,8 @@ namespace SimulatorNamespace {
         /// <param name="productID_count">The number of stores in tStore</param>
         /// <returns>The randomly generated store ID</returns>
         public static int GetRandomStoreID(Random r, int storeID_count) {
+            // ToDo: MyDLookup is returning a null once in a while and the app crashes. 
+            //  We need to track this down.
             return (int)Utils.MyDLookup("StoreID",
                                         "(SELECT ROW_NUMBER() OVER (ORDER BY storeID) AS RowNum, * FROM tStore) sub ",
                                         " RowNum = " + (r.Next(storeID_count) + 1),

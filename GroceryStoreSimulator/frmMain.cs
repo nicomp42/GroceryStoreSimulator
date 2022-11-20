@@ -122,7 +122,7 @@ namespace SimulatorGUI
                             //*****************************
                             sg.StartTransactionSimulation(numOfTransactionsToAdd, Config.random, txtResults, lblStatus);
                         } catch (Exception ex) {
-                            txtResults.Text += "btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
+                            txtResults.Text += " btnGo_Click:" + "sg.StartSimulation: " + ex.Message;
                         }
                         btnStartTransactionSimulator.Text = "Halt";
                         watch = Stopwatch.StartNew();
