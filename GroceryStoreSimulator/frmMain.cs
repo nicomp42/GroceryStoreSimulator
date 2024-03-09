@@ -110,7 +110,7 @@ namespace SimulatorGUI
                                 Utils.Log(ex.Message);
                                 return;
                             }
-                        } 
+                        }
                         try {
                             if (Config.executeFailSafeOptions) {
                                 ProductPriceHist.CopyFromFromProductTableIntoProductPriceHist(Config.startDate); // Config.earliestPossibleDate);     // Fail-safe strategy
@@ -588,7 +588,7 @@ namespace SimulatorGUI
                 txtManufacturer.Text = manufacturer;
                 txtProductIngredients.Text = productIngredients;
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
         }
         /// <summary>
         /// See https://www.newtonsoft.com/json/help/html/QueryJson.htm
@@ -610,7 +610,7 @@ namespace SimulatorGUI
                 txtBrand.Text = brand;
                 txtModel.Text = model;
                 txtManufacturer.Text = manufacturer;
-            } catch (Exception ex) { }
+            } catch (Exception) { }
         }
         public string Get(string uri)
         {
